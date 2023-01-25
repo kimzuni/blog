@@ -1,0 +1,95 @@
+timezone: Asia/Seoul
+lang: ko
+
+title: "Zuni's Blog"
+description: ""
+url: "https://zuni.kim"
+baseurl: ""
+
+email: "hello@kimzuni.com"
+github: kimzuni
+
+cdn: "https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog"
+favicons: "https://cdn.jsdelivr.net/gh/kimzuni/logo@latest/favicons"
+
+
+
+comment: giscus
+
+include: ["_pages"]
+
+google_analytics:
+  id: G-LXJQP9NTHF
+
+
+
+
+
+#paginate: 8
+#paginate_path: "/page:num/"
+pagination:
+  enabled: true
+  per_page: 8
+  title: ':title (Page :num)'
+  sort_field: 'date'
+  sort_reverse: true
+  permalink: /page:num/
+  trail:
+    before: 2
+    after: 2
+autopages:
+  enabled: true
+  categories:
+    layouts:
+      - autopage-category.html
+    title: 'Category - :cat'
+    permalink: '/categories/:cat'
+    silent: false
+    slugify:
+      mode: 'default'   # :cat is slugified. Modes: default, raw, pretty, ascii, latin
+      case: false       # Whether to replace all uppercase letters with their lowercase counterparts
+  tags:
+    layouts:
+      - autopage-tag.html
+    title: 'Tag - :tag'
+    permalink: '/tags/:tag'
+    silent: false
+    slugify:
+      mode: 'default'   # :tag is slugified.
+      case: false
+  collections:
+    enabled: false
+
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: "codebox"
+    table_class: "codebox-table"
+    gutter_class: "codebox-line"
+    code_class: "codebox-content"
+    block:
+      line_numbers: true
+
+sass:
+  style: compressed
+  sourcemap: never
+
+defaults:
+  - scope:
+      type: posts
+    values:
+      toc: true
+      comment: true
+      layout: post
+      permalink: /posts/:title/
+
+#jekyll-archives:
+#  enabled:
+#    - categories
+#    - tags
+#  layouts:
+#    category: archives
+#    tag: archives
+#  permalinks:
+#    category: /categories/:name/
+#    tag: /tags/:name/

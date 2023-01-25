@@ -1,0 +1,21 @@
+<div id="mode-toggle" class="module">
+	<script type="text/javascript">
+		const mode_toggle_click = function() {
+			let checked = mode_toggle.getAttribute("aria-checked");
+			checked = checked == "true" ? "false" : "true";
+			darkmode(checked);
+			localStorage.darkmode = checked;
+		}
+
+		const darkmode = function(mode) {
+			html.setAttribute("darkmode", mode);
+			mode_toggle.setAttribute("aria-checked", mode);
+		}
+
+
+
+		document.write(`<button title="Dark Mode On/Off" type="button" role="switch" aria-checked="false" aria-label="Dark Mode" onclick="mode_toggle_click();"></button>`);
+		const mode_toggle = html.querySelector("#mode-toggle button");
+		darkmode(localStorage.darkmode ? localStorage.darkmode : window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? true : false);
+	</script>
+</div>

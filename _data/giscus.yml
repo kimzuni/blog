@@ -1,0 +1,15 @@
+repo:
+  name: comments
+  id: R_kgDOHtCl5Q # https://giscus.app/
+category:
+  name: Announcements
+  id: DIC_kwDOHtCl5c4CQZlo # https://giscus.app/
+mapping: url
+strict: true
+reactions: false
+emit_metadata: true
+input_position: top
+theme: "/assets/css/giscus.css"
+# theme: dark
+lang: en
+lazy: true

@@ -1,0 +1,12 @@
+---
+permalink: /robots.txt
+---
+
+User-agent: *
+Allow: /
+Disallow: /404.html
+Disallow: /CNAME
+Disallow: /assets/search.json
+Disallow: /search/
+
+Sitemap: {{ site.url }}/sitemap.xml

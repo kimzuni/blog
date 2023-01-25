@@ -1,0 +1,15 @@
+---
+---
+
+[{% for post in site.posts %}
+	{
+		"pin": "{{ post.pin }}",
+		"title" : "{{ post.title | escape }}",
+		"categories" : "{{ post.categories | join: ', ' }}",
+		"tags" : "{{ post.tags | join: ', ' }}",
+		"url" : "{{ site.baseurl }}{{ post.url }}",
+		"date" : "{{ post.date | split: ' +' | first }}",
+		"thumbnail" : "{{ post.thumbnail }}",
+		"desc" : "{% capture desc %}{% include strip-html.html content=post.content %}{% endcapture %}{{ desc | strip }}"
+	}{% unless forloop.last %},{% endunless %}
+{% endfor %}]

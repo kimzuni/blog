@@ -1,0 +1,40 @@
+---
+---
+
+sup.footnote {
+	a[fnid]:before {
+		content: "[" attr(fnid) "]";
+	}
+}
+
+#post-footnotes, #fn-preview {
+	--lineHeight: 1.2em;
+} #post-footnotes {
+	border: 0 dashed var(--bd-color);
+	border-top-width: 1px;
+	margin-top: var(--gap);
+	padding: var(--gap-2) 0;
+	position: relative;
+	font-size: .85em;
+	list-style: none;
+
+	li {
+		display: flex;
+		line-height: var(--lineHeight);
+
+		&> [fnid]:before {
+			content: "[" attr(fnid) "]";
+		} &> *:not([fnid]) {
+			margin: 0;
+			margin-left: .25em;
+
+			&> .no {
+				margin-right: .25em;
+
+				&:before {
+					content: "[" attr(no) "]";
+				}
+			}
+		}
+	}
+}

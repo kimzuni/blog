@@ -1,0 +1,22 @@
+{% assign content_bak = include.content | replace: '<div class="highlight"><pre class="codebox"><code>', '<div class="highlight"><code class="codebox"><div class="codebox-bg"><span class="codebox-highlight"></span></div>' | replace: '</code></pre></div>', '</code></div>' | replace: '<td class="codebox-content">', '<td class="codebox-content">' %}
+
+{% assign content_split = content_bak | split: '<div class="language-' %}
+{% assign content_bak = '' %}
+{% for contentx in content_split %}
+	{% if content_bak == '' %}{% assign content_bak = contentx %}{% continue %}{% endif %}
+	{% assign codebox_language = contentx | split: ' ' | first %}
+	{% assign get_html = contentx | split: '<table class="codebox-table">' %}
+	{% assign content_bak = content_bak | append: '<div class="language-' | append: get_html[0] | append: '<table class="codebox-table"><caption><button type="button" aria-label="Copy" title="Copy!" onclick="codebox_copy(this);"><svg draw="copy"></svg></button><span>' | append: codebox_language | append: '</span></caption>' | append: get_html[1] %}
+{% endfor %}
+
+{% assign content_split = content_bak | split: '<img src="' %}
+{% assign content_bak = '' %}
+{% for contentx in content_split %}
+	{% if content_bak == '' %}{% assign content_bak = contentx %}{% continue %}{% endif %}
+	{% assign check = contentx | split: '//' | first %}
+	{% assign insert = '' %}
+	{% if check != '' and check != 'http:' and check != 'https:' %}{% assign insert = site.cdn %}{% endif %}
+	{% assign content_bak = content_bak | append: '<img loading="lazy" src="' | append: insert | append: contentx %}
+{% endfor %}
+
+{{ content_bak }}

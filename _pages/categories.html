@@ -1,0 +1,35 @@
+---
+layout: pages
+permalink: /categories/
+title: Categories
+description: List of categories
+---
+
+{% assign no_category = "No Category" %}
+{% if site.categories.size != 0 %}
+	{% assign cats = "" | split: "" %}{% assign subcats = cats %}
+	{% for category in site.categories %}
+		{% if category[0] == no_category %}{% continue %}{% endif %}
+		{% assign categoryName = category[0] %}
+		{% assign posts = category[1] %}
+		{% assign push = "" | split: "" | push: categoryName | push: posts.size %}
+		{% if posts[0].categories[0] == categoryName %}{% assign cats = cats | push: push %}
+		{% else %}{% assign categoryName = posts[0].categories | join: "/" %}{% assign push = "" | split: "" | push: categoryName | push: push[1] %}{% assign subcats = subcats | push: push %}{% endif %}
+	{% endfor %}
+	{% for subcat in subcats %}{% assign cats = cats | push: subcat %}{% endfor %}
+	{% assign categories = cats | sort %}
+
+	{% assign category_bak = "" %}{% assign subcategory_bak = "" %}
+	{% for category in categories %}
+		{% assign cats = category[0] | split: "/" %}
+		{% if category_bak != cats[0] %}{% if subcategory_bak != "" %}</li></ul>{% assign subcategory_bak = "" %}{% endif %}{% if category_bak != "" %}</ul>{% endif %}<ul category="{{ cats[0] }}"><li><a href="/categories/{{ cats[0] | slugify }}/" class="category"><span>{{ cats[0] }}</span><span class="post-cnt">({{ category[1] }})<span></a>{% assign category_bak = cats[0] %}{% endif %}
+		{% if cats.size == 2 %}{% if subcategory_bak == "" %}<ul>{% assign subcategory_bak = cats[1] %}{% endif %}<li><a href="/categories/{{ cats[1] | slugify }}/" class="category"><span>{{ cats[1] }}</span><span class="post-cnt">({{ category[1] }})</span></a></li>{% endif %}
+	{% endfor %}{% if subcategory_bak != "" %}</ul></li>{% endif %}</ul>
+
+	{% assign posts = site.categories[no_category] %}
+	{% if posts and posts.size != 0 %}<ul category="{{ no_category }}">
+		<li><a href="/categories/{{ no_category | slugify }}/" class="category"><span>{{ no_category }}</span><span class="post-cnt">({{ posts.size }})</span></a></li>
+	</ul>{% endif %}
+{% else %}
+	<div id="error">There are no categories to display</div>
+{% endif %}

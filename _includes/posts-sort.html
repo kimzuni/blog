@@ -1,0 +1,7 @@
+{% assign posts_bak = include.posts %}{% assign posts_sort = "" | split: "" %}{% assign posts = posts_sort %}
+{% for post in posts_bak %}
+	{% if post.pin == true %}{% assign posts_sort = posts_sort | push: post %}
+	{% else %}{% assign posts = posts | push: post %}{% endif %}
+{% endfor %}
+{% for post in posts %}{% assign posts_sort = posts_sort | push: post %}{% endfor %}
+{% assign posts = posts_sort %}

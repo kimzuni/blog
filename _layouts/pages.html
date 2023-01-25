@@ -1,0 +1,9 @@
+---
+layout: page
+sidebar:
+- search
+- recent-posts
+---
+
+<h1 id="page-title">{{ page.title }}</h1>
+<div id="{{ page.permalink | split: '/' | slice: 1 }}">{{ content }}</div>

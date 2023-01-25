@@ -1,0 +1,30 @@
+---
+layout: default
+---
+
+<main id="main"{% if layout.sidebar or layout.tail_sidebar %} sidebar="true"{% endif %}>
+	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/site.css"/>
+	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/page.css"/>
+	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/modules.css"/>
+	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/rouge.css"/>
+	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/codebox.css"/>
+	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/footnote.css"/>
+	<script type="text/javascript" src="{{ site.baseurl }}/assets/js/time.js"></script>
+	<script type="text/javascript" src="{{ site.baseurl }}/assets/js/codebox.js"></script>
+	<script type="text/javascript" src="{{ site.baseurl }}/assets/js/svg-draw.js"></script>
+	{% if page.url ==  "/index.html" and page.content != "" %}<div id="home-hero">{{ page.content }}</div>{% endif %}
+	<section id="main-content"{% unless layout.sidebar %} class="padding"{% endunless %}>
+		{% if layout.sidebar %}<aside id="sidebar" class="sidebar">{% for module in layout.sidebar %}
+			{% include modules/{{ module }}.html %}
+		{% endfor %}</aside>{% endif %}
+		<div id="page">{{ content }}</div>
+	</section>
+	{% if layout.tail or layout.tail_sidebar %}<section id="tail"{% unless layout.tail_sidebar %} class="padding"{% endunless %}>
+		<div id="tail-content">{% for module in layout.tail %}
+			{% include modules/{{ module }}.html %}
+		{% endfor %}</div>
+		{% if layout.tail_sidebar %}<div id="tail-sidebar" class="sidebar">{% for module in layout.tail_sidebar %}
+			{% include modules/{{ module }}.html %}
+		{% endfor %}</div>{% endif %}
+	</section>{% endif %}
+</main>

@@ -1,0 +1,29 @@
+---
+layout: page
+sidebar:
+- search
+- recent-posts
+---
+
+{% assign pagesname_bak = page.url | split: "/" | slice: 1 | first %}
+{% if pagesname_bak == "categories" %}{% assign pagesname = "category" %}{% elsif pagesname_bak == "tags" %}{% assign pagesname = "tag" %}{% endif %}
+{% assign pagename = page.url | split: "/" | slice: 2 | first %}
+{% assign displayname = page.autopages.display_name %}
+
+{% assign posts = site[pagesname_bak][displayname] %}
+{% include posts-sort.html posts=posts %}
+{% assign page_info = site.data[pagesname_bak][displayname] %}
+<h1 id="page-title"{% if page_info %} class="no-border"{% endif %}>{{ pagesname | capitalize }} - {{ displayname }}</h1>
+{% if page_info %}<div id="page-info">{{ page_info }}</div>{% endif %}
+<div id="{{ pagesname }}">
+	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/home.css"/>
+	{% if posts.size != 0 %}
+		{% assign end = paginator.page | times: paginator.per_page %}
+		{% assign start = end | minus: paginator.per_page | plus: 1 %}
+		{% if paginator.total_posts < end %}{% assign end = paginator.total_posts %}{% endif %}
+		<ul class="postbox-container">{% for i in (start..end) %}{% assign idx = i | minus: 1 %}{% assign post = posts[idx] %}
+			<li class="postbox-wrapper">{% include create-postbox.html pin=post.pin url=post.url title=post.title desc=post.content date=post.date categories=post.categories tags=post.tags thumbnail = post.thumbnail %}</li>
+		{% endfor %}</ul>
+		{% include paginate.html %}
+	{% else %}<div id="error">No Posts Created</div>{% endif %}
+</div>

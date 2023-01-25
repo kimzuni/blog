@@ -1,0 +1,17 @@
+{% assign giscus = site.data.giscus %}<script	src="https://giscus.app/client.js"
+	data-repo="{{ site.github }}/{{ giscus['repo']['name'] }}"
+	data-repo-id="{{ giscus['repo']['id'] }}"
+	data-category="{{ giscus['category']['name'] }}"
+	data-category-id="{{ giscus['category']['id'] }}"
+	data-mapping="{{ giscus['mapping'] }}"
+	data-strict="{% if giscus['strict'] == true or giscus['strict'] == 1 %}1{% else %}0{% endif %}"
+	data-reactions-enabled="{% if giscus['reactions'] == true or giscus['reactions'] == 1 %}1{% else %}0{% endif %}"
+	data-emit-metadata="{% if giscus['emit_metadata'] == true or giscus['emit_metadata'] == 1 %}1{% else %}0{% endif %}"
+	data-input-position="{{ giscus['input_position'] }}"
+	data-theme="{% assign x = giscus['theme'] | slice: 0 %}{% if x == '/' %}{{ site.url }}{{ site.baseurl }}{% endif %}{{ giscus['theme'] }}"
+	data-lang="{{ giscus['lang'] }}"
+	{% if giscus['lazy'] == true %}data-loading="lazy"{% endif %}
+	crossorigin="anonymous"
+	async>
+</script>
+<script type="text/javascript" src="{{ site.baseurl }}/assets/js/giscus.js"></script>

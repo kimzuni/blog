@@ -1,0 +1,19 @@
+---
+layout: page
+sidebar:
+- search
+---
+
+{% include posts-sort.html posts=site.posts %}
+<div id="home" page="{{ paginator.page }}">
+	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/home.css"/>
+	{% if posts.size != 0 %}
+		{% assign end = paginator.page | times: paginator.per_page %}
+		{% assign start = end | minus: paginator.per_page | plus: 1 %}
+		{% if paginator.total_posts < end %}{% assign end = paginator.total_posts %}{% endif %}
+		<ul class="postbox-container">{% for i in (start..end) %}{% assign idx = i | minus: 1 %}{% assign post = posts[idx] %}
+			<li class="postbox-wrapper">{% include create-postbox.html pin=post.pin url=post.url title=post.title desc=post.content date=post.date categories=post.categories tags=post.tags thumbnail = post.thumbnail %}</li>
+		{% endfor %}</ul>
+		{% include paginate.html %}
+	{% else %}<div id="error">No Posts Created</div>{% endif %}
+</div>

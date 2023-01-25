@@ -1,0 +1,31 @@
+---
+---
+
+#home-hero {
+} #home {
+} #page-control {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: var(--gap2);
+	gap: var(--gap-2);
+
+	input {
+		background: transparent;
+		border: 0;
+		border-bottom: 1px solid var(--bd-color);
+		outline: 0;
+		text-align: center;
+
+		&:focus {
+			--bd-color: var(--theme-color);
+		}
+	} .prev:before {
+		content: "< Prev";
+	} .next:before {
+		content: "Next >";
+	} span.prev, span.next {
+		color: var(--sub-color);
+		cursor: not-allowed;
+	}
+}
