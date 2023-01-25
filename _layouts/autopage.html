@@ -13,7 +13,11 @@ sidebar:
 {% assign posts = site[pagesname_bak][displayname] %}
 {% include posts-sort.html posts=posts %}
 {% assign page_info = site.data[pagesname_bak][displayname] %}
-<h1 id="page-title"{% if page_info %} class="no-border"{% endif %}>{{ pagesname | capitalize }} - {{ displayname }}</h1>
+<h1 id="page-title"{% if page_info %} class="no-border"{% endif %}>{% if pagesname_bak == "categories" and displayname == "No Category" %}<script type="text/javascript">
+	var no_category = "No Category";
+	document.title = `${no_category} | ${site_title}`;
+	html.querySelector("#page-title").innerText = no_category;
+</script>{% else %}{{ pagesname | capitalize }} - {{ displayname }}{% endif %}</h1>
 {% if page_info %}<div id="page-info">{{ page_info }}</div>{% endif %}
 <div id="{{ pagesname }}">
 	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/home.css"/>

@@ -47,6 +47,8 @@ const text_copy = function(text) {
 
 
 
+const site_title = "{{ site.title }}";
+
 const baseurl = "{{ site.baseurl }}";
 const paginate = "{{ site.pagination.per_page }}";
 const paginate_path = "{{ site.pagination.permalink }}";

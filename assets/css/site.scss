@@ -204,9 +204,7 @@
 } #comment {
 	border: 0 !important;
 } @media (min-width: 768px) {
-	#main-content {
-		padding-top: var(--gap);
-	} #main-content, #tail {
+	#main-content, #tail {
 		display: flex;
 		flex-direction: row-reverse;
 		align-items: flex-start;
