@@ -6,22 +6,27 @@ const f_one_more = function(t, o) {
 }
 
 const f_time = function(timebox, time, origin) {
-	let timestamp = new Date(time).getTime()/1000;
-
+	let timestamp = parseInt(new Date(time).getTime()/1000);
 	let nowTime = parseInt(new Date().getTime()/1000);
-	let new_time = nowTime - timestamp + (timezone-server_timezone)*60;
+	let new_time = nowTime - timestamp;
 
 	let timeout = 0;
 	if (new_time/60 < 1) { new_time = f_one_more(parseInt(new_time%60), "second") + " ago"; timeout = 100; }
 	else if (new_time/60 < 60) { new_time = f_one_more(parseInt(new_time/60), "minute") + " ago"; timeout = 1000; }
 	else if (new_time/(60*60) < 24) { new_time = f_one_more(parseInt(new_time/(60*60)), "hour") + " ago"; timeout = 1000*60; }
-	else if (new_time/(60*60*24) < 7) { new_time = f_one_more(parseInt(new_time/(60*60*24)), "day") + " ago"; timeout = 1000*60*60; }
-	else if (new_time/(60*60*24*7) < 4) { new_time = f_one_more(parseInt(new_time/(60*60*24*7)), "week") + " ago"; timeout = 1000*60*60*24; }
-	else { new_time = origin; }
+	else {
+		let t1 = timestamp - (timestamp-timezone*60)%(60*60*24);
+		let t2 = nowTime - (nowTime-timezone*60)%(60*60*24);
+		new_time = (t2 - t1)/(60*60*24);
+
+		if (new_time < 7) { new_time = f_one_more(parseInt(new_time), "day") + " ago"; timeout = 1000*60*60; }
+		else if (new_time/7 < 4) { new_time = f_one_more(parseInt(new_time/7), "week") + " ago"; timeout = 1000*60*60*24; }
+		else { new_time = origin; }
+	}
 	if (timebox.innerHTML != new_time) { timebox.innerHTML = new_time; }
 
-	if (timeout != 0) {
-		setTimeout(function() { f_time(timebox, time); }, timeout);
+	if (0 < timeout) {
+		setTimeout(function() { f_time(timebox, time, origin); }, timeout);
 	}
 }
 
@@ -29,6 +34,6 @@ const f_time = function(timebox, time, origin) {
 
 window.addEventListener("DOMContentLoaded", function() {
 	for (let time of html.querySelectorAll(".postbox-date, time")) {
-		f_time(time, time.innerText, time.innerHTML);
+		f_time(time, time.title, time.innerHTML);
 	}
 });

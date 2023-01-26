@@ -20,7 +20,7 @@
 	<div class="postbox-content">
 		{% if thumbnail and thumbnail != "" %}<div class="thumbnail" style="background-image: url({{ thumbnail }})"></div>{% endif %}
 		<p class="postbox-title"><a href="{{ url }}">{{ title }}</a></p>
-		<div class="postbox-desc"><span class="postbox-date" title="{{ date }}">{{ date | split: " +" | first }}</span>{% include strip-html.html content=desc %}</div>
+		<div class="postbox-desc"><span class="postbox-date" title="{{ date | date_to_xmlschema }}">{{ date | split: " +" | first }}</span>{% include strip-html.html content=desc %}</div>
 	</div>
 	{% if categories.size != 0 %}<div class="postbox-info">
 		{% if categories.size != 0 %}<div class="postbox-categories">{% for category in categories %}

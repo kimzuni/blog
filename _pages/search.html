@@ -31,7 +31,7 @@ sitemap: false
 				v += "</div>";
 			} else if (prop == "date" && value != "") {
 				v = v.split(" ");
-				v = `<span>${v[0]}</span>${v[1]}<span></span>`;
+				v = `<span>${v[0]}</span><span> ${v[1]}</span>`;
 			} else if (prop == "thumbnail" && value != "") {
 				v = `<div class="thumbnail" style="background-image: url(${value})"></div>`;
 			}
