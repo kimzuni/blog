@@ -18,11 +18,11 @@
 
 <div class="postbox"{% if pin == true %} pin><svg draw="star"></svg{% endif %}>
 	<div class="postbox-content">
-		{% if thumbnail and thumbnail != "" %}<div class="thumbnail" style="background-image: url({{ thumbnail }})"></div>{% endif %}
+		{% if thumbnail and thumbnail != "" %}{% include cdn.html content=thumbnail %}<div class="thumbnail" style="background-image: url({{ insert | append: thumbnail }})"></div>{% endif %}
 		<p class="postbox-title"><a href="{{ url }}">{{ title }}</a></p>
 		<div class="postbox-desc"><span class="postbox-date" title="{{ date | date_to_xmlschema }}">{{ date | split: " +" | first }}</span>{% include strip-html.html content=desc %}</div>
 	</div>
-	{% if categories.size != 0 %}<div class="postbox-info">
+	{% if categories.size != 0 and categories[0] != "No Category" %}<div class="postbox-info">
 		{% if categories.size != 0 %}<div class="postbox-categories">{% for category in categories %}
 			<a href="/categories/{{ category | slugify }}/" class="postbox-category">{{ category }}</a>
 		{% unless forloop.last %}>{% endunless %}{% endfor %}</div>{% endif %}

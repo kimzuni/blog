@@ -1,0 +1,1 @@
+<li class="simple-postbox"><a href="{{ include.post.url }}"{% if include.post.url == page.url %} select{% endif %}><span>{{ include.post.title }}</span><span class="postbox-date" title="{{ include.post.date | date_to_xmlschema}}"><span>{{ include.post.date | split: " " | first }}</span><span> {{ include.post.date | split: " " | slice: 1 }}</span></span></a></li>

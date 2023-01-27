@@ -1,1 +1,17 @@
-{% assign content_bak = include.content %}{% assign content_split = content_bak | split: '<pre class="lineno">' %}{% assign content_bak = "" %}{% for contentx in content_split %}{% if content_bak == '' %}{% assign content_bak = contentx %}{% continue %}{% endif %}{% assign back = contentx | split: '<td class="codebox-content">' | last %}{% assign content_bak = content_bak | append: '</td><td class="codebox-content">' | append: back %}{% endfor %}{{ content_bak | strip_html | newline_to_br | replace: "<br />", " " | strip_newlines | remove_chars | replace: '	', ' ' | escape | replace: '\', '\\\\' | replace: "&amp;", "&" | slice: 0, 500 }}
+{% assign content_bak = include.content %}
+
+{% assign content_split = content_bak | split: '<pre class="lineno">' %}
+{% assign content_bak = "" %}
+{% for contentx in content_split %}
+	{% if content_bak == '' %}
+		{% assign content_bak = contentx %}{% continue %}{% endif %}
+		{% assign back = contentx | split: '<td class="codebox-content">' | last %}
+		{% assign content_bak = content_bak | append: '</td><td class="codebox-content">' | append: back %}
+{% endfor %}
+
+{% assign revs = '\\' %}
+{% if page.url == "/assets/search.json" %}
+	{% assign revs = '\\\\' %}
+{% endif %}
+
+{{ content_bak | strip_html | newline_to_br | replace: "<br />", " " | strip_newlines | remove_chars | replace: '	', ' ' | escape | replace: '\', revs | replace: "&amp;", "&" }}

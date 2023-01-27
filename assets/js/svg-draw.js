@@ -3,7 +3,8 @@ svg_draw_list = [
 	"tag",
 	"star",
 	"copy",
-	"arrow"
+	"arrow",
+	"externalLink"
 ]
 
 for (let name of svg_draw_list) {

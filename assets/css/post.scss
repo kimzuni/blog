@@ -5,18 +5,17 @@
 	padding-top: var(--gap-2);
 } #post-title {
 } #post-info {
+	border-bottom: 1px solid var(--bd-color);
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: flex-end;
 	align-items: flex-end;
-	margin: var(--gap) 0;
-
-	#post-datebox {
-		color: var(--sub-color);
-	}
+	padding: var(--gap) 0;
 } #post-datebox {
 	display: flex;
 	flex-direction: column;
 	text-align: right;
+	color: var(--sub-color);
 } #post-categories {
 	flex: 1;
 	display: flex;
@@ -35,10 +34,33 @@
 	flex-wrap: wrap;
 	gap: var(--gap-2);
 	margin: var(--gap2) 0 var(--gap);
+} #post-group {
+	background-color: var(--sub-bg-color);
+	border: 1px solid var(--bd-color);
+	border-radius: .5em;
+	margin-top: var(--gap);
+	padding: .25em .5em;
+
+	ul {
+		border-top: 1px dashed var(--bd-color);
+		margin-top: .25em;
+		padding-top: .25em;
+		list-style: none;
+		counter-reset: toc;
+	} a {
+		counter-increment: toc;
+		line-height: var(--lineHeight);
+
+		&:before {
+			content: counter(toc) ". ";
+			margin-right: .25em;
+		}
+	} .postbox-date {
+		display: none;
+	}
 } #post-content {
 	--lineHeight: 1.6rem;
 
-	border-top: 1px solid var(--bd-color);
 	margin-bottom: var(--gap3);
 	padding-top: 1em;
 	line-height: var(--lineHeight);

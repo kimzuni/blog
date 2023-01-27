@@ -45,6 +45,8 @@ a {
 	height: 0;
 	width: 0;
 	overflow: hidden;
+} details summary {
+	cursor: pointer;
 } img, svg {
 	max-height: 100%;
 	max-width: 100%;
@@ -52,6 +54,13 @@ a {
 	width: auto;
 } svg {
 	transition: fill .1s, stroke .1s;
+
+	&[draw="externalLink"] {
+		margin-left: .25em;
+		height: .75em;
+		width: .75em;
+		color: initial;
+	}
 }
 
 
@@ -166,7 +175,7 @@ a {
 		width: var(--nav-width);
 		font-size: 1.25rem;
 	} .text {
-		padding: 0 var(--gap-2);
+		padding-left: var(--gap-2);
 		font-size: 1.15rem;
 	}
 } @media (min-width: 768px) {
@@ -212,6 +221,11 @@ a {
 	width: 2em;
 	font-size: 1.25rem;
 	cursor: pointer;
+
+	&:hover {
+		--svg-draw-color: var(--theme-color);
+		border-color: var(--theme-color);
+	}
 }
 
 

@@ -5,6 +5,11 @@
 {% for contentx in content_split %}
 	{% if content_bak == '' %}{% assign content_bak = contentx %}{% continue %}{% endif %}
 	{% assign codebox_language = contentx | split: ' ' | first %}
+	{% if site.data.codebox[codebox_language] %}
+		{% assign codebox_language = site.data.codebox[codebox_language] %}
+	{% else %}
+		{% assign codebox_language = codebox_language | capitalize %}
+	{% endif %}
 	{% assign get_html = contentx | split: '<table class="codebox-table">' %}
 	{% assign content_bak = content_bak | append: '<div class="language-' | append: get_html[0] | append: '<table class="codebox-table"><caption><button type="button" aria-label="Copy" title="Copy!" onclick="codebox_copy(this);"><svg draw="copy"></svg></button><span>' | append: codebox_language | append: '</span></caption>' | append: get_html[1] %}
 {% endfor %}
@@ -13,9 +18,7 @@
 {% assign content_bak = '' %}
 {% for contentx in content_split %}
 	{% if content_bak == '' %}{% assign content_bak = contentx %}{% continue %}{% endif %}
-	{% assign check = contentx | split: '//' | first %}
-	{% assign insert = '' %}
-	{% if check != '' and check != 'http:' and check != 'https:' %}{% assign insert = site.cdn %}{% endif %}
+	{% include cdn.html content=contentx %}
 	{% assign content_bak = content_bak | append: '<img loading="lazy" src="' | append: insert | append: contentx %}
 {% endfor %}
 

@@ -1,6 +1,6 @@
 {% assign limit = 5 %}{% if site.posts.size != 0 %}<div id="recent-posts" class="module">
 	<p class="module-title">Recent Posts</p>
 	<ul>{% for post in site.posts %}
-		<li class="simple-postbox"><a href="{{ post.url }}"{% if post.url == page.url %} select{% endif %}><span>{{ post.title }}</span><span class="postbox-date" title="{{ post.date | date_to_xmlschema}}"><span>{{ post.date | split: " " | first }}</span><span> {{ post.date | split: " " | slice: 1 }}</span></span></a></li>
+		{% include create-simple-postbox.html post=post %}
 	{% if forloop.index == limit %}{% break %}{% endif %}{% endfor %}</ul>
 </div>{% endif %}
