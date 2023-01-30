@@ -16,7 +16,8 @@ favicons: "https://cdn.jsdelivr.net/gh/kimzuni/logo@latest/favicons"
 
 comment: giscus
 
-include: ["_pages"]
+include:
+  - _pages
 
 google_analytics:
   id: G-LXJQP9NTHF
@@ -82,6 +83,7 @@ defaults:
       comment: true
       layout: post
       permalink: /posts/:title/
+      author: kimzuni
 
 #jekyll-archives:
 #  enabled:

@@ -10,7 +10,7 @@ sidebar:
 {% assign pagename = page.url | split: "/" | slice: 2 | first %}
 {% assign displayname = page.autopages.display_name %}
 
-{% assign posts = site[pagesname_bak][displayname] %}
+{% assign posts = site[pagesname_bak][displayname] | sort: "last_modified_at" | reverse %}
 {% include posts-sort.html posts=posts %}
 {% assign page_info = site.data[pagesname_bak][displayname] %}
 {% unless page_info %}
@@ -30,7 +30,7 @@ sidebar:
 		{% assign start = end | minus: paginator.per_page | plus: 1 %}
 		{% if paginator.total_posts < end %}{% assign end = paginator.total_posts %}{% endif %}
 		<ul class="postbox-container">{% for i in (start..end) %}{% assign idx = i | minus: 1 %}{% assign post = posts[idx] %}
-			<li class="postbox-wrapper">{% include create-postbox.html pin=post.pin url=post.url title=post.title desc=post.content date=post.date categories=post.categories tags=post.tags thumbnail = post.thumbnail %}</li>
+			<li class="postbox-wrapper">{% include create-postbox.html post=post %}</li>
 		{% endfor %}</ul>
 		{% include paginate.html %}
 	{% else %}<div id="error">No Posts Created</div>{% endif %}

@@ -1,1 +1,14 @@
-<li class="simple-postbox"><a href="{{ include.post.url }}"{% if include.post.url == page.url %} select{% endif %}><span>{{ include.post.title }}</span><span class="postbox-date" title="{{ include.post.date | date_to_xmlschema}}"><span>{{ include.post.date | split: " " | first }}</span><span> {{ include.post.date | split: " " | slice: 1 }}</span></span></a></li>
+{% assign post = unclude.post %}
+{% if post.last_modified_at %}
+	{% assign date = post.last_modified_at %}
+{% else %}
+	{% assign date = post.date %}
+{% endif %}
+
+<li class="simple-postbox"><a href="{{ post.url }}"{% if post.url == page.url %} select{% endif %}>
+	<span>{{ post.title }}</span>
+	<span class="postbox-date" title="{{ date | date_to_xmlschema}}">
+		<span>{{ date | split: " " | first }}</span>
+		<span> {{ date | split: " " | slice: 1 }}</span>
+	</span>
+</a></li>

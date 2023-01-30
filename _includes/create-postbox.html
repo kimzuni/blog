@@ -1,11 +1,13 @@
-{% assign thumbnail = include.thumbnail %}
-{% assign title = include.title %}
-{% assign desc = include.desc %}
-{% assign date = include.date %}
-{% assign pin = include.pin %}
-{% assign url = include.url %}
-{% assign categories = include.categories %}
-{% assign tags = include.tags %}
+{% assign post_bak = include.post %}
+{% assign thumbnail = post_bak.thumbnail %}
+{% assign title = post_bak.title %}
+{% assign desc = post_bak.content %}
+{% assign date = post_bak.date %}
+{% assign lastmod = post_bak.last_modified_at %}
+{% assign pin = post_bak.pin %}
+{% assign url = post_bak.url %}
+{% assign categories = post_bak.categories %}
+{% assign tags = post_bak.tags %}
 
 {% assign desc_split = desc | split: '<pre class="lineno">' %}
 {% assign desc_bak = "" %}
@@ -19,7 +21,7 @@
 <div class="postbox"{% if pin == true %} pin><svg draw="star"></svg{% endif %}>
 	<div class="postbox-content">
 		{% if thumbnail and thumbnail != "" %}{% include cdn.html content=thumbnail %}<div class="thumbnail" style="background-image: url({{ insert | append: thumbnail }})"></div>{% endif %}
-		<p class="postbox-title"><a href="{{ url }}">{{ title }}</a></p>
+		<p class="postbox-title"><a href="{{ url }}">{{ title }}</a></p>{% if lastmod %}{% assign date = lastmod %}{% endif %}
 		<div class="postbox-desc"><span class="postbox-date" title="{{ date | date_to_xmlschema }}">{{ date | split: " +" | first }}</span>{% include strip-html.html content=desc %}</div>
 	</div>
 	{% if categories.size != 0 and categories[0] != "No Category" %}<div class="postbox-info">

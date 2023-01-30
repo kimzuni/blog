@@ -12,8 +12,8 @@ window.addEventListener("DOMContentLoaded", function() {
 	nav = html.querySelector("#nav");
 	sitesNav = html.querySelector("#sites-nav");
 
-	for (let a of html.querySelectorAll('a[target="_blank"]')) {
-		a.innerHTML += `<svg draw="externalLink"></svg>`;
+	for (let a of html.querySelectorAll('#page a[target="_blank"]')) {
+		a.innerHTML = `<svg draw="externalLink"></svg>` + a.innerHTML;
 	}
 
 	document_resize();
