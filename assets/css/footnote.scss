@@ -2,6 +2,8 @@
 ---
 
 sup.footnote {
+	line-height: 1rem;
+
 	a[fnid]:before {
 		content: "[" attr(fnid) "]";
 	}
