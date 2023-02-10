@@ -2,3 +2,5 @@
   path: "/categories/"
 - name: Tags
   path: "/tags/"
+- name: About
+  path: "/about/"

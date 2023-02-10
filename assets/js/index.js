@@ -12,7 +12,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	nav = html.querySelector("#nav");
 	sitesNav = html.querySelector("#sites-nav");
 
-	for (let a of html.querySelectorAll('#page a[target="_blank"]')) {
+	for (let a of html.querySelectorAll('#page a[target="_blank"]:not(.noicon)')) {
 		a.innerHTML = `<svg draw="externalLink"></svg>` + a.innerHTML;
 	}
 

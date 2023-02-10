@@ -81,15 +81,15 @@
 			max-height: 500px;
 			max-width: 90%;
 		}
+	} img {
+		border: 1px solid var(--bd-color);
+		cursor: pointer;
 	}
-
+} #post-content, #about {
 	h1, h2, h3, h4, h5, h6 {
 		margin: var(--gap3) 0 .5em;
 	} p {
 		margin-top: var(--gap-2);
-	} img {
-		border: 1px solid var(--bd-color);
-		cursor: pointer;
 	} ul, ol {
 		padding-left: 1em;
 	}

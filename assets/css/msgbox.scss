@@ -5,6 +5,7 @@
 	--marginTop: var(--gap);
 	--paddingTop: var(--gap-2);
 	--lineHeight: 1.2em;
+	--height: 3em;
 
 	display: flex;
 	flex-direction: column;
@@ -28,14 +29,14 @@
 
 		&.show {
 			margin-top: var(--marginTop);
-			height: 3em;
+			height: var(--height);
 		} &.hide {
 			margin-top: 0;
 			height: 0;
 			opacity: 0;
 		}
 
-		div {
+		&> div {
 			--bd-color: var(--theme-color);
 
 			background-color: var(--sub-bg-color);
@@ -55,6 +56,17 @@
 			} &.error {
 				--bd-color: var(--error-color);
 			}
+		} .title {
+			border-bottom: 1px solid var(--bd-color);
+			display: block;
+			font-weight: bold;
+		} .content {
+			--lineNumber: 1;
+			display: -webkit-box;
+			-webkit-line-clamp: var(--lineNumber);
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+			max-height: calc(var(--lineHeight) * var(--lineNumber));
 		}
 	}
 }

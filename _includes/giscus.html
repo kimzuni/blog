@@ -14,4 +14,7 @@
 	crossorigin="anonymous"
 	async>
 </script>
+<script type="text/javascript">
+	const giscus_theme = "{% assign x = giscus['theme'] | slice: 0 %}{% if x == '/' %}{{ site.url }}{{ site.baseurl }}{% endif %}{{ giscus['theme'] }}";
+</script>
 <script type="text/javascript" src="{{ site.baseurl }}/assets/js/giscus.js"></script>

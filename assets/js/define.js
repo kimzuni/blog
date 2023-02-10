@@ -36,9 +36,15 @@ const text_copy = function(text) {
 		copyarea.value = text;
 		copyarea.select();
 		document.execCommand("copy");
-		f_msgbox("Copy Successul!", "success");
+		f_msgbox({
+			type: "success",
+			message: "Copy Successul!"
+		});
 	} catch (err) {
-		f_msgbox("Error!", "error");
+		f_msgbox({
+			type: "error",
+			message: "Error!"
+		});
 	}
 	copyarea.remove();
 }

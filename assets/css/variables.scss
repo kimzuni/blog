@@ -23,33 +23,32 @@
 
 
 :root {
-	--color: #ddd;
-	--bg-color: #232323;
-	--bd-color: #444;
+	--color: #333;
+	--bg-color: #fff;
+	--bd-color: #ccc;
 
 	--sub-color: #777;
-	--sub-bg-color: #333;
+	--sub-bg-color: #eee;
 
-	--github-color: #fff;
+	--github-color: #24292f;
 	--notion-color: #fff;
 
 
 
+	--btn-bg-color: var(--theme-color);
+/* } @media (prefers-color-scheme: light) { */
+} :root[darkmode="true"] {
 	--btn-bg-color: var(--theme-color-dark);
-} @media (prefers-color-scheme: light) {
-	:root {
-		--btn-bg-color: var(--theme-color);
 
 
 
-		--color: #333;
-		--bg-color: #fff;
-		--bd-color: #ccc;
+	--color: #ddd;
+	--bg-color: #232323;
+	--bd-color: #444;
 
-		--sub-bg-color: #eee;
+	--sub-bg-color: #333;
 
-		--github-color: #24292f;
-	}
+	--github-color: #fff;
 }
 
 

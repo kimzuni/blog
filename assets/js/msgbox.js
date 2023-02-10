@@ -1,9 +1,12 @@
 const msgbox = html.querySelector("#msgbox-container");
-const f_msgbox = function(type, msg) {
-	if ( !msg ) { msg = type; type = "mormal"; }
+const f_msgbox = function(event) {
+	let type = event.type ? event.type : "normal";
+	let title = event.title;
+	let msg = event.message;
+
 	let x = document.createElement("div");
 	x.className = "msgbox";
-	x.innerHTML = `<div class="${type}">${msg}</div>`;
+	x.innerHTML = `<div class="${type}">${title ? "<p class='title'>" + title + "</p>" : ""}<div class="content">${msg}</div></div>`;
 	msgbox.prepend(x);
 
 	setTimeout(function() {
