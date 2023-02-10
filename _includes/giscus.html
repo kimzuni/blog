@@ -1,4 +1,5 @@
-{% assign giscus = site.data.giscus %}<script	src="https://giscus.app/client.js"
+{% assign giscus = site.data.giscus %}<script
+	src="https://giscus.app/client.js"
 	data-repo="{{ site.github }}/{{ giscus['repo']['name'] }}"
 	data-repo-id="{{ giscus['repo']['id'] }}"
 	data-category="{{ giscus['category']['name'] }}"
@@ -12,7 +13,8 @@
 	data-lang="{{ giscus['lang'] }}"
 	{% if giscus['lazy'] == true %}data-loading="lazy"{% endif %}
 	crossorigin="anonymous"
-	async>
+	async
+>
 </script>
 <script type="text/javascript">
 	const giscus_theme = "{% assign x = giscus['theme'] | slice: 0 %}{% if x == '/' %}{{ site.url }}{{ site.baseurl }}{% endif %}{{ giscus['theme'] }}";
