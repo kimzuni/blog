@@ -28,6 +28,16 @@ google_analytics:
 
 #paginate: 8
 #paginate_path: "/page:num/"
+#jekyll-archives:
+#  enabled:
+#    - categories
+#    - tags
+#  layouts:
+#    category: archives
+#    tag: archives
+#  permalinks:
+#    category: /categories/:name/
+#    tag: /tags/:name/
 pagination:
   enabled: true
   per_page: 8
@@ -84,14 +94,3 @@ defaults:
       layout: post
       permalink: /posts/:title/
       author: kimzuni
-
-#jekyll-archives:
-#  enabled:
-#    - categories
-#    - tags
-#  layouts:
-#    category: archives
-#    tag: archives
-#  permalinks:
-#    category: /categories/:name/
-#    tag: /tags/:name/

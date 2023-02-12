@@ -5,7 +5,6 @@
 	--marginTop: var(--gap);
 	--paddingTop: var(--gap-2);
 	--lineHeight: 1.2em;
-	--height: 3em;
 
 	display: flex;
 	flex-direction: column;
@@ -29,7 +28,7 @@
 
 		&.show {
 			margin-top: var(--marginTop);
-			height: var(--height);
+			height: var(--height, 3rem);
 		} &.hide {
 			margin-top: 0;
 			height: 0;
@@ -60,13 +59,6 @@
 			border-bottom: 1px solid var(--bd-color);
 			display: block;
 			font-weight: bold;
-		} .content {
-			--lineNumber: 1;
-			display: -webkit-box;
-			-webkit-line-clamp: var(--lineNumber);
-			-webkit-box-orient: vertical;
-			overflow: hidden;
-			max-height: calc(var(--lineHeight) * var(--lineNumber));
 		}
 	}
 }

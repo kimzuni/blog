@@ -7,9 +7,11 @@ const post_group_onclick = function() {
 		localStorage.post_group = "open";
 	}
 }
-post_group.querySelector("summary").onclick = post_group_onclick;
-if (localStorage.post_group != "open") {
-	post_group.removeAttribute("open");
+if (post_group) {
+	post_group.querySelector("summary").onclick = post_group_onclick;
+	if (localStorage.post_group != "open") {
+		post_group.removeAttribute("open");
+	}
 }
 
 

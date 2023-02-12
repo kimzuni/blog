@@ -9,6 +9,9 @@ const f_msgbox = function(event) {
 	x.innerHTML = `<div class="${type}">${title ? "<p class='title'>" + title + "</p>" : ""}<div class="content">${msg}</div></div>`;
 	msgbox.prepend(x);
 
+	let box_height = x.querySelector(`.${type}`).offsetHeight;
+	set_style(x, "--height", box_height + "px");
+
 	setTimeout(function() {
 		x.classList.add("show");
 	}, 10);
