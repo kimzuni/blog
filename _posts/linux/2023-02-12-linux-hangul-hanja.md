@@ -14,9 +14,9 @@ tags: ["Intro"]
 
 ## 한/영 키
 `/usr/share/X11/xkb/symbols/altwin` 파일에서 `Alt_R, Meta_R`을 `Hangul`로 수정하면 오른쪽의 [Alt] 키가 [한/영] 키로 인식하게 된다.
-![xkb altwin](/images/linux-xkb-altwin.png)
+![xkb altwin](linux-xkb-altwin.png)
 
 ## 한자 키
 `/usr/share/X11/xkb/symbols/pc` 파일에서 `Control_R`을 `Hangul_Hanja`로 수정하면 오른쪽의 [Ctrl] 키가 [한자] 키로 인식하게 된다.  
 사진에서는 잘 안보이지만 `Hangul`와 `Hanja` 사이에 언더바(_)가 있다.
-![xkb pc](/images/linux-xkb-pc.png)
+![xkb pc](linux-xkb-pc.png)
