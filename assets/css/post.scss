@@ -72,9 +72,6 @@
 		display: flex;
 		align-items: flex-end;
 		gap: var(--gap-4);
-		position: relative;
-		left: var(--left);
-		width: calc(100% + var(--left) * -2);
 		overflow: auto;
 
 		img {
