@@ -172,8 +172,10 @@
 		--height: calc(var(--lineHeight) * var(--lineNumber) + var(--lineHeight) + var(--gap-2));
 
 		float: right;
+		display: block;
 		background-size: cover;
 		background-repeat: no-repeat;
+		background-position: center;
 		border: 1px solid var(--bd-color);
 		margin-left: var(--gap-2);
 		height: var(--height);

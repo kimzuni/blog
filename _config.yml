@@ -10,7 +10,8 @@ email: "hello@kimzuni.com"
 github: kimzuni
 
 cdn: "https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog"
-favicons: "https://cdn.jsdelivr.net/gh/kimzuni/logo@latest/favicons"
+logos: "https://cdn.jsdelivr.net/gh/kimzuni/logos@latest"
+favicons: "https://cdn.jsdelivr.net/gh/kimzuni/logos@latest/kimzuni/favicons"
 
 
 
