@@ -66,7 +66,7 @@ window.addEventListener("resize", function() {
 tocbox.querySelector(".module-title").addEventListener("click", function() {
 	if ( tocbox.classList.contains("hide") ) {
 		tocbox.classList.remove("hide");
-		delete localStorage.tocbox;
+		localStorage.tocbox = "show";
 	} else {
 		tocbox.classList.add("hide");
 		localStorage.tocbox = "hide";

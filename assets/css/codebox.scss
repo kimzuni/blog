@@ -8,11 +8,9 @@
 	margin: var(--gap-4) 0;
 	overflow: hidden;
 } code:not(.codebox) {
-	background-color: var(--black);
-	border: 1px solid var(--bd-color);
-	border-radius: .5em;
-	padding: .15em var(--gap-4);
-	color: var(--white);
+	background-color: var(--sub-bg-color);
+	border-radius: .25em;
+	padding: .2em .4em;
 } code.codebox {
 	--padding: .5rem;
 	--lineHeight: 1rem;
@@ -20,9 +18,8 @@
 	position: relative;
 	line-height: var(--lineHeight);
 	white-space: nowrap;
-/*
-	max-width: calc(var(--main-width) - var(--sidebar-width))
-*/
+	/* max-width: calc(var(--main-width) - var(--sidebar-width)) */
+
 	& + .codebox {
 		margin-top: 3rem;
 	} .codebox-bg {
@@ -79,10 +76,12 @@
 			padding: 0 var(--padding);
 			text-align: left;
 
-			&:before {
-				content: "</";
-			} &:after {
-				content: ">";
+			&.lang {
+				&:before { content: "</"; }
+				&:after { content: ">"; }
+			} &.file {
+				&:before { content: "./"; }
+			} &.path {
 			}
 		}
 	} tbody {

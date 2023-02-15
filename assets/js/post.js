@@ -1,11 +1,7 @@
 const post_group = html.querySelector("#post-group");
 
 const post_group_onclick = function() {
-	if (post_group.hasAttribute("open")) {
-		delete localStorage.post_group;
-	} else {
-		localStorage.post_group = "open";
-	}
+	localStorage.post_group = post_group.hasAttribute("open") ? "close" : "open";
 }
 if (post_group) {
 	post_group.querySelector("summary").onclick = post_group_onclick;

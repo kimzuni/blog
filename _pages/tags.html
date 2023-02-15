@@ -12,5 +12,5 @@ description: List of tags
 		<li><a href="/tags/{{ tagName | slugify }}/" class="tag"><span>#{{ tagName }}</span><span class="post-cnt"> ({{ tag[1].size }})</span></a></li>
 	{% endfor %}</ul>
 {% else %}
-	<div id="error">There are no tags to display</div>
+	<div id="error">No tags created</div>
 {% endif %}

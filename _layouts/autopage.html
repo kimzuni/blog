@@ -12,27 +12,26 @@ sidebar:
 {% assign displayname = page.autopages.display_name %}
 
 {% assign posts = site[pagesname_bak][displayname] | sort: "last_modified_at" | reverse %}
-{% include posts-sort.html posts=posts %}
+{% include posts-sort.html posts=posts page=pagesname_bak displayname=displayname %}
 {% assign page_info = site.data[pagesname_bak][displayname] %}
 {% unless page_info %}
 	{% assign parentCat = site[pagesname_bak][displayname][0].categories[0] %}
 	{% assign page_info = site.data[pagesname_bak][parentCat] %}
 {% endunless %}
 <h1 id="page-title"{% if page_info %} class="no-border"{% endif %}>{% if pagesname_bak == "categories" and displayname == "No Category" %}<script type="text/javascript">
-	var no_category = "No Category";
-	document.title = `${no_category} | ${site_title}`;
-	html.querySelector("#page-title").innerText = no_category;
+	document.title = `{{ displayname }} | ${site_title}`;
+	html.querySelector("#page-title").innerText = "{{ displayname }}";
 </script>{% else %}{{ pagesname | capitalize }} - {{ displayname }}{% endif %}</h1>
 {% if page_info %}<div id="page-info">{{ page_info }}</div>{% endif %}
 <div id="{{ pagesname }}">
 	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/home.css"/>
-	{% if posts.size != 0 %}
-		{% assign end = paginator.page | times: paginator.per_page %}
-		{% assign start = end | minus: paginator.per_page | plus: 1 %}
-		{% if paginator.total_posts < end %}{% assign end = paginator.total_posts %}{% endif %}
-		<ul class="postbox-container">{% for i in (start..end) %}{% assign idx = i | minus: 1 %}{% assign post = posts[idx] %}
-			<li class="postbox-wrapper">{% include create-postbox.html post=post %}</li>
-		{% endfor %}</ul>
-		{% include paginate.html %}
-	{% else %}<div id="error">No Posts Created</div>{% endif %}
+	{% assign end = paginator.page | times: paginator.per_page %}
+	{% assign start = end | minus: paginator.per_page | plus: 1 %}
+	{% if paginator.total_posts < end %}{% assign end = paginator.total_posts %}{% endif %}
+	<ul class="postbox-container">{% for i in (start..end) %}{% assign idx = i | minus: 1 %}{% assign post = posts[idx] %}
+		{% assign pinned = false %}{% assign target = pagesname_bak | append: "_pin" %}
+		{% if post[target] == true or post[target] contains displayname %}{% assign pinned = true %}{% endif %}
+		<li class="postbox-wrapper">{% include create-postbox.html post=post pin=pinned %}</li>
+	{% endfor %}</ul>
+	{% include paginate.html %}
 </div>

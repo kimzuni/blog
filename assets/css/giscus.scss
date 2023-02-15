@@ -20,22 +20,22 @@ main {
 	--color-btn-inset-shadow: 0;
 	--color-btn-hover-bg: var(--sub-bg-color);
 	--color-btn-hover-border: var(--color);
-	--color-btn-active-bg: var(--btn-bg-color);
+	--color-btn-active-bg: var(--theme-bg-color);
 	--color-btn-active-border: var(--color);
-	--color-btn-selected-bg: var(--btn-bg-color);
+	--color-btn-selected-bg: var(--theme-bg-color);
 
 	/* submit btn */
 	--color-btn-primary-disabled-text: var(--sub-color);
 	--color-btn-primary-disabled-bg: var(--bg-color);
 	--color-btn-primary-disabled-border: var(--bd-color);
 	--color-btn-primary-text: var(--color);
-	--color-btn-primary-bg: var(--btn-bg-color);
+	--color-btn-primary-bg: var(--theme-bg-color);
 	--color-btn-primary-border: var(--bd-color);
 	--color-btn-primary-shadow: 0;
 	--color-btn-primary-inset-shadow: 0;
-	--color-btn-primary-hover-bg: var(--btn-bg-color);
+	--color-btn-primary-hover-bg: var(--theme-bg-color);
 	--color-btn-primary-hover-border: var(--color);
-	--color-btn-primary-selected-bg: var(--btn-bg-color);
+	--color-btn-primary-selected-bg: var(--theme-bg-color);
 	--color-btn-primary-selected-shadow: 0;
 
 	/* default color */

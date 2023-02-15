@@ -18,7 +18,7 @@
 {% endfor %}
 {% assign desc = desc_bak %}
 
-<div class="postbox"{% if pin == true %} pin><svg draw="star"></svg{% endif %}>
+<div class="postbox"{% if pin == true or include.pin == true %} pin><svg draw="star"></svg{% endif %}>
 	<div class="postbox-content">
 		{% if thumbnail and thumbnail != "" %}{% include cdn.html content=thumbnail %}<a href="{{ url }}" class="thumbnail" style="background-image: url({{ insert | append: thumbnail }})"></a>{% endif %}
 		<p class="postbox-title"><a href="{{ url }}">{{ title }}</a></p>{% if lastmod %}{% assign date = lastmod %}{% endif %}

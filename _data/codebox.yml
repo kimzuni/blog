@@ -5,7 +5,10 @@ asp: ASP
 css: CSS
 scss: SCSS
 sass: SASS
+js: JavaScript
 javascript: JavaScript
+nodejs: Node.js
+node.js: Node.js
 
 bash: Bash
 c: C

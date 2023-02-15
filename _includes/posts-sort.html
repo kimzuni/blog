@@ -1,7 +1,11 @@
 {% assign posts_bak = include.posts %}{% assign posts_sort = "" | split: "" %}{% assign posts = posts_sort %}
 {% for post in posts_bak %}
-	{% if post.pin == true %}{% assign posts_sort = posts_sort | push: post %}
-	{% else %}{% assign posts = posts | push: post %}{% endif %}
+	{% if post.pin == true %}{% assign posts_sort = posts_sort | push: post %}{% continue %}{% endif %}
+	{% if include.page and include.page != "home" %}
+		{% assign target = include.page | append: "_pin" %}
+		{% if post[target] == true or post[target] contains include.displayname %}{% assign posts_sort = posts_sort | push: post %}{% continue %}{% endif %}
+	{% endif %}
+	{% assign posts = posts | push: post %}
 {% endfor %}
 {% for post in posts %}{% assign posts_sort = posts_sort | push: post %}{% endfor %}
 {% assign posts = posts_sort %}

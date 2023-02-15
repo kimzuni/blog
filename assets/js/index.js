@@ -17,8 +17,8 @@ window.addEventListener("DOMContentLoaded", function() {
 			a.target = "_blank";
 		}
 	}
-
 	for (let a of html.querySelectorAll('#page a[target="_blank"]:not(.noicon)')) {
+		if (a.innerText == "") a.innerText = "#";
 		a.innerHTML = `<svg draw="externalLink"></svg>` + a.innerHTML;
 	}
 

@@ -1,18 +1,52 @@
-{% assign content_bak = include.content | replace: '<div class="highlight"><pre class="codebox"><code>', '<div class="highlight"><code class="codebox"><div class="codebox-bg"><span class="codebox-highlight"></span></div>' | replace: '</code></pre></div>', '</code></div>' | replace: '<td class="codebox-content">', '<td class="codebox-content">' %}
+{% assign content_bak = include.content | replace: '<div class="highlight"><pre class="codebox"><code>', '<div class="highlight"><code class="codebox"><div class="codebox-bg"><span class="codebox-highlight"></span></div>' | replace: '</code></pre></div>', '</code></div>' %}
 
+{% assign content_split = content_bak | split: 'class="language-' %}
+{% assign content_bak = '' %}
+{% for contentx in content_split %}
+	{% if content_bak == '' %}{% assign content_bak = contentx %}{% continue %}{% endif %}
+	{% assign tagName = content_bak | split: '<' | last | split: ' ' | first %}
+	{% assign attrs = content_bak | split: tagName | last %}
+	{% assign length = content_bak.size | minus: attrs.size | plus: 1 %}
+	{% assign replace = attrs | rstrip | append: '>' %}
+	{% assign get_html = contentx | replace_first: '>', replace %}
+	{% assign content_bak = content_bak | slice: 0, length | append: 'class="language-' | append: get_html %}
+{% endfor %}
+
+{% assign title_priority = 'path, file, lang' | split: ', ' %}
 {% assign content_split = content_bak | split: '<div class="language-' %}
 {% assign content_bak = '' %}
 {% for contentx in content_split %}
 	{% if content_bak == '' %}{% assign content_bak = contentx %}{% continue %}{% endif %}
-	{% assign codebox_language = contentx | split: ' ' | first %}
-	{% if site.data.codebox[codebox_language] %}
-		{% assign codebox_language = site.data.codebox[codebox_language] %}
-	{% else %}
-		{% assign codebox_language = codebox_language | capitalize %}
+	{% assign cap_type = 'lang' %}
+	{% assign get_html = contentx %}
+	{% assign codebox_title = get_html | split: ' ' | first %}
+	{% for priority in title_priority %}
+		{% assign target = priority | append: '="' %}
+		{% if get_html contains target %}
+			{% assign codebox_title = get_html | split: target | slice: 1 | first | split: '"' | first %}
+			{% assign cap_type = priority %}
+			{% break %}
+		{% endif %}
+	{% endfor %}
+	{% if site.data.codebox[codebox_title] %}
+		{% assign codebox_title = site.data.codebox[codebox_title] %}
 	{% endif %}
-	{% assign get_html = contentx | split: '<table class="codebox-table">' %}
-	{% assign content_bak = content_bak | append: '<div class="language-' | append: get_html[0] | append: '<table class="codebox-table"><caption><button type="button" aria-label="Copy" title="Copy!" onclick="codebox_copy(this);"><svg draw="copy"></svg></button><span>' | append: codebox_language | append: '</span></caption>' | append: get_html[1] %}
+	{% assign get_html = get_html | split: '<table class="codebox-table">' %}
+	{% assign replace = get_html[0] | split: '>' | first | split: 'highlighter-rouge"' | slice: 1 | first %}
+	{% assign get_html_0 = get_html[0] | replace_first: replace, '' %}
+	{% assign content_bak = content_bak | append: '<div class="language-' | append: get_html_0 | append: '<table class="codebox-table"><caption><button type="button" aria-label="Copy" title="Copy!" onclick="codebox_copy(this);"><svg draw="copy"></svg></button><span class="' | append: cap_type | append: '">' | append: codebox_title | append: '</span></caption>' | append: get_html[1] %}
 {% endfor %}
+
+
+
+{% assign content_split = content_bak | split: 'class="task-list-item-checkbox" disabled="disabled"' %}
+{% assign content_bak = '' %}
+{% for contentx in content_split %}
+	{% if content_bak == '' %}{% assign content_bak = contentx %}{% continue %}{% endif %}
+	{% assign content_bak = content_bak | append: 'class="task-list-item-checkbox" onclick="return false;"' | append: contentx %}
+{% endfor %}
+
+
 
 {% assign content_split = content_bak | split: '<img src="' %}
 {% assign content_bak = '' %}
@@ -21,5 +55,7 @@
 	{% include cdn.html content=contentx %}
 	{% assign content_bak = content_bak | append: '<img loading="lazy" src="' | append: insert | append: contentx %}
 {% endfor %}
+
+
 
 {{ content_bak }}

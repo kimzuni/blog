@@ -35,10 +35,10 @@
 
 
 
-	--btn-bg-color: var(--theme-color);
+	--theme-bg-color: var(--theme-color);
 /* } @media (prefers-color-scheme: light) { */
 } :root[darkmode="true"] {
-	--btn-bg-color: var(--theme-color-dark);
+	--theme-bg-color: var(--theme-color-dark);
 
 
 
@@ -69,6 +69,8 @@
 	--msgbox-zIndex: 99999;
 	--scrollToTop-zIndex: calc(var(--msgbox-zIndex) + 1);
 
+	--gap-6: calc(var(--gap) / 6);
+	--gap-5: calc(var(--gap) / 5);
 	--gap-4: calc(var(--gap) / 4);
 	--gap-3: calc(var(--gap) / 3);
 	--gap-2: calc(var(--gap) / 2);
@@ -76,6 +78,8 @@
 	--gap2: calc(var(--gap) * 2);
 	--gap3: calc(var(--gap) * 3);
 	--gap4: calc(var(--gap) * 4);
+	--gap5: calc(var(--gap) * 5);
+	--gap6: calc(var(--gap) * 6);
 } @media (min-width: 768px) {
 	:root {
 		--nav-width: var(--header-height);
