@@ -1,5 +1,5 @@
 ---
-title: 자동 업데이트 기능 켜기/끄기
+title: 소프트웨어 자동 업데이트 기능 켜기/끄기
 date: 2023-02-16 14:18:00 +0900
 last_modified_at: 2023-02-16 14:18:00 +0900
 categories: [Linux, Ubuntu]
@@ -13,9 +13,9 @@ thumbnail: ubuntu-automatically-updates-1.png
 <br/>
 
 ## 설정
-먼저 메뉴에서 "Software **&** Updates" 프로그램을 찾아 들어간다.  
+먼저 메뉴에서 "Software **&** Updates" 앱을 찾아 들어간다.  
 ![Search - update](ubuntu-automatically-updates-1.png)  
-"&"이 없는 프로그램을 선택하면 즉시 업데이트가 실행된다.
+"&"이 없는 앱을 선택하면 즉시 업데이트가 실행된다.
 
 <br/>
 
