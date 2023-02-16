@@ -2,7 +2,7 @@
 title: 리눅스에서 한/영 키, 한자 키 사용하기
 date: 2023-02-12 17:31:00 +0900
 last_modified_at: 2023-02-12 17:31:00 +0900
-categories: ["Linux"]
+categories: [Linux]
 thumbnail: linux-xkb-altwin.png
 ---
 
@@ -11,6 +11,8 @@ thumbnail: linux-xkb-altwin.png
 
 참고로 이 설정을 하면 오른쪽의 [Alt], [Ctrl] 키는 제 기능을 못 하게 된다.  
 하지만 평소에 해당 키를 사용할 일이 없어서 불편한 적은 단 한 번도 없었다.
+
+<br/>
 
 ## 한/영 키
 `/usr/share/X11/xkb/symbols/altwin` 파일에서 `Alt_R, Meta_R`을 `Hangul`로 수정하면 오른쪽의 [Alt] 키가 [한/영] 키로 인식하게 된다.  

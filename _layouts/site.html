@@ -17,7 +17,7 @@ layout: default
 		{% if layout.sidebar %}<aside id="sidebar" class="sidebar">{% for module in layout.sidebar %}
 			{% include modules/{{ module }}.html %}
 		{% endfor %}</aside>{% endif %}
-		<div id="page">{{ content }}</div>
+		<article id="page">{{ content }}</article>
 	</section>
 	{% if layout.tail or layout.tail_sidebar %}<section id="tail"{% unless layout.tail_sidebar %} class="padding"{% endunless %}>
 		<div id="tail-content">{% for module in layout.tail %}

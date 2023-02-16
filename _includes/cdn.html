@@ -1,6 +1,6 @@
 {% assign include_bak = include.content %}
 {% assign check = include_bak | split: '//' | first %}
-{% assign check2 = contentx | slice: 0 %}
+{% assign check2 = include_bak | slice: 0 %}
 {% if check == '' or check == 'http:' or check == 'https:' %}
 	{% assign insert = '' %}
 {% elsif check2 == '/' %}
