@@ -4,23 +4,23 @@ date: 2023-02-21 20:01:00 +0900
 last_modified_at: 2023-02-21 20:01:00 +0900
 categories: [Linux]
 tags: [VMware, Update, Error]
-thumbnail: vmware-kernel-module-updater-1.png
+thumbnail: vmware-kernel-module-updater-error-1.png
 ---
 
 리눅스에서 VMware를 사용하다 보면 `vmmon`, `vmnet` 모듈을 업데이트해야 할 때가 있다.
 {% imgbox %}
-![VMware Kernal Module Updater 1](vmware-kernel-module-updater-1.png)
-![VMware Kernal Module Updater 2](vmware-kernel-module-updater-2.png)
+![VMware Kernal Module Updater 1](vmware-kernel-module-updater-error-1.png)
+![VMware Kernal Module Updater 2](vmware-kernel-module-updater-error-2.png)
 {% endimgbox %}
 하지만 VMware와 리눅스 커널 버전이 호환되지 않으면 에러가 발생하면서 업데이트가 되지 않는다.
 
 <br/>
 
 ## 에러 내용
-![VMware Kernal Module Updater - Error](vmware-kernel-module-updater-3.png)  
+![VMware Kernal Module Updater - Error](vmware-kernel-module-updater-error-3.png)  
 에러 내용은 위 경로의 로그파일에서 확인해도 되고, 업데이트 명령어 `sudo vmware-modconfig --console --install-all`를 실행해도 된다.
 
-![VMware Update Command Error](vmware-kernel-module-updater-4.png)  
+![VMware Update Command Error](vmware-kernel-module-updater-error-4.png)  
 `stddef.h` 그리고 사진에는 없는 `stdarg.h` 헤더 파일을 찾을 수 없다는 에러다.
 
 이 에러는 VMware 버전과 리눅스의 커널 버전이 호환되지 않아서 발생하는 문제라고 한다.  
