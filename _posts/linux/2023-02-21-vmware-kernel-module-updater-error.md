@@ -37,7 +37,7 @@ git checkout [player/workstation]-x.x.x
 make VM_UNAME=`uname -r`
 sudo make install
 ```
-`uname -r` 명령어는 현재 리눅스 커널 버전을 출력한다.  
+`uname -r`는 리눅스 커널 버전을 출력하는 명령어다.  
 `make install`은 루트 권한으로 실행해야 한다.
 
 ## 하지만

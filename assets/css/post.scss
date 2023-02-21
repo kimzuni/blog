@@ -84,7 +84,7 @@
 } #post-content, #about {
 	h1, h2, h3, h4, h5, h6 {
 		margin: var(--gap3) 0 .5em;
-	} p {
+	} p, .highlight {
 		margin-top: var(--gap-2);
 	} ul, ol {
 		padding-left: 1em;
