@@ -12,13 +12,25 @@ window.addEventListener("DOMContentLoaded", function() {
 	nav = html.querySelector("#nav");
 	sitesNav = html.querySelector("#sites-nav");
 
+	for (let a of html.querySelectorAll('a[href]')) {
+		if (a.innerText == a.getAttribute("href")) {
+			if (100 < a.innerText.length) {
+				let arr = a.innerText.split("/");
+				if (7 < arr.length) {
+					arr.splice(4, arr.length-2-4, "...");
+					a.innerText = arr.join("/");
+				} else {
+					/* ... */
+				}
+			}
+		}
+	}
 	for (let a of html.querySelectorAll('a[href]:not([target])')) {
 		if (["http:", "https:", ""].includes(a.getAttribute("href").split("//")[0])) {
 			a.target = "_blank";
 		}
 	}
 	for (let a of html.querySelectorAll('#page a[target="_blank"]:not(.noicon)')) {
-		if (a.innerText == "") a.innerText = "#";
 		a.innerHTML = `<svg draw="externalLink"></svg>` + a.innerHTML;
 	}
 

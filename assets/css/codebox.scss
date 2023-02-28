@@ -7,6 +7,10 @@
 	border-radius: var(--gap-2);
 	margin: var(--gap-4) 0;
 	overflow: hidden;
+
+	.go {
+		color: var(--white);
+	}
 } code:not(.codebox) {
 	background-color: var(--sub-bg-color);
 	border-radius: .25em;

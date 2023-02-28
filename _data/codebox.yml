@@ -11,6 +11,8 @@ nodejs: Node.js
 node.js: Node.js
 
 bash: Bash
+shell: Shell
+terminal: Terminal
 c: C
 python: Python
 ruby: Ruby

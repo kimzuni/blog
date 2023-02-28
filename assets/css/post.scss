@@ -41,7 +41,11 @@
 	margin-top: var(--gap);
 	padding: .25em .5em;
 
-	ul {
+	#post-group-info {
+		padding-left: 1em;
+		font-size: .85em;
+		color: var(--sub-color);
+	} ul {
 		border-top: 1px dashed var(--bd-color);
 		margin-top: .25em;
 		padding-top: .25em;

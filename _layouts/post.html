@@ -25,12 +25,14 @@ tail_sidebar:
 		</span>
 	</div>
 	{% if page.group %}<details id="post-group"{% unless page.group.open == false %} open{% endunless %}>
+		{% assign group_info = site.data.group[page.group.name] %}
 		{% assign posts = "" | split: "" %}
 		{% for post in site.posts %}
 			{% if post.group and post.group.name == page.group.name %}{% assign posts = posts | push: post %}{% endif %}
 		{% endfor %}
 		{% assign posts = posts | sort: "group.order" %}
 		<summary>{{ page.group.name }}</summary>
+		<div id="post-group-info">{% if group_info %}{{ group_info }}{% endif %}</div>
 		<ul>{% for post in posts %}
 			{% include create-simple-postbox.html post=post %}
 		{% endfor %}</ul>
