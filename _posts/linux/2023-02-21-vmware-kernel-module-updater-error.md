@@ -31,12 +31,12 @@ thumbnail: vmware-kernel-module-updater-error-1.png
 아래 명령어를 하나씩 차례대로 입력하면 된다.  
 3번 라인의 `git checkout` 뒤에는 현재 설치된 VMware의 버전을 입력해야 한다.  
 VMware 버전은 `vmware --version` 명령어로 확인할 수 있다.
-```terminal
-# git clone https://github.com/mkubecek/vmware-host-modules.git
-# cd vmware-host-modules
-# git checkout [player/workstation]-x.x.x
-# make VM_UNAME=`uname -r`
-# sudo make install
+```shell
+git clone https://github.com/mkubecek/vmware-host-modules.git
+cd vmware-host-modules
+git checkout [player/workstation]-x.x.x
+make VM_UNAME=`uname -r`
+sudo make install
 ```
 `uname -r`는 리눅스 커널 버전을 출력하는 명령어다.  
 `make install`은 루트 권한으로 실행해야 한다.
