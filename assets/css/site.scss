@@ -40,6 +40,8 @@
 		border-bottom: 1px solid var(--bd-color);
 		padding-bottom: 1em;
 	}
+} #page-title, #post-title {
+	font-size: 1.5em;
 } #page-info {
 	border-bottom: 1px solid var(--bd-color);
 	display: flex;
@@ -232,7 +234,7 @@
 			padding: 0 var(--gap-2);
 			font-size: .85rem;
 		} .module + .module {
-			margin-top: var(--gap2);
+			margin-top: var(--gap3);
 		} .module-title {
 			border-bottom: 1px dashed var(--bd-color);
 			background: transparent;

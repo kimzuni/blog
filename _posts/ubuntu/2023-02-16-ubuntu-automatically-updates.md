@@ -22,3 +22,7 @@ thumbnail: ubuntu-automatically-updates-1.png
 "Updates" 탭으로 들어가서 "Automatically check for updates" 값을 원하는 "Never"로 변경하면 끝.  
 ![Automatically check for updates - Never](ubuntu-automatically-updates-2.png)  
 "Never" 대신 자동 업데이트를 실행할 주기를 선택할 수도 있다.
+
+## 다시 설정
+그래도 계속 업데이트 하라는 창이 뜬다..?  
+캡쳐했는데 실수로 삭제해버렸다. 천천히 다른 방법을 찾아봐야지..

@@ -54,6 +54,8 @@ a {
 	width: auto;
 } svg {
 	transition: fill .1s, stroke .1s;
+	height: 100%;
+	width: 100%;
 
 	&[draw="externalLink"] {
 		margin-right: .05em;
