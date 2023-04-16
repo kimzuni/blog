@@ -150,7 +150,3 @@ Minimal로 설치하면 그래픽 없이 CLI 모드로 설치된다. 아마..?
 
 ![Ubuntu Installation - Start](ubuntu-installation-10.png)  
 설치 끝.
-
-## 어라 그러고 보니..
-20일에 23.04 버전이 출시된다던데 그걸 까먹고 있었네..?  
-SSD 오면 시험 끝나고 23.04로 설치해야지..
