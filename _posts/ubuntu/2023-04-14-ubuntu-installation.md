@@ -1,7 +1,7 @@
 ---
 title: 우분투 설치
 date: 2023-04-16 10:08:00 +0900
-last_modified_at: 2023-04-16 10:08:00 +0900
+last_modified_at: 2023-04-21 17:30:00 +0900
 categories: [Linux, Ubuntu]
 tags: [Install]
 thumbnail: ubuntu-installation-1.png
@@ -18,7 +18,8 @@ thumbnail: ubuntu-installation-1.png
 
 
 오늘 수업 중에 60GB라는 대용량의 여유 공간이 필요하다는 말에 저번부터 업그레이드해야지 했던 SSD를 드디어 구매..  
-내장 SSD를 교체하고 지금 SSD는 케이스 사서 외장으로 사용할 예정.
+내장 SSD를 교체하고 지금 SSD는 ~~케이스 사서 외장으로 사용할 예정.~~ 데스크탑 사면 추가로 장착할 예정.  
+아무래도 2TB 짜리를 사서 외장으로 쓰지는 않을 듯..
 
 SSD 교체하고 우분투를 재설치하면서 tar로 백업으로 복구하려고 했으나 블로그에 글 올릴 거리도 필요하고 해서 우분투 설치 방법부터 이것저것 설치나 설정하는 것까지 글을 올려보려고 한다.  
 일단 우분투 설치 과정은 SSD 오기 전에 가상머신에서 진행하는 걸로.
@@ -44,6 +45,7 @@ SSD 교체하고 우분투를 재설치하면서 tar로 백업으로 복구하�
 
 ## 우분투 부팅 USB 만들기
 먼저 [우분투 홈페이지](https://ubuntu.com/download/desktop)에서 LTS 버전으로 다운로드  
+일반 버전은 9개월, LTS(Long Term Support) 버전은 5년(ESM 사용 시 10년)동안 지원한다. 새로운 버전이 나올 때마다 업그레이드 할 예정이 아니라면 LTS 버전를 쓰자.  
 ![Ubuntu ISO File Download](ubuntu-installation-iso-download-page.png)  
 버전이 22.04.1에서 04.2로 오르면서 용량이 3.6G에서 4.6G로 커졌다. 그래서 8GB 이상의 USB가 필요하다.
 
@@ -88,7 +90,7 @@ Rufus 홈페이지에서 프로그램 다운로드
 파티션을 선택할 경우 해당 파티션의 크기가 ISO 파일보다 크거나 같아야한다.
 ![dd Command](ubuntu-installation-dd-command.png)
 
-### 'Startup Disk Creator(시동 디스크 만들기)' (Ubuntu)
+### Startup Disk Creator(시동 디스크 만들기) (Ubuntu)
 우분투에 기본적으로 설치되어 있는 프로그램을 사용할 수 있다.  
 다른 리눅스 배포판에도 있는 프로그램인지는 모르겠다.
 
@@ -120,20 +122,38 @@ root 권한이 필요하기 때문에 패스워드를 묻는 창이 나타난다
 부팅 USB가 처음 실행되면 아래와 같은 화면이 뜬다.  
 한글로 설치하면 글자가 깨질 수 있기 때문에 영어로 설치했다.
 {% imgbox %}
-![Ubuntu Installation - Start](ubuntu-installation-1.png)
-![Ubuntu Installation - Start](ubuntu-installation-2.png)
-{% endimgbox %} 
+![Ubuntu Installation - Welcome](ubuntu-installation-1.png)
+![Ubuntu Installation - Keyboard layout](ubuntu-installation-2.png)
+{% endimgbox %}
+
+무선랜카드가 있다면 와이파이를 잡을 수 있는 창이 뜬다.  
+![Ubuntu Installation - Wireless](ubuntu-installation-wireless.jpg)
 
 Minimal로 설치하면 그래픽 없이 CLI 모드로 설치된다. 아마..?  
 그러니 Mormal 선택, 체크박스 모두 체크 후 Continue  
-![Ubuntu Installation - Start](ubuntu-installation-3.png)
+![Ubuntu Installation - Update and other software](ubuntu-installation-3.png)
 
 어떻게 설치할 것이냐  
-난 현재 디스크를 밀어버릴 것이기 때문에 "Erase disk and install Ubuntu" 선택  
-![Ubuntu Installation - Start](ubuntu-installation-4.png)
+디스크가 하나밖에 없고 OS가 설치되어 있지 않으면 아래처럼 뜬다.  
+그 외 윈도우 등 다른 OS가 설치되어 있으면 상황에 따라 더 많은 옵션이 생긴다.  
+직접 파티셔닝을 하려면 **"Something else"**를 선택.  
+![Ubuntu Installation - Installation type](ubuntu-installation-4.jpg)
 
-"우분투 설치 시 현재 디스크는 이렇게 될 것이다."  
-![Ubuntu Installation - Start](ubuntu-installation-5.png)
+- EFI: 512MB
+- /boot: 1024MB
+- SWAP: 16384MB (16GB)
+- / : 204800MB (200GB)
+- /home: 나머지 (약 1.8TB)
+
+SWAP은 여기서 하지 않아도 설치 후에 스왑파일을 따로 생성하여 설정할 수 있다.  
+루트와 home을 분리한 이유는 혹시 OS를 재설치할 일이 생기면 홈 디렉토리를 포맷하지 않기 위해.
+{% imgbox %}
+![Ubuntu Installation - Wireless](ubuntu-installation-partitioning-1.jpg)
+![Ubuntu Installation - Wireless](ubuntu-installation-partitioning-2.jpg)
+{% endimgbox %}
+
+파티셔닝 설정 요약  
+![Ubuntu Installation - Wireless](ubuntu-installation-5.jpg)
 
 국가 선택  
 ![Ubuntu Installation - Start](ubuntu-installation-6.png)

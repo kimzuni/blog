@@ -3,6 +3,7 @@ title: 리눅스에서 한/영 키, 한자 키 사용하기
 date: 2023-02-12 17:31:00 +0900
 last_modified_at: 2023-02-12 17:31:00 +0900
 categories: [Linux]
+tags: [한글]
 thumbnail: linux-hangul-hanja-1.png
 ---
 
