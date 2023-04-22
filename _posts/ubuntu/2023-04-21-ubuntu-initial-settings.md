@@ -4,7 +4,7 @@ date: 2023-04-21 17:53:00 +0900
 last_modified_at: 2023-04-21 17:53:00 +0900
 categories: [Linux, Ubuntu]
 tags: [Setting, Mirror, 한글]
-thumbnail: /images/ubuntu-initial-settings-1.png
+thumbnail: ubuntu-initial-settings-1.png
 ---
 
 그냥 내가 설정한 것들
@@ -15,71 +15,71 @@ thumbnail: /images/ubuntu-initial-settings-1.png
 제일 처음 로그인을 하면 아래와 같은 창이 뜬다.
 
 우분투와 다른 계정을 연결할 수 있다. 나는 그냥 Skip  
-![Ubuntu - Online Accounts](/images/ubuntu-initial-settings-1.png)
+![Ubuntu - Online Accounts](ubuntu-initial-settings-1.png)
 
 우분투 프로를 사용할 수 있다.  
 우분투 계정이 필요하며, 사용 시 LTS 버전의 경우 5년 추가 지원을 해주는 등의 혜택이 있다.  
-![Ubuntu - Ubuntu Pro](/images/ubuntu-initial-settings-2.png)
+![Ubuntu - Ubuntu Pro](ubuntu-initial-settings-2.png)
 
 우분투에게 내 시스템 정보를 보낼 것인가  
-![Ubuntu - Help Improve Ubuntu](/images/ubuntu-initial-settings-3.png)
+![Ubuntu - Help Improve Ubuntu](ubuntu-initial-settings-3.png)
 
 위치 정보 동의  
-![Ubuntu - Welcome to Ubuntu - Privacy](/images/ubuntu-initial-settings-4.png)
+![Ubuntu - Welcome to Ubuntu - Privacy](ubuntu-initial-settings-4.png)
 
 이러한 앱들을 설치할 수 있다.  
-![Ubuntu - Ready to go](/images/ubuntu-initial-settings-5.png)
+![Ubuntu - Ready to go](ubuntu-initial-settings-5.png)
 
 ## Root Password
 터미널에서 `sudo passwd` 명령어를 입력하고 루트 패스워드 설정
 
 ## Settings
 상단바 오른쪽 클릭 후 Settings로 접속  
-![Ubuntu - Settings Button](/images/ubuntu-initial-settings-button.png)
+![Ubuntu - Settings Button](ubuntu-initial-settings-button.png)
 
 ### Power (Screen Blank)
 시간이 지나도 화면이 꺼지지 않도록 설정  
-![Settings - Power Saving Options - Screen Blank](/images/ubuntu-initial-power.png)
+![Settings - Power Saving Options - Screen Blank](ubuntu-initial-power.png)
 
 ### Display (Resolution)
 해상도 설정
-![Settings - Displays - Resolution](/images/ubuntu-initial-displays.png)
+![Settings - Displays - Resolution](ubuntu-initial-displays.png)
 
 ### Region & Language (한글 입력 설정)
 Format - US로 변경  
 위에 "Manage Installed Languages" 클릭  
-![Settings - Region & Language](/images/ubuntu-initial-language-1.png)
+![Settings - Region & Language](ubuntu-initial-language-1.png)
 
 조금 기다리면 이런 화면이 뜬다.  
 Install 후 기다리면 언어팩 같은 게 자동으로 다운로드 된다.
 {% imgbox %}
-![Settings - Region & Language - Manage Installed Languages 1](/images/ubuntu-initial-language-2.png)
-![Settings - Region & Language - Manage Installed Languages 2](/images/ubuntu-initial-language-3.png)
+![Settings - Region & Language - Manage Installed Languages 1](ubuntu-initial-language-2.png)
+![Settings - Region & Language - Manage Installed Languages 2](ubuntu-initial-language-3.png)
 {% endimgbox %}
 
 ### Keyboard (한글 입력 설정)
 Korean(Hangul) 추가(위 Region & Language 과정 진행 후 재부팅 필요) 후 English는 제거.  
-![Settings - Keyboard](/images/ubuntu-initial-keyboard-1.png)
+![Settings - Keyboard](ubuntu-initial-keyboard-1.png)
 
 Korean(Hangul)의 Preferences 선택  
-![Settings - Keyboard - Korean(Hangul)](/images/ubuntu-initial-keyboard-2.png)
+![Settings - Keyboard - Korean(Hangul)](ubuntu-initial-keyboard-2.png)
 
 표시한 단축키 Delete 후 [리눅스에서 한/영 키, 한자 키 사용하기](/posts/linux-hangul-hanja/) 설정
 {% imgbox %}
-![Settings - Keyboard - Korean(Hangul) - Preferences Hangul](/images/ubuntu-initial-keyboard-3.png)
-![Settings - Keyboard - Korean(Hangul) - Preferences Hanja](/images/ubuntu-initial-keyboard-4.png)
+![Settings - Keyboard - Korean(Hangul) - Preferences Hangul](ubuntu-initial-keyboard-3.png)
+![Settings - Keyboard - Korean(Hangul) - Preferences Hanja](ubuntu-initial-keyboard-4.png)
 {% endimgbox %}
 
 재부팅하면 윈도우처럼 한/영, 한자 키 사용 가능
 
 ### Appearance
 다크모드 및 테마 색상 변경  
-![Settings - Appearance](/images/ubuntu-initial-appearance.png)
+![Settings - Appearance](ubuntu-initial-appearance.png)
 
 ## sudo 명령어 패스워드 생략
 `sudo visudo` 명령으로 /etc/sudoers 파일을 쉽게 수정할 수 있다.  
 파일 제일 아래에 추가해 주면 해당 유저는 sudo 명령어를 패스워드 없이 사용할 수 있다.  
-![Settings - /etc/sudoers](/images/ubuntu-initial-sudo-without-password.png)  
+![Settings - /etc/sudoers](ubuntu-initial-sudo-without-password.png)  
 저장은 Ctrl+X -> y -> 엔터
 
 ## Mirror(미러) 사이트 변경
@@ -92,8 +92,8 @@ Korean(Hangul)의 Preferences 선택
 모든 `kr.archive.ubuntu.com` 문자열을 `ftp.kaist.ac.kr`로 변경  
 kr이 붙어서 국내 서버인 것 같지만.. 그냥 우분투 도메인에 kr만 갖다 붙인 영국 서버다.
 {% imgbox %}
-![Ubuntu Mirror Site Change](/images/ubuntu-initial-sources-list-1.png)
-![Ubuntu Mirror Site Changed](/images/ubuntu-initial-sources-list-2.png)
+![Ubuntu Mirror Site Change](ubuntu-initial-sources-list-1.png)
+![Ubuntu Mirror Site Changed](ubuntu-initial-sources-list-2.png)
 {% endimgbox %}
 데비안의 경우 security 미러도 KAIST 서버에 있어서 변경할 수 있는데 우분투는 다른 미러 사이트에도 없다.
 
@@ -103,7 +103,7 @@ kr이 붙어서 국내 서버인 것 같지만.. 그냥 우분투 도메인에 k
 
 차례대로 실행해야 한다.
 {% imgbox %}
-![Terminal - apt update](/images/ubuntu-initial-apt-update.png)
-![Terminal - apt full-upgrade](/images/ubuntu-initial-apt-upgrade.png)
-![Terminal - apt autoremove](/images/ubuntu-initial-apt-autoremove.png)
+![Terminal - apt update](ubuntu-initial-apt-update.png)
+![Terminal - apt full-upgrade](ubuntu-initial-apt-upgrade.png)
+![Terminal - apt autoremove](ubuntu-initial-apt-autoremove.png)
 {% endimgbox %}
