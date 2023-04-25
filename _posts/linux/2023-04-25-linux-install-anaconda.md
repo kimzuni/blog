@@ -70,7 +70,7 @@ Natigator에서 실행해도 되지만 터미널에서 바로 실행할 수도 �
 ![Anaconda3 - Jupyter Lab Start](linux-install-anaconda-jupyter-lab.png)
 {% endimgbox %}
 
-## 실행파일 생성
+## 실행 파일 생성
 아나콘다의 `bin` 디렉토리를 PATH에 등록하기는 싫고, 편하게 사용하고는 싶고..  
 그래서 그냥 아래 스크립트 파일을 만들어놓고 명령어 사용하듯 쓰고 있으며, 모두 같은 위치에 있어야 한다.
 

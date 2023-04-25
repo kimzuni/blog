@@ -11,9 +11,9 @@ thumbnail: ubuntu-installing-apps-chromium.png
 
 ## apt, snap install
 1. apt
-  - curl, gcc, g++, make, build-essential, vim, gedit, python3-pip, gimp
+  - curl, gcc, g++, make, build-essential, vim, gedit, python3-pip, gimp, ffmpeg
 2. snap
-  - chromium, discord
+  - chromium, discord, steam
 ```terminal
 # sudo apt -y install [package_name]
 # sudo snap install [package_name]
