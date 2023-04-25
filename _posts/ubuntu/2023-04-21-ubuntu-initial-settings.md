@@ -3,7 +3,7 @@ title: 우분투 초기 설정
 date: 2023-04-21 17:53:00 +0900
 last_modified_at: 2023-04-21 17:53:00 +0900
 categories: [Linux, Ubuntu]
-tags: [Setting, Mirror, 한글]
+tags: [Setting, 한글]
 thumbnail: ubuntu-initial-settings-1.png
 ---
 
@@ -41,6 +41,9 @@ thumbnail: ubuntu-initial-settings-1.png
 시간이 지나도 화면이 꺼지지 않도록 설정  
 ![Settings - Power Saving Options - Screen Blank](ubuntu-initial-power.png)
 
+그리고 그 아래 Automatic Suspend에서 On Battery Power를 Off  
+![Settings - Power Saving Options - Automatic Suspend](ubuntu-initial-power-off.png)
+
 ### Display (Resolution)
 해상도 설정
 ![Settings - Displays - Resolution](ubuntu-initial-displays.png)
@@ -77,8 +80,10 @@ Korean(Hangul)의 Preferences 선택
 ![Settings - Appearance](ubuntu-initial-appearance.png)
 
 ## sudo 명령어 패스워드 생략
-`sudo visudo` 명령으로 /etc/sudoers 파일을 쉽게 수정할 수 있다.  
-파일 제일 아래에 추가해 주면 해당 유저는 sudo 명령어를 패스워드 없이 사용할 수 있다.  
+`nano` 에디터가 불편한 경우 [텍스트 에디터 기본값을 먼저 변경](#텍스트-에디터-기본값-변경)하면 `vi` 에디터로 수정할 수 있다.
+
+`sudo visudo` 명령으로 `/etc/sudoers` 파일을 쉽게 수정할 수 있다.  
+파일 제일 아래에 추가해 주면 해당 유저는 `sudo` 명령어를 패스워드 없이 사용할 수 있다.  
 ![Settings - /etc/sudoers](ubuntu-initial-sudo-without-password.png)  
 저장은 Ctrl+X -> y -> 엔터
 
@@ -107,3 +112,11 @@ kr이 붙어서 국내 서버인 것 같지만.. 그냥 우분투 도메인에 k
 ![Terminal - apt full-upgrade](ubuntu-initial-apt-upgrade.png)
 ![Terminal - apt autoremove](ubuntu-initial-apt-autoremove.png)
 {% endimgbox %}
+
+## 텍스트 에디터 기본값 변경
+우분투는 기본값이 `nano`다.
+```terminal
+# sudo update-alternatives --config editor
+```
+![Terminal - Update Default Editor](ubuntu-initial-update-alternatives-editor.png)  
+참고로 vim.basic은 `apt` 명령어로 `vim` 패키지 설치 시 생성된다.

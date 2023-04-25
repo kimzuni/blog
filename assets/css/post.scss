@@ -9,7 +9,6 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-end;
-	align-items: flex-end;
 	padding: var(--gap) 0;
 } #post-datebox {
 	display: flex;
@@ -18,9 +17,6 @@
 	color: var(--sub-color);
 } #post-categories {
 	flex: 1;
-	display: flex;
-	align-items: center;
-	gap: .25em;
 	line-height: var(--lineHeight);
 	white-space: nowrap;
 
@@ -30,9 +26,6 @@
 		max-width: 1em;
 	}
 } #post-tags {
-	display: flex;
-	flex-wrap: wrap;
-	gap: var(--gap-2);
 	margin: var(--gap2) 0 var(--gap);
 } #post-group {
 	background-color: var(--sub-bg-color);
@@ -62,7 +55,7 @@
 	} .postbox-date {
 		display: none;
 	}
-} #post-notice {
+} #post-notice, .post-notice {
 	--border-length: 1.5rem;
 
 	border: 3px solid var(--theme-color);
@@ -122,7 +115,7 @@
 		margin: var(--gap3) 0 .5em;
 	} p, .highlight {
 		margin-top: var(--gap-2);
-	} p:not(#post-notice), span, b, strong {
+	} p:not(#post-notice):not(.post-notice), span, b, strong {
 		&.success {
 			color: var(--success-color);
 		} &.warning {

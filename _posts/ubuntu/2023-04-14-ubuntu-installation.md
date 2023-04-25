@@ -148,25 +148,25 @@ Minimal로 설치하면 그래픽 없이 CLI 모드로 설치된다. 아마..?
 SWAP은 여기서 하지 않아도 설치 후에 스왑파일을 따로 생성하여 설정할 수 있다.  
 루트와 home을 분리한 이유는 혹시 OS를 재설치할 일이 생기면 홈 디렉토리를 포맷하지 않기 위해.
 {% imgbox %}
-![Ubuntu Installation - Wireless](ubuntu-installation-partitioning-1.jpg)
-![Ubuntu Installation - Wireless](ubuntu-installation-partitioning-2.jpg)
+![Ubuntu Installation - Partitioning 1](ubuntu-installation-partitioning-1.jpg)
+![Ubuntu Installation - Partitioning 2](ubuntu-installation-partitioning-2.jpg)
 {% endimgbox %}
 
 파티셔닝 설정 요약  
-![Ubuntu Installation - Wireless](ubuntu-installation-5.jpg)
+![Ubuntu Installation - Partitioning](ubuntu-installation-5.jpg)
 
 국가 선택  
-![Ubuntu Installation - Start](ubuntu-installation-6.png)
+![Ubuntu Installation - Where are you](ubuntu-installation-6.png)
 
 사용할 유저명, 호스트명, 패스워드 등 모두 입력  
 자동 로그인을 사용하려면 "Log in automatically" 선택  
-![Ubuntu Installation - Start](ubuntu-installation-7.png)
+![Ubuntu Installation - Who are you](ubuntu-installation-7.png)
 
 이제 디스크가 **포맷**{: .danger}되면서 설치가 진행되고, 끝나면 Restart Now
 {% imgbox %}
-![Ubuntu Installation - Start](ubuntu-installation-8.png)
-![Ubuntu Installation - Start](ubuntu-installation-9.png)
+![Ubuntu Installation - Installing](ubuntu-installation-8.png)
+![Ubuntu Installation - Installed](ubuntu-installation-9.png)
 {% endimgbox %}
 
-![Ubuntu Installation - Start](ubuntu-installation-10.png)  
+![Ubuntu Installation - Reboot](ubuntu-installation-10.png)  
 설치 끝.
