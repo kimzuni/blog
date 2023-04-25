@@ -1,6 +1,6 @@
 ---
 title: 우분투 설치 후 필요한 것들 설치
-date: 2023-04-25 13:48:00 +0900
+date: 2023-04-22 16:53:00 +0900
 last_modified_at: 2023-04-25 13:48:00 +0900
 categories: [Linux, Ubuntu]
 tags: [Install]
@@ -14,6 +14,7 @@ thumbnail: ubuntu-installing-apps-chromium.png
   - curl, gcc, g++, make, build-essential, vim, gedit, python3-pip, gimp, ffmpeg
 2. snap
   - chromium, discord, steam
+
 ```terminal
 # sudo apt -y install [package_name]
 # sudo snap install [package_name]
