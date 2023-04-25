@@ -3,6 +3,16 @@
 
 #home-hero {
 } #home {
+} #posts-range {
+	display: block;
+	margin: 1rem 0 1.5rem;
+	color: var(--sub-color);
+	text-align: right;
+
+	&:before {
+		content: 'Posts: ';
+		display: inline;
+	}
 } #page-control {
 	display: flex;
 	justify-content: center;

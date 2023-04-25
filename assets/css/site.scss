@@ -34,7 +34,7 @@
 	}
 } #page-title {
 	text-align: center;
-	margin: .25em 0 1em;
+	margin: .25em 0 1.5rem;
 
 	&:not(.no-border) {
 		border-bottom: 1px solid var(--bd-color);
@@ -48,6 +48,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin-bottom: 1.5rem;
 	padding-bottom: var(--gap-2);
 } #page, #tail-content, #tail-sidebar {
 	margin: 0 auto;

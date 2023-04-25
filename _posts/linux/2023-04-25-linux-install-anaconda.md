@@ -124,7 +124,7 @@ notebook은 `http://localhost:8888/tree`, lab은 `http://localhost:8888/lab`.
   - 이미 사용 중인 포트라면 사용하지 않는 포트를 찾을 때까지 +1
 - 중지
   - `jupyter-lab stop`: 서버가 하나만 실행중일 때 해당 서버 중지
-  - `jupyter-lab stop [PORT_NUMBER]`: 중지할 서버 포트 지정 (입력한 포트 번호가 없을 시 목록 출력)
+  - `jupyter-lab stop [PORT_NUMBER]`: 중지할 서버 포트 지정 (해당 포트 번호의 서버가 없으면 목록 출력)
   - `jupyter-lab stop all`: 실행 중인 서버 모두 중지
 - 목록: `jupyter lab list`
   - 서버의 포트 및 토큰 인증을 위한 URL 확인 가능

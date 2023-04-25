@@ -28,6 +28,7 @@ sidebar:
 	{% assign end = paginator.page | times: paginator.per_page %}
 	{% assign start = end | minus: paginator.per_page | plus: 1 %}
 	{% if paginator.total_posts < end %}{% assign end = paginator.total_posts %}{% endif %}
+	<span id="posts-range">{{ start }}~{{ end }}/{{ paginator.total_posts }}</span>
 	<ul class="postbox-container">{% for i in (start..end) %}{% assign idx = i | minus: 1 %}{% assign post = posts[idx] %}
 		{% assign pinned = false %}{% assign target = pagesname_bak | append: "_pin" %}
 		{% if post[target] == true or post[target] contains displayname %}{% assign pinned = true %}{% endif %}
