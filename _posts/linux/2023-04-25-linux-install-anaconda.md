@@ -60,7 +60,7 @@ thumbnail: linux-install-anaconda-page.png
 ### Jupyter Notebook/Lab
 Natigator에서 실행해도 되지만 터미널에서 바로 실행할 수도 있다.  
 `jupyter notebook`, `jupyter lab`에서 공백 대신 `-`를 입력해도 된다.  
-`jupyter lab` 형식으로 사옹하면 `jupyter-lab` 등의 파일로 접근하는 듯.
+`jupyter lab` 형식으로 사용하면 `jupyter-lab` 등의 파일로 접근하는 듯.
 ```terminal
 # ./anaconda3/bin/jupyter notebook
 # ./anaconda3/bin/jupyter lab
@@ -74,14 +74,14 @@ Natigator에서 실행해도 되지만 터미널에서 바로 실행할 수도 �
 아나콘다의 `bin` 디렉토리를 PATH에 등록하기는 싫고, 편하게 사용하고는 싶고..  
 그래서 그냥 아래 스크립트 파일을 만들어놓고 명령어 사용하듯 쓰고 있으며, 모두 같은 위치에 있어야 한다.
 
-리눅스는 `~/bin` 디렉토리를 기본적으로 PATH 환경변수에 등록하기 때문에 해당 위치에 있는 파일에 실행권한을 주게 되면 명령어처럼 어느 위치에서든 파일명만 입력하여 사용할 수 있게 된다.  
-그래서 아래 파일을 모두 `~/bin`에 두고 `conda.conf` 파일을 제외한 모든 파일에 실행권한을 주고 사용하는 중이다.
+리눅스는 `~/bin` 디렉토리를 기본적으로 PATH 환경 변수에 등록하기 때문에 해당 위치에 있는 파일에 실행 권한을 주게 되면 명령어처럼 어느 위치에서든 파일명만 입력하여 사용할 수 있게 된다.  
+그래서 아래 파일을 모두 `~/bin`에 두고 `conda.conf` 파일을 제외한 모든 파일에 실행 권한을 주고 사용하는 중이다.
 
 ### conda.conf
-파일을 여러개 사용하기 때문에 모든 파일에서 같은 값의 변수를 사용하기 위해 필요한 파일.
+파일을 여러 개 사용하기 때문에 모든 파일에서 같은 값의 변수를 사용하기 위해 필요한 파일.
 
 이 파일에 아나콘다 설치 경로가 입력되어 있다.  
-다른 경로에 설치했다면 `CONDA_HOME` 값만 변경해주면 된다.
+다른 경로에 설치했다면 `CONDA_HOME` 값만 변경해 주면 된다.
 ```bash
 FILENAME="${0##*/}"
 
@@ -115,15 +115,15 @@ notebook, lab 둘 중 하나만 실행해도 둘 다 접속이 된다.
 notebook은 `http://localhost:8888/tree`, lab은 `http://localhost:8888/lab`.  
 단, tree, lab 입력 없이 웹 사이트 루트에 접속을 했다면 notebook/lab 둘 중 실행한 서버로 리다이렉트된다.
 
-기존의 `./anaconda3/bin/jupyter` 파일처럼 실행 시 웹 브라우저를 자동으로 띄우고 싶다면 `NO_BROWSER` 변수 값을 변경하면 된다.  
+기존의 `./anaconda3/bin/jupyter` 파일처럼 실행 시 웹 브라우저를 자동으로 띄우고 싶다면 `NO_BROWSER` 변수의 값을 변경하면 된다.  
 가끔씩 서버 실행 후 페이지 접근 시 인증이 필요한 경우가 생기는데, `jupyter list`를 사용하면 인증할 수 있는 URL이 출력된다.
 
 사용법
 - 시작: `jupyter lab start [PORT_NUMBER]`
-  - 지정한 포트번호로 서버가 실행되며, 생략 시 기본 포트인 8888로 실행.
+  - 지정한 포트 번호로 서버가 실행되며, 생략 시 기본 포트인 8888로 실행.
   - 이미 사용 중인 포트라면 사용하지 않는 포트를 찾을 때까지 +1
 - 중지
-  - `jupyter-lab stop`: 서버가 하나만 실행중일 때 해당 서버 중지
+  - `jupyter-lab stop`: 서버가 하나만 실행 중일 때 해당 서버 중지
   - `jupyter-lab stop [PORT_NUMBER]`: 중지할 서버 포트 지정 (해당 포트 번호의 서버가 없으면 목록 출력)
   - `jupyter-lab stop all`: 실행 중인 서버 모두 중지
 - 목록: `jupyter lab list`

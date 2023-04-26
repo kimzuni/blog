@@ -88,7 +88,7 @@ VirtualBox 6, 7 버전의 패키지만 추가되었고 기존에 존재하던 �
 {: .post-notice .warning}
 
 파일 다운로드 아래에 "Debian-based Linux distributions" 부분이 있다.  
-이 부분을 따라하면 Repository를 추가할 수 있다.  
+이 부분을 따라 하면 Repository를 추가할 수 있다.  
 ![Virtualbox - Debian Repository](ubuntu-install-apps-virtualbox-3.png)
 
 명령어 두 개 입력  
@@ -126,10 +126,10 @@ VirtualBox 6, 7 버전의 패키지만 추가되었고 기존에 존재하던 �
 ![VMware Pro Old Version Download Site](ubuntu-install-apps-vmware-pro-2.png)
 {% endimgbox %}
 
-Player는 Pro와 달리 GO TO DOWNLOADS를 누른 후에 Windows/Linux 선택해서 다운로드 하는 방식이다.
+Player는 Pro와 달리 GO TO DOWNLOADS를 누른 후에 Windows/Linux 선택해서 다운로드하는 방식이다.
 
 이 파일은 .deb가 아닌 .bundle 파일이다.  
-그냥 실행권한 주고 실행시키면 자동으로 설치된다.
+그냥 실행 권한 주고 실행시키면 자동으로 설치된다.
 ```terminal
 # chmod +x VMware.bundle
 # sudo ./VMware.bundle
