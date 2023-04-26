@@ -7,7 +7,7 @@ tags: [KakaoTalk, Install, Setting]
 thumbnail: ubuntu-install-kakaotalk-flatpak-1.png
 ---
 
-우분투에서 설치했지만 Flatpak을 사용하기 때문에 어느 리눅스든 설치 과정은 똑같을 것이라 생각한다.
+우분투에서 설치했지만 Flatpak을 사용하기 때문에 어느 리눅스든 설치 과정은 똑같을 것이다.
 
 <br/>
 
