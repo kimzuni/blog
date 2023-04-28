@@ -6,6 +6,7 @@ const f_one_more = function(t, o) {
 }
 
 const f_time = function(timebox, time, origin) {
+	if (!time) time = origin;
 	let timestamp = parseInt(new Date(time).getTime()/1000);
 	let nowTime = parseInt(new Date().getTime()/1000);
 	let new_time = nowTime - timestamp;
@@ -33,7 +34,7 @@ const f_time = function(timebox, time, origin) {
 
 
 window.addEventListener("DOMContentLoaded", function() {
-	for (let time of html.querySelectorAll(".postbox-date, time")) {
+	for (let time of html.querySelectorAll(".postbox-date, .infobox-date, time")) {
 		f_time(time, time.title, time.innerHTML);
 	}
 });

@@ -1,7 +1,7 @@
 ---
 title: VMware Kernel Module Updater Error
 date: 2023-02-21 20:01:00 +0900
-last_modified_at: 2023-02-21 20:01:00 +0900
+last_modified_at: 2023-04-27 20:25:00 +0900
 categories: [Linux]
 tags: [VMware, Update, Error]
 thumbnail: vmware-kernel-module-updater-error-1.png
@@ -28,6 +28,11 @@ thumbnail: vmware-kernel-module-updater-error-1.png
 최근에 소프트웨어를 업데이트하면서 커널 버전이 5.15에서 5.19로 업데이트가 된 듯..
 
 ## 해결 방법
+### 추가된 내용
+위 `sudo vmware-modconfig --console --install-all` 명령을 사용했을 때 에러가 뜨지 않고 해결되는 경우도 있다.  
+먼저 사용해 보고 해결되지 않으면 아래 방법을 사용하길 바람.
+
+### 기존 내용
 아래 명령어를 하나씩 차례대로 입력하면 된다.  
 3번 라인의 `git checkout` 뒤에는 현재 설치된 VMware의 버전을 입력해야 한다.  
 VMware 버전은 `vmware --version` 명령어로 확인할 수 있다.

@@ -157,8 +157,9 @@
 
 #tocbox {
 	--plus: 1;
+	--toc-height: calc(var(--lineHeight) + var(--gap-4) + var(--height));
 
-	height: calc(var(--lineHeight) + var(--gap-4) + var(--toc-height));
+	height: var(--toc-height);
 	overflow: hidden;
 	transition: height .5s;
 	font-size: .85rem;
@@ -217,7 +218,6 @@
 				padding-left: calc(var(--gap) * (var(--lv) + var(--plus)));
 
 				&:before {
-					/* content: counters(toc, "-") ". "; */
 					content: counter(toc) ". ";
 				} &:hover, &[select] {
 					--color: var(--theme-color);
@@ -242,6 +242,14 @@
 		.module-title {
 			button {
 				padding: 0;
+			}
+		} ul ul {
+			height: 0px;
+			overflow: hidden;
+			transition: height .5s;
+
+			&.open {
+				height: var(--height);
 			}
 		} a {
 			padding-right: 0 !important;

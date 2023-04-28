@@ -4,14 +4,14 @@ date: 2023-04-22 16:53:00 +0900
 last_modified_at: 2023-04-25 13:48:00 +0900
 categories: [Linux, Ubuntu]
 tags: [Install]
-thumbnail: ubuntu-installing-apps-chromium.png
+thumbnail: ubuntu-install-apps-chromium.png
 ---
 
 그냥 내가 설치한 것들
 
 ## apt, snap install
 1. apt
-  - curl, gcc, g++, make, build-essential, vim, gedit, python3-pip, gimp, ffmpeg
+  - ufw, net-tools, openssh, curl, gcc, g++, make, build-essential, vim, gedit, python3-pip, gimp, ffmpeg, rename, p7zip
 2. snap
   - chromium, discord, steam
 
@@ -197,3 +197,9 @@ VirtualBox와 마찬가지로 아래 명령어를 입력하면 된다.
 # sudo dpkg -i rclone.deb
 ```
 ![dpkg install rclone](ubuntu-install-apps-rclone.png)
+
+## Anaconda3
+[](/posts/linux-install-anaconda/){: .post-infobox}
+
+## KakaoTalk
+[](/posts/linux-install-kakaotalk/){: .post-infobox}
