@@ -7,7 +7,7 @@ tags: [KakaoTalk, Install, Setting]
 thumbnail: linux-install-kakaotalk-flatpak-1.png
 ---
 
-우분투에서 설치했지만 Flatpak을 사용하기 때문에 어느 리눅스든 설치 과정은 똑같을 것이다.
+이 글에서는 우분투에 설치했지만 Flatpak을 사용하기 때문에 리눅스 배포판 종류와 상관없이 설치할 수 있다.
 
 <br/>
 
@@ -117,7 +117,7 @@ nohup flatpak run --command=bottles-cli com.usebottles.bottles run -b KakaoTalk 
 
 ### 카카오톡에서 파일 업로드 및 다운로드
 #### 업로드
-파일 업로드 시 Z 드라이버와 현재 우분투 루트 디렉토리가 마운트 되어있기 때문에 여기 들어가서 파일을 선택하면 되..ㄹ 것 같지만..  
+파일 업로드 시 Z 드라이브와 현재 우분투 루트 디렉토리가 마운트 되어있기 때문에 여기 들어가서 파일을 선택하면 되..ㄹ 것 같지만..  
 이유는 모르겠지만 홈 디렉토리에는 Downloads 폴더밖에 보이지 않는다. 그래서 업로드할 파일을 Downloads 디렉토리에 복사한 후 업로드하는 중..  
 어차피 아래 과정을 거치면 그 경로가 업로드 창을 열었을 때 뜨는 기본 경로기 때문에 파일이 바로 떠서 편하긴 하다.  
 ![KakaoTalk File Upload](linux-install-kakaotalk-uploads.png)
