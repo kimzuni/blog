@@ -103,7 +103,7 @@ bottles와 drive_c 사이에 오는 KakaoTalk은 위에서 생성한 Bottle의 �
 kakaotalk이라는 텍스트 파일 생성 후 실행 권한을 주고 `~/bin` 디렉토리에 두면 터미널에서 언제 어디서든 `kakaotalk`을 입력하면 카카오톡이 실행된다.  
 켜지는 시간은 약간 오래 걸리므로 기다리자.. `wine`도 약간 느리긴 하지만 이건 아무래도 `bottles`을 통해 실행해야 하니 더 느리다.
 
-첫 번째 KakaoTalk은 생성한 Bottle 이름, 두 번째 kakaoTalk은 Bottle 내 Programs 이름이다.
+첫 번째 KakaoTalk은 생성한 Bottle 이름, 두 번째 kakaoTalk은 Bottle 내 실행시킬 Programs의 이름이다.
 ```bash
 #!/usr/bin/env bash
 
@@ -117,7 +117,7 @@ nohup flatpak run --command=bottles-cli com.usebottles.bottles run -b KakaoTalk 
 
 ### 카카오톡에서 파일 업로드 및 다운로드
 #### 업로드
-파일 업로드 시 Z 드라이브와 현재 우분투 루트 디렉토리가 마운트 되어있기 때문에 여기 들어가서 파일을 선택하면 되..ㄹ 것 같지만..  
+Z 드라이브에 우분투의 루트 디렉토리가 마운트 되어있기 때문에 파일 업로드 시 Z 드라이브에 들어가서 파일을 선택하면 되..ㄹ 것 같지만..  
 이유는 모르겠지만 홈 디렉토리에는 Downloads 폴더밖에 보이지 않는다. 그래서 업로드할 파일을 Downloads 디렉토리에 복사한 후 업로드하는 중..  
 어차피 아래 과정을 거치면 그 경로가 업로드 창을 열었을 때 뜨는 기본 경로기 때문에 파일이 바로 떠서 편하긴 하다.  
 ![KakaoTalk File Upload](linux-install-kakaotalk-uploads.png)
@@ -126,7 +126,8 @@ nohup flatpak run --command=bottles-cli com.usebottles.bottles run -b KakaoTalk 
 카카오톡 내에서 파일을 다운로드할 때 파일을 홈 디렉토리의 Downloads 디렉토리에 다운로드되게 하려고 한다.  
 그냥 원래 다운로드되는 디렉토리를 지우고 심볼릭 링크를 걸어주면 된다.
 ```terminal
-# rmdir ~/.var/app/com.usebottles.bottles/data/bottles/bottles/KakaoTalk/drive_c/users/jh1950/Documents/KakaoTalk\ Downloads/
-# ln -s ~/Downloads/ ~/.var/app/com.usebottles.bottles/data/bottles/bottles/KakaoTalk/drive_c/users/jh1950/Documents/KakaoTalk\ Downloads
+# cd ~/.var/app/com.usebottles.bottles/data/bottles/bottles/KakaoTalk/drive_c/users/jh1950/Documents
+# rmdir ./KakaoTalk\ Downloads/
+# ln -s ~/Downloads/ ./KakaoTalk\ Downloads
 ```
 ![KakaoTalk File Upload](linux-install-kakaotalk-downloads.png)
