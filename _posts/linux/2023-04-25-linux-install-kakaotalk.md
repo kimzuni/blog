@@ -15,10 +15,26 @@ thumbnail: linux-install-kakaotalk-flatpak-1.png
 CentOS를 사용하던 시절부터 카카오톡을 설치해 보려고 `wine`, `PlayOnLinux` 등을 사용해 봤지만, 잘되지 않아서 `bottles`를 사용했다.  
 그래서 `wine`으로 카카오톡이 잘 돌아가는 지금도 `bottles`를 사용 중이다.. 종류 및 버전 관리도 편하고, 프로그램들이 컨테이너 방식으로 돌아가기 때문에 관리도 편하다.
 
-### Flatpak, Bottles 설치
+### Flatpak 설치
 먼저 [Flatpak](https://flatpak.org/setup/Ubuntu)을 설치해야 한다.
+
+- Ubuntu
 ```terminal
 # sudo apt -y install flatpak gnome-software-plugin-flatpak
+```
+
+- RHEL/CentOS 7
+```terminal
+# sudo yum -y install flatpak
+```
+
+- RHEL/CentOS 8 & Fedora
+```terminal
+# sudo dnf -y install flatpak
+```
+
+그리고 Flatpak의 Repository 추가
+```terminal
 # flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
 ```
 {% imgbox %}
@@ -26,7 +42,8 @@ CentOS를 사용하던 시절부터 카카오톡을 설치해 보려고 `wine`, 
 ![flatpak remote add](linux-install-kakaotalk-flatpak-2.png)
 {% endimgbox %}
 
-그리고 Flatpak으로 [bottles](https://flathub.org/apps/com.usebottles.bottles) 설치 후 재부팅
+### Bottles 설치
+Flatpak으로 [Bottles](https://flathub.org/apps/com.usebottles.bottles) 설치 후 **재부팅**
 ```terminal
 # flatpak install flathub com.usebottles.bottles
 # sudo reboot
@@ -61,16 +78,14 @@ CentOS를 사용하던 시절부터 카카오톡을 설치해 보려고 `wine`, 
 
 ### 폰트 설치
 폰트를 설치하지 않으면 설치 과정에서 영어를 사용해야 하며, 다른 언어는 모두 깨져서 보인다.  
-물론 영어로 설치하거나 깨진 폰트로 설치한 후에 폰트를 설치하고 카카오톡 설정에서 폰트를 변경해도 된다.
+물론 이 과정을 거치지 않고 영어로 설치하거나 깨진 언어로 설치한 후에 [폰트를 직접 설치](#폰트-직접-설치)하고 카카오톡 설정에서 폰트를 변경해도 된다.
 
-Bottle에서 제공하는 한국어 폰트를 설치할 수 있다.
+Bottle에서 제공하는 폰트(cjkfonts)를 설치할 수 있다.  
+cjkfonts 설치 시 굴림, 돋움, 맑은 고딕, 바탕 등의 폰트를 포함한 중국어(c), 일본어(j), 한국어(k)의 여러 폰트가 설치된다.
 {% imgbox %}
 ![bottles - Dependencies](linux-install-kakaotalk-cjkfonts-1.png)
 ![bottles - Dependencies - cjkfonts](linux-install-kakaotalk-cjkfonts-2.png)
 {% endimgbox %}
-
-cjkfonts 설치 시 굴림, 돋움, 맑은 고딕, 바탕 폰트를 포함한 한국어, 중국어, 일본어의 여러 폰트가 설치된다.  
-굳이 cjkfonts를 설치하지 않아도 [폰트를 직접 설치](#폰트-직접-설치)할 수 있다.
 
 ### KakaoTalk 설치
 [카카오톡 사이트](https://www.kakaocorp.com/page/service/service/KakaoTalk)에서 Windows 설치 파일 다운로드 및 "Run Executable..."에서 카카오톡 설치 파일 선택.
