@@ -157,6 +157,7 @@
 
 #tocbox {
 	--plus: 1;
+	--height: var(--m-height);
 	--toc-height: calc(var(--lineHeight) + var(--gap-4) + var(--height));
 
 	height: var(--toc-height);
@@ -238,6 +239,7 @@
 } @media (min-width: 768px) {
 	#tocbox {
 		--plus: 0;
+		--height: var(--ul-height);
 
 		.module-title {
 			button {
@@ -249,7 +251,7 @@
 			transition: height .5s;
 
 			&.open {
-				height: var(--height);
+				height: var(--ul-height);
 			}
 		} a {
 			padding-right: 0 !important;

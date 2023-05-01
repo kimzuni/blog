@@ -2,6 +2,10 @@ const tocbox = html.querySelector("#tocbox");
 if (localStorage.tocbox) { tocbox.classList.add(localStorage.tocbox); }
 if (!tocbox.querySelector("#toc li")) { tocbox.remove(); }
 
+const tocbox_resize = function() {
+	set_style(tocbox, "--m-height", tocbox.querySelector("#toc").clientHeight + "px");
+}
+
 const ul_open = function(ul, total = 0) {
 	let height = total;
 	for (let li of ul.children) {
@@ -9,9 +13,10 @@ const ul_open = function(ul, total = 0) {
 			if (a.tagName == "A") height += a.clientHeight;
 		}
 	}
-	set_style(ul, "--height", height + "px");
+	set_style(ul, "--ul-height", height + "px");
 	if (ul.id == "toc") {
-		set_style(tocbox, "--height", height + "px");
+		tocbox_resize();
+		set_style(tocbox, "--ul-height", height + "px");
 		return;
 	}
 	ul.classList.add("open");
