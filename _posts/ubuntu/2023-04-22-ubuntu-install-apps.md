@@ -11,9 +11,12 @@ thumbnail: ubuntu-install-apps-chromium.png
 
 ## apt, snap install
 1. apt
-  - net-tools, openssh, curl, gcc, g++, make, build-essential, rename, p7zip, vim, gedit, ufw, git, python3-pip, ffmpeg, icoutils, gimp
+  - net-tools, openssh, curl
+  - gcc, g++, make, build-essential
+  - rename, p7zip, python3-pip, git, vim, gedit
+  - ufw, ffmpeg, gnome-shell-extensions, gimp, icoutils
 2. snap
-  - chromium, discord, steam
+  - chromium, discord, steam, notion-snap-reborn
 
 ```terminal
 # sudo apt -y install [package_name]

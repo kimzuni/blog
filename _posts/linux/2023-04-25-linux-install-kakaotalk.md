@@ -9,6 +9,10 @@ thumbnail: linux-install-kakaotalk-flatpak-1.png
 
 이 글에서는 우분투에 설치했지만 Flatpak을 사용하기 때문에 리눅스 배포판 종류와 상관없이 설치할 수 있다.
 
+다만 카카오톡이 열리는데 시간이 약간 오래 걸린다.  
+원래 `wine`도 약간 느리긴 하지만 이건 아무래도 `bottles`을 통해 실행해야 하니 더 느리다.  
+실행이 되고 나면 속도는 문제없다.
+
 <br/>
 
 ## 설치
@@ -118,12 +122,10 @@ Bottle을 제거 후 다른 Runner로 새로 생성하거나 Bottle의 Settings�
 지금 이상태로는 카카오톡을 실행하려면 Bottles을 열고 카카오톡을 실행하고... 귀찮다.  
 Apps 목록에서 카카오톡이 뜨게 .desktop 파일을 만들거나, 터미널에서 실행할 수 있게 실행 파일을 생성하면 훨씬 편하다.
 
-#### Applications 목록에 카카오톡 생성
-`/usr/share/applications/`, `/usr/local/share/applications/` 등 디렉토리에 .desktop 확장자 파일들 두면 Apps 메뉴에 아이콘이 생성된다.
+기본적으로 `flatpak` 명령어를 통해 실행하며 `xdg-open` 명령어를 사용할 수도 있다.
 
-카카오톡이 열리는데 시간이 약간 오래 걸린다.  
-원래 `wine`도 약간 느리긴 하지만 이건 아무래도 `bottles`을 통해 실행해야 하니 더 느리다.  
-실행이 되고 나면 속도는 문제없다.
+#### Applications 목록에 카카오톡 생성
+`/usr/share/applications/`, `/usr/local/share/applications/` 등 디렉토리에 .desktop 확장자 파일들 두면 Apps 목록에 아이콘이 생성된다.
 
 ##### 직접 생성
 카카오톡은 현재 유저만 사용할 수 있으므로 `~/.local/share/applications/` 디렉토리를 사용.
@@ -131,16 +133,19 @@ Apps 목록에서 카카오톡이 뜨게 .desktop 파일을 만들거나, 터미
 [아래](#실행-파일-생성)에서 실행 파일을 생성했다면 `Exec=` 뒤에 해당 파일의 경로를 적어줘도 된다.  
 이 방법의 단점은 KakaoTalk의 기본 아이콘이 어디에도 없다는 것.  
 아이콘을 직접 다운로드 하거나 exe 파일에서 아이콘 추출 후 해당 경로를 `Icon=` 뒤에 적으면 된다.
+
+- 카카오톡 아이콘 추출
 ```terminal
 # sudo apt -y install icoutils
 # wrestool -x -t3 -n1 --raw KakaoTalk_Setup.exe --output=/path/to/KakaoTalk.png
 ```
+- .desktop 파일 생성
 ```
 [Desktop Entry]
 Encoding=UTF-8
 Name=KakaoTalk
 Comment=KakaoTalk
-Exec=flatpak run --command=bottles-cli com.usebottles.bottles run -p KakaoTalk -b 'KakaoTalk' -- %u
+Exec=xdg-open bottles:run/KakaoTalk/KakaoTalk
 Terminal=false
 Type=Application
 Icon=/path/to/KakaoTalk.png
@@ -171,10 +176,12 @@ kakaotalk이라는 텍스트 파일 생성 후 실행 권한을 주고 `~/bin` �
 #!/usr/bin/env bash
 
 if [ `ps -ef | grep -i bottles.*kakaotalk | wc -l` != 1 ]; then
+	echo "KakaoTalk is already running."
 	exit 1
 fi
 
-nohup flatpak run --command=bottles-cli com.usebottles.bottles run -b KakaoTalk -p KakaoTalk -- %u 2>&1 > /dev/null &
+# nohup flatpak run --command=bottles-cli com.usebottles.bottles run -b KakaoTalk -p KakaoTalk 2>&1 > /dev/null &
+xdg-open bottles:run/KakaoTalk/KakaoTalk
 ```
 {: file="kakaotalk"}
 
