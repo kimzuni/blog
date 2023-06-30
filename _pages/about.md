@@ -25,4 +25,4 @@ description: About Page
 
 <br/><br/><br/>
 
-E-mail: <hello@kimzuni.com>
+E-mail: <hello@kimzuni.com>, <hello@zuni.kim>
