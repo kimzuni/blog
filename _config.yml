@@ -6,7 +6,9 @@ description: "Blog just for me."
 url: "https://zuni.kim"
 baseurl: ""
 
-email: "hello@kimzuni.com"
+email:
+  - "hello@kimzuni.com"
+  - "hello@zuni.kim"
 github: kimzuni
 
 cdn: "https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog"
