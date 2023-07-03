@@ -10,6 +10,8 @@ sitemap: false
 <input name="fake" disabled hidden/>
 <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.js"></script>
 <script type="text/javascript">
+	searchbox.querySelector("input").focus();
+
 	const resultbox = html.querySelector("#search .postbox-container");
 	const sjs = SimpleJekyllSearch({
 		searchInput: html.querySelector('#search input[name="fake"]'),
