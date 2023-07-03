@@ -25,4 +25,4 @@ description: About Page
 
 <br/><br/><br/>
 
-E-mail: <hello@kimzuni.com>, <hello@zuni.kim>
+E-mali: {% for email in site.email %}<{{ email }}>{% unless forloop.last %}, {% endunless %}{% endfor %}
