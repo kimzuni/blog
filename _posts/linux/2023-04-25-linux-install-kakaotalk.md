@@ -1,7 +1,7 @@
 ---
 title: 리눅스에서 카카오톡 사용하기
 date: 2023-04-25 22:05:00 +0900
-last_modified_at: 2023-05-01 14:23:00 +0900
+last_modified_at: 2023-08-09 19:42:22 +0900
 categories: [Linux]
 tags: [KakaoTalk, Install, Setting]
 thumbnail: linux-install-kakaotalk-flatpak-1.png
@@ -214,6 +214,31 @@ Z 드라이브에 우분투의 루트 디렉토리가 마운트 되어있기 때
 이유는 모르겠지만 홈 디렉토리에는 Downloads 폴더밖에 보이지 않는다. 그래서 업로드할 파일을 Downloads 디렉토리에 복사한 후 전송하는 중..  
 어차피 아래 과정을 거치면 그 경로가 업로드 창을 열었을 때 뜨는 기본 경로기 때문에 파일이 바로 떠서 편하긴 하다.  
 ![KakaoTalk File Upload](linux-install-kakaotalk-uploads.png)
+
+#### 업로드 (2023.08.09 추가)
+어제 익명의 어느 분께서 메일을 남겨주셨다.  
+그 내용은..  
+![flatpak override --user --filesystem=host com.usebottles.bottles](linux-install-kakaotalk-sendmail-override-filesystem-0.png)
+
+```terminal
+flatpak override --user --filesystem=host com.usebottles.bottles
+```
+
+위 명령어를 사용하면 모든 디렉토리에 접근이 가능하다고 한다.  
+
+{% imgbox %}
+![filesystem=host - before](linux-install-kakaotalk-sendmail-override-filesystem-1.png)
+![filesystem=host - after](linux-install-kakaotalk-sendmail-override-filesystem-2.png)
+{% endimgbox %}
+
+다만, 시스템의 모든 파일에 접근이 가능하기 때문에 주의가 필요할 듯.  
+권한을 제거하려면 `--filesystem`을 `--nofilesystem`으로 바꿔주기만 하면 된다.
+
+```terminal
+flatpak override --user --nofilesystem=host com.usebottles.bottles
+```
+
+도움을 주신 익명님 감사합니다!
 
 #### 다운로드
 카카오톡 내에서 파일을 다운로드할 때 파일을 홈 디렉토리의 Downloads 디렉토리에 다운로드되게 하려고 한다.
