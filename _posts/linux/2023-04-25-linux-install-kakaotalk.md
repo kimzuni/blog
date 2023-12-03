@@ -22,7 +22,7 @@ CentOS를 사용하던 시절부터 카카오톡을 설치해 보려고 `wine`, 
 ### Flatpak 설치
 먼저 [Flatpak](https://flatpak.org/setup/Ubuntu)을 설치해야 한다.
 
-- Ubuntu
+- Debian/Ubuntu
 ```terminal
 # sudo apt -y install flatpak gnome-software-plugin-flatpak
 ```
@@ -32,14 +32,14 @@ CentOS를 사용하던 시절부터 카카오톡을 설치해 보려고 `wine`, 
 # sudo yum -y install flatpak
 ```
 
-- RHEL/CentOS 8 & Fedora
+- RHEL/CentOS 8 & Fedora & Rocky Linux
 ```terminal
 # sudo dnf -y install flatpak
 ```
 
 그리고 Flatpak의 Repository 추가
 ```terminal
-# flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
+# flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ```
 {% imgbox %}
 ![apt install flatpak](linux-install-kakaotalk-flatpak-1.png)
