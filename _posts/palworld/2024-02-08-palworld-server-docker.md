@@ -6,6 +6,9 @@ categories: [Game, Palworld]
 tags: [Linux, Docker]
 ---
 
+> 서버를 만들기 귀찮다면 [모여봐요 팰들의 월드](/posts/palworld-pal-crossing-discord/)에서 플레이하세요!
+{: #post-notice style="text-align: center;"}
+
 [Docker로 Palworld 서버 열기 (ARM64) Ver. 2](/posts/palworld-server-docker-arm64-2/){: .post-infobox}
 ARM64에 올리는 방법은 위 글 참고.
 

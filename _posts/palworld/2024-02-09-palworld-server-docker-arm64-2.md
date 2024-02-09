@@ -6,10 +6,13 @@ categories: [Game, Palworld]
 tags: [GitHub, ARM64, Issue]
 ---
 
-[Palworld 서버를 24시간 열어둘 경우 생기는 문제](/posts/palworld-24-hours-server-bug/){: .post-infobox}
-어제 위 글을 작성하고 또 무슨 기능이 생겼나 구경하려고 들어갔는데.. ARM버전이 생겼다? 그것도 FEX-Emu를 사용하지 않는다??
+> 서버를 만들기 귀찮다면 [모여봐요 팰들의 월드](/posts/palworld-pal-crossing-discord/)에서 플레이하세요!
+{: #post-notice style="text-align: center;"}
 
-이게 되면 바로 갈아탈 마음에 바로 사용해봤다.
+[Palworld 서버를 24시간 열어둘 경우 생기는 문제](/posts/palworld-24-hours-server-bug/){: .post-infobox}
+어제 위 글을 작성하고 또 무슨 기능이 생겼나 구경하려고 들어갔는데.. ARM 버전이 생겼다? 그것도 FEX-Emu를 사용하지 않는다??
+
+이게 되면 바로 갈아탈 마음에 바로 사용해 봤다.
 
 ## 실행
 `docker-compose.yml` 파일 작성 후 `docker compose up -d` 실행

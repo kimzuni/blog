@@ -7,6 +7,9 @@ tags: [GitHub, Bug, Issue]
 thumbnail: palworld-24-hours-server-bug.jpg
 ---
 
+> 서버를 만들기 귀찮다면 [모여봐요 팰들의 월드](/posts/palworld-pal-crossing-discord/)에서 플레이하세요!
+{: #post-notice style="text-align: center;"}
+
 이제 서버를 도커로 올려놨으니 24시간 돌리기 위해 서버를 닫지 않고 잤더니  
 ![24 Hours Server Bug](palworld-24-hours-server-bug.jpg)  
 애들이 다 죽기 직전이네..
@@ -19,10 +22,10 @@ thumbnail: palworld-24-hours-server-bug.jpg
 
 ## 임시 대처 방법
 [도커 이미지 GitHub](https://github.com/thijsvanloef/palworld-server-docker)의 [Issues](https://github.com/thijsvanloef/palworld-server-docker/issues/32)에 해당 문제가 올라와 있다.  
-해당 페이지의 하단에 어느 한국인이 [파이썬 스크립트](https://github.com/thijsvanloef/palworld-server-docker/issues/32#issuecomment-1926103919)를 짜놓은 게 있는데, `rcon`을 통해 접속 중인 플레이어가 있는지 체크하고, 없다면 컨테이너 자체를 중지한 후 `tcpdump` 명령어로 서버 연결 포트를 탐지하여 연결 요청이 들어오면 다시 컨테이너가 돌아가게 만드는 코드다.
+해당 페이지의 하단에 어느 한국인이 [파이썬 스크립트](https://github.com/thijsvanloef/palworld-server-docker/issues/32#issuecomment-1926103919)를 짜놓은 게 있는데, `rcon`을 통해 접속 중인 플레이어가 있는지 체크하고, 없다면 컨테이너 자체를 중지한 후 `tcpdump` 명령어로 서버 연결 포트를 탐지하여 연결 요청이 들어오면 다시 컨테이너가 돌아가게 만드는 코드다.  
+코드는 컨테이너가 아닌 호스트에서 실행해야 한다.
 
-해당 코드를 조금 수정한 코드.  
-아래 코드를 컨테이너가 아닌 호스트에서 실행하면 된다.
+아래 코드는 조금 수정한 코드.
 ```python
 import subprocess
 import time
@@ -94,8 +97,8 @@ if __name__ == "__main__":
 ```
 
 코드를 수정한 이유는
-1. 위에서 말한 [itzg/rcon-cli](https://github.com/itzg/rcon-cli/)을 사용할 때 뜨는 문구 때문.
-2. `tcpdump` 명령어가 요청을 대기하지 않고 그냥 넘어가버리는 문제가 있었기 때문.
+1. [이전 글](/posts/palworld-server-docker-arm64/#dockerfile)에서 말한 [itzg/rcon-cli](https://github.com/itzg/rcon-cli/)을 사용할 때 뜨는 문구 때문에 check_players 함수는 항상 True를 리턴함.
+2. `tcpdump` 명령어가 요청을 대기하지 않고 그냥 넘어가버림.
 
 이 글을 쓰는 지금은 1번의 경우 `rcon`을 변경해서 상관없지만, 2번은 `sudo` 명령어 사용 시 패스워드 입력이 필요 없어서 발생한 문제다. 패스워드 입력을 위해 `echo {sudo_password} | ` 명령어를 사용하는데, 패스워드를 묻지 않기 때문에 표준 입력으로 넘긴 저 패스워드가 `tcpdump` 명령어가 받아서 그런 듯.
 

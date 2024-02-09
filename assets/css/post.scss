@@ -63,6 +63,10 @@
 	margin-bottom: var(--gap3);
 	padding: .5em;
 
+	p {
+		margin-top: 0 !important;
+	}
+
 	&:before, &:after {
 		content: "";
 		display: block;
