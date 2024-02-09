@@ -7,7 +7,7 @@ tags: [GitHub, Bug, issue]
 ---
 
 이제 서버를 도커로 올려놨으니 24시간 돌리기 위해 서버를 닫지 않고 잤더니  
-![24 Hours Server Bug](/images/palworld-24-hours-bug.jpg)  
+![24 Hours Server Bug](palworld-24-hours-server-bug.jpg)  
 애들이 다 죽기 직전이네..
 
 
