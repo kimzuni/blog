@@ -1,7 +1,7 @@
 ---
 title: Docker로 Palworld 서버 열기
-date: 2024-02-09 13:22:13 +0900
-last_modified_at: 2024-02-09 13:22:13 +0900
+date: 2024-02-08 13:22:13 +0900
+last_modified_at: 2024-02-08 13:22:13 +0900
 categories: [Game, Palworld]
 tags: [Linux, Docker]
 ---
@@ -76,7 +76,7 @@ docker logs -f palworld # 컨테이너 로그 확인
 ```
 *****STARTING SERVER*****
 ./PalServer.sh -port=8211 -queryport=27015 EpicApp=PalServer -useperfthreads -NoAsyncLoadingThread -UseMultithreadForDS
-time="2024-02-08T20:11:36+09:00" level=info msg="read crontab: /home/steam/server/crontab"
+time="2024-02-07T18:14:21+09:00" level=info msg="read crontab: /home/steam/server/crontab"
 ...
 Setting breakpad minidump AppID = 2394010
 [S_API FAIL] Tried to access Steam interface SteamUser021 before SteamAPI_Init succeeded.
