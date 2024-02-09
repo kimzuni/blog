@@ -22,7 +22,6 @@ docker pull thijsvanloef/palworld-server-docker
 ```
 
 ## 서버 실행 준비
-
 `docker-compose.yml` 파일 작성
 ```shell
 mkdir -p ~/docker/palworld

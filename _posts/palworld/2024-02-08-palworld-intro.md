@@ -24,3 +24,4 @@ thumbnail: https://cdn.akamai.steamstatic.com/steam/apps/1623730/capsule_616x353
 ## List of Posts
 1. Palworld 서버 열기~~는 [공식 사이트](https://tech.palworldgame.com/dedicated-server-guide)에서도 나와있고, 벌써 많은 글들이 올라와 있기 때문에 넘어감~~
 2. [Docker로 Palworld 서버 열기](/posts/palworld-server-docker/)
+3. [Docker로 Palworld 서버 열기 (ARM64)](/posts/palworld-server-docker-arm64/)
