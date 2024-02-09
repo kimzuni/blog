@@ -20,3 +20,7 @@ thumbnail: https://cdn.akamai.steamstatic.com/steam/apps/1623730/capsule_616x353
 
 그냥 게임만 즐기면 될 것을 서버 한번 열어보고 싶어서 거친 과정들을 기록해 보려고 한다.  
 공식적으로 지원하지 않는 ARM64 버전의 서버를 여는 법까지 적을 예정.
+
+## List of Posts
+1. Palworld 서버 열기~~는 [공식 사이트](https://tech.palworldgame.com/dedicated-server-guide)에서도 나와있고, 벌써 많은 글들이 올라와 있기 때문에 넘어감~~
+2. [Docker로 Palworld 서버 열기](/posts/palworld-server-docker/)
