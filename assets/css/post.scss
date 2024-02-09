@@ -109,6 +109,12 @@
 	} img {
 		max-height: 75vh;
 		cursor: pointer;
+
+		&.center {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
 	} .post-infobox {
 		--height: 5em;
 
