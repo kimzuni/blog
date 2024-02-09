@@ -1,10 +1,19 @@
 ---
 title: Docker로 Palworld 서버 열기
 date: 2024-02-08 13:22:13 +0900
-last_modified_at: 2024-02-08 13:22:13 +0900
+last_modified_at: 2024-02-09 21:23:49 +0900
 categories: [Game, Palworld]
 tags: [Linux, Docker]
 ---
+
+[Docker로 Palworld 서버 열기 (ARM64) Ver. 2](/posts/palworld-server-docker-arm64-2/){: .post-infobox}
+ARM64에 올리는 방법은 위 글 참고.
+
+<br/>
+
+---
+
+<br/>
 
 Palworld에서는 공식적으로 도커 이미지를 제공하지 않지만, 역시 누군가 만들어둔 [이미지](https://hub.docker.com/r/thijsvanloef/palworld-server-docker)([GitHub](https://github.com/thijsvanloef/palworld-server-docker))가 있어서 사용해 봤다.
 업데이트도 매우 빠르고 각종 기능도 계속 추가되고 있다.

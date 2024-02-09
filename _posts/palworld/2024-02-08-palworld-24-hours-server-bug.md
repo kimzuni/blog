@@ -3,7 +3,8 @@ title: Palworld 서버를 24시간 열어둘 경우 생기는 문제
 date: 2024-02-08 18:04:01 +0900
 last_modified_at: 2024-02-08 18:04:01 +0900
 categories: [Game, Palworld]
-tags: [GitHub, Bug, issue]
+tags: [GitHub, Bug, Issue]
+thumbnail: palworld-24-hours-server-bug.jpg
 ---
 
 이제 서버를 도커로 올려놨으니 24시간 돌리기 위해 서버를 닫지 않고 잤더니  
@@ -13,7 +14,7 @@ tags: [GitHub, Bug, issue]
 
 
 ## 원인
-이유를 알아보니 플레이어가 팰 근처인지 거점 근처인지 거기서부터 멀어질수록 얘들이 하는 행동이 느려진다고 한다.
+플레이어가 팰 근처인지 거점 근처인지 거기서부터 멀어질수록 얘들이 하는 행동이 느려진다고 한다.
 그래서 서버에 아무도 없으면 전혀 움직이지 않아서 생기는 문제라고..
 
 ## 임시 대처 방법

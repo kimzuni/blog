@@ -1,10 +1,19 @@
 ---
 title: Docker로 Palworld 서버 열기 (ARM64)
 date: 2024-02-08 15:30:46 +0900
-last_modified_at: 2024-02-08 15:30:46 +0900
+last_modified_at: 2024-02-09 21:25:01 +0900
 categories: [Game, Palworld]
 tags: [Linux, Docker, ARM64]
 ---
+
+[Docker로 Palworld 서버 열기 (ARM64) Ver. 2](/posts/palworld-server-docker-arm64-2/){: .post-infobox}
+위 방법을 사용하자.
+
+<br/>
+
+---
+
+<br/>
 
 [이전 글](/posts/palworld-server-docker/)에서 작성한 과정은 노트북에서 진행했고, 서버를 24시간으로 돌리기 위해 오라클 클라우드로 옮겼는데 문제가 발생했다. 사용한 이미지가 AMD 버전만 지원한다는 것을 몰랐다. 그래서 ARM 버전의 이미지가 있는지 찾아보던 중 이전 글에서 사용한 이미지를 [ARM 버전으로 Fork한 저장소](https://github.com/yumusb/palworld-server-docker-arm)를 찾았고, 바로 도전.
 
