@@ -6,8 +6,7 @@ categories: [Game, Palworld]
 thumbnail: https://cdn.akamai.steamstatic.com/steam/apps/1623730/capsule_616x353.jpg?t=1705662211
 ---
 
-![Steam - Palworld](https://cdn.akamai.steamstatic.com/steam/apps/1623730/capsule_616x353.jpg?t=1705662211){: .center}
-
+![Steam - Palworld](https://cdn.akamai.steamstatic.com/steam/apps/1623730/capsule_616x353.jpg?t=1705662211){: .center}  
 요즘 매우 핫한 게임인 [팰월드](https://store.steampowered.com/app/1623730/Palworld/?l=koreana),
 평소에 PC 게임은 1도 안 하던 내가 이건 되게 재밌어 보여서 처음으로 유료 게임을 구매해 봤다.
 오랜만의 게임이라 그런지 되게 재밌고, 어쩌다 보니 게임 플레이보다 서버 여는 것에 더 열심히 하는 듯...

@@ -66,7 +66,9 @@
 				{% if post.url == check_url %}
 					{% include cdn.html content=post.thumbnail %}
 					{% assign excerpt = post.excerpt | strip_html %}
-					{% assign replace_new = '><span class="thumbnail" style="background-image: url(' | append: insert | append: post.thumbnail | append: ')"></span><span class="infobox-text"><span class="infobox-title">' | append: post.title | append: '</span><span class="infobox-desc">' | append: excerpt | append: '</span><span class="infobox-date">' | append: post.last_modified_at | append: '</span></span><' %}
+					{% assign replace_new = "" %}
+					{% if post.thumbnail %}{% assign replace_new = '><span class="thumbnail" style="background-image: url(' | append: insert | append: post.thumbnail | append: ')"' %}{% endif %}
+					{% assign replace_new = replace_new | append: '></span><span class="infobox-text"><span class="infobox-title">' | append: post.title | append: '</span><span class="infobox-desc">' | append: excerpt | append: '</span><span class="infobox-date">' | append: post.last_modified_at | append: '</span></span><' %}
 					{% assign contentx_ = contentx | replace_first: replace, replace_new %}
 					{% break %}
 				{% endif %}

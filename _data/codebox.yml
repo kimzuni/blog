@@ -16,3 +16,7 @@ terminal: Terminal
 c: C
 python: Python
 ruby: Ruby
+
+yml: YAML
+yaml: YAML
+dockerfile: Dockerfile

@@ -656,3 +656,6 @@ networks:
 ```shell
 docker compose up -d --build
 ```
+
+이후부터는 `--build` 제거 후 사용.  
+다른 명령어는 [이전 글](/posts/palworld-server-docker/#그-외) 참고.
