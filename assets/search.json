@@ -1,7 +1,7 @@
 ---
 ---
 
-{% assign posts = site.posts | sort: "last_modified_at" | reverse %}
+{% include posts-sort.html posts=site.posts pin=false %}
 [{% for post in posts %}
 	{
 		"pin": "{{ post.pin }}",
@@ -9,7 +9,7 @@
 		"categories" : "{{ post.categories | join: ', ' }}",
 		"tags" : "{{ post.tags | join: ', ' }}",
 		"url" : "{{ site.baseurl }}{{ post.url }}",
-		"date" : "{% if post.last_modified_at %}{% assign date = post.last_modified_at %}{% else %}{% assign date = post.date %}{% endif %}{{ date | split: ' +' | first }}",
+		"date" : "{% assign date = post.last_modified_at | default: post.date %}{{ date | split: ' +' | first }}",
 		"thumbnail" : "{{ post.thumbnail }}",
 		"desc" : "{% capture desc %}{% include strip-html.html content=post.content %}{% endcapture %}{{ desc | strip }}"
 	}{% unless forloop.last %},{% endunless %}

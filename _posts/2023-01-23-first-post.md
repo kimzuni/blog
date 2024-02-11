@@ -1,7 +1,6 @@
 ---
 title: 드디어 시작하는 블로그
 date: 2023-01-24 15:32:00 +0900
-last_modified_at: 2023-01-24 15:32:00 +0900
 categories: ["No Category"]
 tags: ["첫 글"]
 ---

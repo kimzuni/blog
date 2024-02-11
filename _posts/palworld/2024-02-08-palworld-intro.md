@@ -1,7 +1,6 @@
 ---
 title: 팰월드(Palworld)
 date: 2024-02-08 11:09:24 +0900
-last_modified_at: 2024-02-08 11:09:24 +0900
 categories: [Game, Palworld]
 thumbnail: https://cdn.akamai.steamstatic.com/steam/apps/1623730/capsule_616x353.jpg?t=1705662211
 ---

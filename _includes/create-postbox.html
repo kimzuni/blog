@@ -2,8 +2,7 @@
 {% assign thumbnail = post_bak.thumbnail %}
 {% assign title = post_bak.title %}
 {% assign desc = post_bak.content %}
-{% assign date = post_bak.date %}
-{% assign lastmod = post_bak.last_modified_at %}
+{% assign date = post_bak.last_modified_at | default: post_bak.date %}
 {% assign pin = post_bak.pin %}
 {% assign url = post_bak.url %}
 {% assign categories = post_bak.categories %}
@@ -21,7 +20,7 @@
 <div class="postbox"{% if pin == true or include.pin == true %} pin><svg draw="star"></svg{% endif %}>
 	<div class="postbox-content">
 		{% if thumbnail and thumbnail != "" %}{% include cdn.html content=thumbnail %}<a href="{{ url }}" class="thumbnail" style="background-image: url({{ insert | append: thumbnail }})"></a>{% endif %}
-		<p class="postbox-title"><a href="{{ url }}">{{ title }}</a></p>{% if lastmod %}{% assign date = lastmod %}{% endif %}
+		<p class="postbox-title"><a href="{{ url }}">{{ title }}</a></p>
 		<div class="postbox-desc"><span class="postbox-date" title="{{ date | date_to_xmlschema }}">{{ date | split: " +" | first }}</span>{% include strip-html.html content=desc %}</div>
 	</div>
 	{% if categories.size != 0 and categories[0] != "No Category" %}<div class="postbox-info">

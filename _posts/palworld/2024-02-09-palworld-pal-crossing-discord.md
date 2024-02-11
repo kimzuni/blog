@@ -1,7 +1,6 @@
 ---
 title: "Palworld 24시간 서버: 모여봐요 팰들의 월드"
 date: 2024-02-09 21:59:51 +0900
-last_modified_at: 2024-02-09 21:59:51 +0900
 categories: [Game, Palworld]
 tags: [Discord, Server]
 ---

@@ -1,9 +1,5 @@
 {% assign post = unclude.post %}
-{% if post.last_modified_at %}
-	{% assign date = post.last_modified_at %}
-{% else %}
-	{% assign date = post.date %}
-{% endif %}
+{% assign date = post.last_modified_at | default: post.date %}
 
 <li class="simple-postbox"><a href="{{ post.url }}"{% if post.url == page.url %} select{% endif %}>
 	<span>{{ post.title }}</span>

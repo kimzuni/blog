@@ -1,7 +1,6 @@
 ---
 title: "Dovecot: SSL_accept() failed"
 date: 2023-06-01 23:03:16 +0900
-last_modified_at: 2023-06-01 23:03:16 +0900
 categories: [Raspberry Pi]
 tags: [Error, Dovecot, Gmail, SSL/TLS]
 thumbnail: dovecot-imap-ssl-error.png

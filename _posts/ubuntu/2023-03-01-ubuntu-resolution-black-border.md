@@ -1,7 +1,6 @@
 ---
 title: 해상도 설정 시 Black Border 문제
 date: 2023-03-01 16:25:00 +0900
-last_modified_at: 2023-03-01 16:25:00 +0900
 categories: [Linux, Ubuntu]
 tags: [Xorg, Error]
 thumbnail: ubuntu-resolution-black-border.svg

@@ -11,8 +11,8 @@ sidebar:
 {% assign pagename = page.url | split: "/" | slice: 2 | first %}
 {% assign displayname = page.autopages.display_name %}
 
-{% assign posts = site[pagesname_bak][displayname] | sort: "last_modified_at" | reverse %}
-{% include posts-sort.html posts=posts page=pagesname_bak displayname=displayname %}
+{% assign posts = site[pagesname_bak][displayname] %}
+{% include posts-sort.html posts=posts page=pagesname displayname=displayname %}
 {% assign page_info = site.data[pagesname_bak][displayname] %}
 {% unless page_info %}
 	{% assign parentCat = site[pagesname_bak][displayname][0].categories[0] %}
@@ -30,7 +30,7 @@ sidebar:
 	{% if paginator.total_posts < end %}{% assign end = paginator.total_posts %}{% endif %}
 	<span id="posts-range">{{ start }}~{{ end }}/{{ paginator.total_posts }}</span>
 	<ul class="postbox-container">{% for i in (start..end) %}{% assign idx = i | minus: 1 %}{% assign post = posts[idx] %}
-		{% assign pinned = false %}{% assign target = pagesname_bak | append: "_pin" %}
+		{% assign pinned = false %}{% assign target = pagesname | append: "_pin" %}
 		{% if post[target] == true or post[target] contains displayname %}{% assign pinned = true %}{% endif %}
 		<li class="postbox-wrapper">{% include create-postbox.html post=post pin=pinned %}</li>
 	{% endfor %}</ul>

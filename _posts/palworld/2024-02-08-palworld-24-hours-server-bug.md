@@ -1,7 +1,6 @@
 ---
 title: Palworld 서버를 24시간 열어둘 경우 생기는 문제
 date: 2024-02-08 18:04:01 +0900
-last_modified_at: 2024-02-08 18:04:01 +0900
 categories: [Game, Palworld]
 tags: [GitHub, Bug, Issue]
 thumbnail: palworld-24-hours-server-bug.jpg

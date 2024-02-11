@@ -5,8 +5,7 @@ sidebar:
 - search
 ---
 
-{% assign posts = site.posts | sort: "last_modified_at" | reverse %}
-{% include posts-sort.html posts=posts %}
+{% include posts-sort.html posts=site.posts page="home" %}
 <div id="home" page="{{ paginator.page }}">
 	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/home.css"/>
 	{% if posts.size != 0 %}

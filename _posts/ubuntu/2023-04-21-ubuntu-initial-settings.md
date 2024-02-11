@@ -1,7 +1,6 @@
 ---
 title: 우분투 초기 설정
 date: 2023-04-21 17:53:00 +0900
-last_modified_at: 2023-04-21 17:53:00 +0900
 categories: [Linux, Ubuntu]
 tags: [Setting, 한글]
 thumbnail: ubuntu-initial-settings-1.png

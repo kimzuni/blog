@@ -1,7 +1,6 @@
 ---
 title: 소프트웨어 자동 업데이트 기능 켜기/끄기
 date: 2023-02-16 14:18:00 +0900
-last_modified_at: 2023-02-16 14:18:00 +0900
 categories: [Linux, Ubuntu]
 tags: [Update, On/Off]
 thumbnail: ubuntu-automatically-updates-1.png
