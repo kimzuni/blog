@@ -1,7 +1,7 @@
 ---
 title: Docker로 Palworld 서버 열기
 date: 2024-02-08 13:22:13 +0900
-#last_modified_at: 2024-02-09 21:23:49 +0900
+last_modified_at: 2024-02-09 21:23:49 +0900
 categories: [Game, Palworld]
 tags: [Linux, Docker]
 ---
