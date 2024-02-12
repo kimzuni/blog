@@ -5,9 +5,6 @@ categories: [Game, Palworld]
 thumbnail: https://cdn.akamai.steamstatic.com/steam/apps/1623730/capsule_616x353.jpg?t=1705662211
 ---
 
-> 서버를 만들기 귀찮다면 [모여봐요 팰들의 월드](/posts/palworld-pal-crossing-discord/)에서 플레이하세요!
-{: #post-notice style="text-align: center;"}
-
 ![Steam - Palworld](https://cdn.akamai.steamstatic.com/steam/apps/1623730/capsule_616x353.jpg?t=1705662211){: .center}  
 요즘 매우 핫한 게임인 [팰월드](https://store.steampowered.com/app/1623730/Palworld/?l=koreana),
 평소에 PC 게임은 1도 안 하던 내가 이건 되게 재밌어 보여서 처음으로 유료 게임을 구매해 봤다.

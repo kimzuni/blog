@@ -6,9 +6,6 @@ categories: [Game, Palworld]
 tags: [GitHub, ARM64, Issue]
 ---
 
-> 서버를 만들기 귀찮다면 [모여봐요 팰들의 월드](/posts/palworld-pal-crossing-discord/)에서 플레이하세요!
-{: #post-notice style="text-align: center;"}
-
 [Palworld 서버를 24시간 열어둘 경우 생기는 문제](/posts/palworld-24-hours-server-bug/){: .post-infobox}
 어제 위 글을 작성하고 또 무슨 기능이 생겼나 구경하려고 들어갔는데.. ARM 버전이 생겼다? 그것도 FEX-Emu를 사용하지 않는다??
 
@@ -198,7 +195,7 @@ Engine crash handling finished; re-raising signal 6 for the default handler. Goo
 ```
 또는 18번 라인까지만 뜨면서 재시작이 안될 때도 있는데, 이건 그냥 멈춰버린 듯. 접속 시 타임아웃이 발생한다.
 
-## 처음 올린 Issue (해결)
+## 해결 (처음 올린 GitHub Issue)
 그냥 원래 쓰던 빌드한 이미지로 쓸까 하다가 그냥 Issues에 한 번 올려나 봤다. [#](https://github.com/thijsvanloef/palworld-server-docker/issues/330)  
 그리고 답글이 달렸고, 해결됐다!
 

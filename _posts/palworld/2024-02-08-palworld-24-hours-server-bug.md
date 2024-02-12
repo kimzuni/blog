@@ -6,10 +6,7 @@ tags: [GitHub, Bug, Issue]
 thumbnail: palworld-24-hours-server-bug.jpg
 ---
 
-> 서버를 만들기 귀찮다면 [모여봐요 팰들의 월드](/posts/palworld-pal-crossing-discord/)에서 플레이하세요!
-{: #post-notice style="text-align: center;"}
-
-이제 서버를 도커로 올려놨으니 24시간 돌리기 위해 서버를 닫지 않고 잤더니  
+어제 도커로 서버 올려놓고 닫지 않고 잤더니  
 ![24 Hours Server Bug](palworld-24-hours-server-bug.jpg)  
 애들이 다 죽기 직전이네..
 
