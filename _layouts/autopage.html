@@ -7,7 +7,7 @@ sidebar:
 ---
 
 {% assign pagesname_bak = page.url | split: "/" | slice: 1 | first %}
-{% if pagesname_bak == "categories" %}{% assign pagesname = "category" %}{% elsif pagesname_bak == "tags" %}{% assign pagesname = "tag" %}{% endif %}
+{% capture pagesname %}{% if pagesname_bak == "categories"%}category{% elsif pagesname_bak == "tags" %}tag{% endif %}{% endcapture%}
 {% assign pagename = page.url | split: "/" | slice: 2 | first %}
 {% assign displayname = page.autopages.display_name %}
 
@@ -19,7 +19,7 @@ sidebar:
 	{% assign page_info = site.data[pagesname_bak][parentCat] %}
 {% endunless %}
 <h1 id="page-title"{% if page_info %} class="no-border"{% endif %}>{% if pagesname_bak == "categories" and displayname == "No Category" %}<script type="text/javascript">
-	document.title = `{{ displayname }} | ${site_title}`;
+	document.title = `{{ displayname }} | {{ site.title }}`;
 	html.querySelector("#page-title").innerText = "{{ displayname }}";
 </script>{% else %}{{ pagesname | capitalize }} - {{ displayname }}{% endif %}</h1>
 {% if page_info %}<div id="page-info">{{ page_info }}</div>{% endif %}

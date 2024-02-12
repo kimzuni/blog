@@ -8,4 +8,4 @@
 	{% endfor %}
 	{% assign sorted_1 = sorted | slice: 0, idx %}{% assign sorted_2 = sorted | slice: idx, sorted.size %}
 	{% assign sorted = sorted_1 | push: post | concat: sorted_2 %}
-{% endunless %}{% assign sorted = sorted | push: post %}{% endfor %}
+{% else %}{% assign sorted = sorted | push: post %}{% endunless %}{% endfor %}
