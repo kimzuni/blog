@@ -3,7 +3,7 @@ title: Docker로 Palworld 서버 열기 (ARM64) Ver. 2
 date: 2024-02-09 20:33:23 +0900
 last_modified_at: 2024-02-09 21:34:54 +0900
 categories: [Game, Palworld]
-tags: [GitHub, ARM64, Issue]
+tags: [Linux, GitHub, ARM64, Issue]
 ---
 
 [Palworld 서버를 24시간 열어둘 경우 생기는 문제](/posts/palworld-24-hours-server-bug/){: .post-infobox}

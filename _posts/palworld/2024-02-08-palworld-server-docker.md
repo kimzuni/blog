@@ -3,7 +3,7 @@ title: Docker로 Palworld 서버 열기
 date: 2024-02-08 13:22:13 +0900
 last_modified_at: 2024-02-09 21:23:49 +0900
 categories: [Game, Palworld]
-tags: [Linux, Docker]
+tags: [Linux, Docker, AMD64]
 ---
 
 [Docker로 Palworld 서버 열기 (ARM64) Ver. 2](/posts/palworld-server-docker-arm64-2/){: .post-infobox}
