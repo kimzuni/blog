@@ -2,7 +2,7 @@ repo:
   name: comments
   id: R_kgDOHtCl5Q # https://giscus.app/
 category:
-  name: Announcements
+  name: Blog
   id: DIC_kwDOHtCl5c4CQZlo # https://giscus.app/
 mapping: pathname
 strict: true
