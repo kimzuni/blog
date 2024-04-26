@@ -3,7 +3,7 @@ const giscus_handleMessage = function(event) {
 	if (!(typeof event.data === "object" && event.data.giscus)) return;
 	if (!"discussion" in event.data.giscus) return;
 	const giscusData = event.data.giscus;
-
+/*
 	if ("error" in giscusData) {
 		console.error(giscusData.error);
 	} else if ("discussion" in giscusData) {
@@ -12,6 +12,7 @@ const giscus_handleMessage = function(event) {
 			message: `${giscusData.viewer}: ${giscusData.discussion}`
 		});
 	}
+*/
 }
 window.addEventListener("message", giscus_handleMessage);
 
