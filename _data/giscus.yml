@@ -1,9 +1,9 @@
 repo:
-  name: blog
-  id: R_kgDOI1pGbQ # https://giscus.app/
+  name: comments
+  id: R_kgDOHtCl5Q # https://giscus.app/
 category:
   name: Blog
-  id: DIC_kwDOI1pGbc4Ce9gu # https://giscus.app/
+  id: DIC_kwDOHtCl5c4CQZlo # https://giscus.app/
 mapping: pathname
 strict: true
 reactions: false
