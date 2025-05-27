@@ -7,6 +7,7 @@ import { URL, BASE, SITE } from "../constants";
 import nav from "./nav";
 import sidebar from "./sidebar";
 import socialLinks from "./socialLinks";
+import sitemap from "./sitemap";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -23,9 +24,7 @@ export default defineConfig({
 		},
 		lineNumbers: true,
 	},
-	sitemap: {
-		hostname: URL,
-	},
+	sitemap: sitemap,
 	rewrites: (id) => parserPath(id).rewrite,
 	srcExclude: [
 	],

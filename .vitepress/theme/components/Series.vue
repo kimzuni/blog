@@ -4,8 +4,10 @@ import { computed } from "vue";
 import { useData } from "vitepress";
 
 import Pagination from "./Pagination.vue";
+import { BASE } from "../../constants";
+import { toPathname } from "../../utils/toPathname";
 import { useSeries } from "../composables/useSeries";
-import { PAGINATION } from "../../constants";
+import { PAGINATION, LIMIT } from "../../constants";
 
 const { params } = useData();
 
@@ -14,7 +16,7 @@ const currPage = computed(() => Number(params.value?.page) || 1);
 const { filtered, paginated, hasPrevious, hasNext } = useSeries({
 	currPage: currPage,
 	perPage: PAGINATION.SERIES,
-	perSeries: PAGINATION.SERIES_PREVIEW,
+	perSeries: LIMIT.SERIES_POST,
 });
 
 </script>
@@ -39,10 +41,11 @@ const { filtered, paginated, hasPrevious, hasNext } = useSeries({
 	@apply border-t-1 border-(--vp-c-divider);
 	@apply flex items-center flex-nowrap gap-1;
 	@apply m-0 pl-8 pr-4 py-2.5;
-	@apply no-underline;
+	@apply no-underline text-(--vp-custom-block-details-text)! transition-[color];
+	@apply hover:opacity-100 hover:text-(--vp-c-brand-1)!;
 
 	.title {
-		@apply flex-1 break-all;
+		@apply flex-1;
 	}
 }
 
@@ -58,13 +61,16 @@ const { filtered, paginated, hasPrevious, hasNext } = useSeries({
 		:hasNext="hasNext"
 		:hasPrevious="hasPrevious"
 	>
-		<article class="seriesbox" v-for="{ name, items } of paginated">
-			<details class="details custom-block">
-				<summary class="details-summary">{{ name }} <span class="summary-info">{{ items.length }} post{{ items.length === 1 ? "" : "s" }}</span></summary>
+		<article class="seriesbox" v-for="{ name, total, items } of paginated">
+			<details class="details custom-block" open>
+				<summary class="details-summary">{{ name }} <span class="summary-info">{{ total }} post{{ total === 1 ? "" : "s" }}</span></summary>
 				<div class="details-content">
 					<a class="postbox" v-for="item in items" :href="item.post.url">
 						<span class="order">{{ item.order }}.</span>
 						<span class="title">{{ item.post.title }}</span>
+					</a>
+					<a class="postbox" :href="`${BASE}/series/${toPathname(name)}`" v-if="LIMIT.SERIES_POST < total">
+						<span class="title">View more</span>
 					</a>
 				</div>
 			</details>

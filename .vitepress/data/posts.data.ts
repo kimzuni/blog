@@ -70,7 +70,7 @@ interface PostDate {
 }
 
 interface Frontmatter {
-	pin?: boolean;
+	pin: boolean;
 	title: string;
 	description?: string;
 	thumbnail?: string;

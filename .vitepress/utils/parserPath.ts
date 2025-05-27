@@ -28,7 +28,7 @@ export const parserSeries =  (path: string) => {
 	const filename = paths.pop()?.split(SERIES.NUM_DELIMITER);
 	const idx = paths.findIndex(value => value.startsWith("_"));
 	const seriesName = paths.slice(0, idx !== -1 ? idx : Infinity).join("/") || UNSERIES;
-	const series: Series = { name: seriesName };
+	const series: Series = { name: seriesName.replace(/_/g, " ") };
 	if (filename && filename.length !== 1 && /^\d+$/.test(`${filename[0]}`)) {
 		series.order = Number(filename[0]) || undefined;
 		paths[1] = filename.slice(1).join(SERIES.NUM_DELIMITER)!;
@@ -60,7 +60,7 @@ export const parserPath = (path: string) => {
 		path = `${path}/index`;
 	}
 
-	const rewrite = `${prefix}${path}${suffix}`.toLowerCase();
+	const rewrite = `${prefix}${path}${suffix}`.toLowerCase().replace(/_| /g, "-");
 	const pathname = path === "index" ? rewrite : rewrite.slice(0, -(5 + suffix.length));
 
 	return {

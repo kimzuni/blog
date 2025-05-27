@@ -11,8 +11,13 @@ export const SITE = {
 export const PAGINATION = {
 	POST: 12,
 	SERIES: 5,
-	SERIES_PREVIEW: 5,
 	SERIES_POST: 15,
+} as const;
+
+export const LIMIT = {
+	HOME_PINNED: 5,
+	SERIES_POST: 5,
+	SIDEBAR_PINNED: 5,
 } as const;
 
 export const SERIES = {

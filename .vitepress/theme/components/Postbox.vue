@@ -7,6 +7,7 @@ import { Pen, Pin } from "lucide-vue-next";
 
 defineProps<{
 	post: Post;
+	alwaysCard?: boolean;
 }>();
 
 </script>
@@ -20,7 +21,7 @@ defineProps<{
 .postbox-wrapper {
 	@apply my-8;
 } .postbox {
-	@apply @container/postbox;
+	@apply @container/postbox h-full;
 	@apply flex flex-col gap-4 p-6;
 	@apply rounded-2xl shadow-(--vp-shadow-2);
 	@apply bg-(--vp-c-bg-soft) border-1 border-(--vp-c-bg-soft);
@@ -35,6 +36,7 @@ defineProps<{
 		@apply object-cover object-center;
 	}
 } .postbox-content {
+	@apply flex-1;
 	@apply flex flex-col justify-between gap-2;
 } .postbox-title {
 	@apply font-semibold;
@@ -52,22 +54,22 @@ defineProps<{
 	} &.pin {
 		@apply text-(--vp-c-brand-1);
 	}
-} @media (width >= 640px) {
-	.postbox {
-		@apply flex-row-reverse;
-	} .postbox-thumbnail {
-		@apply w-32 aspect-[1/1];
-	} .postbox-content {
-		@apply flex-1;
-	} .postbox-excerpt {
-		@apply flex-1;
+} .postbox-wrapper:not(.card) {
+	@media (width >= 640px) {
+		.postbox {
+			@apply flex-row-reverse;
+		} .postbox-thumbnail {
+			@apply w-32 aspect-[1/1];
+		} .postbox-excerpt-wrapper {
+			@apply flex-1;
+		}
 	}
 }
 
 </style>
 
 <template>
-	<article class="postbox-wrapper">
+	<article :class="`postbox-wrapper ${alwaysCard ? 'card' : ''}`.trim()">
 		<a :href="post.url" class="postbox">
 			<div class="postbox-thumbnail">
 				<Pen v-if="!post.createdAt" class="postbox-icon unpublished"/>
@@ -76,7 +78,9 @@ defineProps<{
 			</div>
 			<div class="postbox-content">
 				<h2 class="postbox-title">{{ post.title }}</h2>
-				<p v-if="post.excerpt" class="postbox-excerpt">{{ post.excerpt }}</p>
+				<div v-if="post.excerpt" class="postbox-excerpt-wrapper">
+					<p class="postbox-excerpt">{{ post.excerpt }}</p>
+				</div>
 				<div class="postbox-info">
 					<time>{{  post.updatedAt?.string ?? post.createdAt?.string ?? "Unpublished" }}</time>
 				</div>

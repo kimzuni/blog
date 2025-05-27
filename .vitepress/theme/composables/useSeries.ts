@@ -22,8 +22,10 @@ export const useSeries = ({
 		const names = [...new Set(posts.map(post => post.series.name).filter(Boolean))] as string[];
 		const series = names.map(name => {
 			const items = [...posts].filter(post => isInSeries(name, post.series.name));
+			const total = items.length;
 			return {
 				name,
+				total,
 				items: items.sort((a, b) => {
 					const ao = a.series?.order ?? 0;
 					const bo = b.series?.order ?? 0;

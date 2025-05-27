@@ -45,7 +45,7 @@ const { filtered, paginated, hasPrevious, hasNext } = usePosts({
 <template>
 	<Pagination
 		page="Posts"
-		:titleAfter="`: ${series}`"
+		:badge="series"
 		:description="SERIES.DESCRIPTION[series.toLowerCase()]"
 		:pathname="`series/${series.toLowerCase()}`"
 		:total="filtered.length"
