@@ -1,0 +1,38 @@
+input[type="search"]::-webkit-search-cancel-button {
+	@apply hidden;
+}
+
+
+
+@utility text-subtle {
+	@apply text-subtle-color;
+	@apply text-subtle-style;
+}
+
+@utility text-subtle-color {
+	@apply text-(--vp-c-text-2);
+}
+
+@utility text-subtle-style {
+	@apply text-sm font-medium;
+}
+
+
+
+@utility text-ellipsis-singleline {
+	@apply block overflow-hidden;
+	@apply whitespace-nowrap text-ellipsis;
+}
+
+@utility text-ellipsis-multiline {
+	@apply block overflow-hidden;
+	@apply break-all whitespace-normal;
+	@apply text-ellipsis line-clamp-(--ellipsis-line,2);
+}
+
+@utility text-ellipsis-multiline-* {
+	--ellipsis-line: --value(number);
+	@apply block overflow-hidden;
+	@apply break-all whitespace-normal;
+	@apply text-ellipsis line-clamp-(--ellipsis-line);
+}

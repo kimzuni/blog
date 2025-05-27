@@ -1,0 +1,5 @@
+---
+layout: pagination
+sidebar: false
+---
+
