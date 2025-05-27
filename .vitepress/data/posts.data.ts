@@ -3,7 +3,7 @@ import { createContentLoader } from "vitepress";
 import type { ContentData } from "vitepress";
 
 import { BASE, SITE } from "../constants";
-import { parserPath } from "../utils/parserPath";
+import { parserPath, type Series } from "../utils/parserPath";
 import { stripHTML } from "../utils/stripHTML";
 
 
@@ -80,7 +80,7 @@ interface Frontmatter {
 }
 
 export interface Post extends Omit<ContentData, "frontmatter">, Frontmatter {
-	series?: string;
+	series?: Series;
 }
 
 export declare const data: Post[];
@@ -107,18 +107,13 @@ export default createContentLoader([
 			thumbnail: getThumbnail(post.thumbnail, html) || noImage,
 			createdAt: toTimestamp(post.createdAt) || getGitUpdatedTime(filepath, true),
 			updatedAt: toTimestamp(post.updatedAt) || getGitUpdatedTime(filepath, false),
-			series: series?.name,
+			series: series,
 			categories: toArray(post.categories),
 			tags: toArray(post.categories),
 		};
 	}).sort((a, b) => {
-		if (a.pin && !b.pin) return -1;
-		if (!a.pin && b.pin) return 1;
-		const at = (a.updatedAt?.timestamp ?? a.createdAt?.timestamp);
-		const bt = (b.updatedAt?.timestamp ?? b.createdAt?.timestamp);
-		if (!at && !bt) return 0;
-		if (!at) return -1;
-		if (!bt) return 1;
+		const at = a.updatedAt?.timestamp ?? a.createdAt?.timestamp ?? Infinity;
+		const bt = b.updatedAt?.timestamp ?? b.createdAt?.timestamp ?? Infinity;
 		return bt - at;
 	}),
 });

@@ -1,6 +1,6 @@
 export const URL = "https://blog.kimzuni.com";
 
-export const BASE = "";
+export const BASE: string = "";
 
 export const SITE = {
 	LANG: "ko",
@@ -9,5 +9,11 @@ export const SITE = {
 } as const;
 
 export const PAGINATION = {
-	PER: 12,
+	POST: 12,
+	SERIES: 5,
+	SERIES_PREVIEW: 5,
 } as const;
+
+export const SERIES_NUM_DELIMITER = "-";
+
+export const UNSERIES = "Unseries";

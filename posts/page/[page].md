@@ -1,5 +1,6 @@
 ---
-layout: pagination
-sidebar: false
+layout: posts
+sidebar: true
+title: List of Posts
 ---
 

@@ -36,6 +36,7 @@ export default defineConfig({
 		nav: nav,
 		sidebar: sidebar,
 		socialLinks: socialLinks,
+		sidebarMenuLabel: "More posts",
 		search: {
 			provider: "local",
 			options: {

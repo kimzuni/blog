@@ -4,7 +4,8 @@ import type { Theme } from "vitepress";
 import DefaultTheme from "vitepress/theme";
 
 import "./styles/index.css";
-import Pagination from "./components/Pagination.vue";
+import Posts from "./components/Posts.vue";
+import Series from "./components/Series.vue";
 import PostInfo from "./components/PostInfo.vue";
 
 export default {
@@ -16,6 +17,7 @@ export default {
 		});
 	},
 	enhanceApp({ app, router, siteData }) {
-		app.component("pagination", Pagination);
+		app.component("posts", Posts);
+		app.component("series", Series);
 	},
 } satisfies Theme;
