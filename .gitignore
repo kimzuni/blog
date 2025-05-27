@@ -1,9 +1,4 @@
-_drafts
-_site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-.bundle
-vendor
-Gemfile.lock
-images
+node_modules
+
+.vitepress/cache
+.vitepress/dist

@@ -1,6 +1,0 @@
-{% assign limit = 5 %}{% if site.posts.size != 0 %}<div id="recent-posts" class="module">
-	<p class="module-title">Recent Posts</p>
-	<ul>{% include posts-sort.html posts=site.posts pin=false %}{% for post in posts %}
-		{% include create-simple-postbox.html post=post %}
-	{% if forloop.index == limit %}{% break %}{% endif %}{% endfor %}</ul>
-</div>{% endif %}
