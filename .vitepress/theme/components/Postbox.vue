@@ -1,24 +1,13 @@
 <script setup lang="ts">
 
-import { computed } from "vue";
-import { useData } from "vitepress";
+import type { Post } from "../../data/posts.data";
+import { Pen, Pin } from "lucide-vue-next";
 
-import Postbox from "./Postbox.vue";
-import Pagination from "./Pagination.vue";
-import { usePosts } from "../composables/usePosts";
-import { PAGINATION } from "../../constants";
 
-const { params } = useData();
 
-const currPage = computed(() => Number(params.value?.page) || 1);
-
-const { filtered, paginated, hasPrevious, hasNext } = usePosts({
-	currPage: currPage,
-	perPage: PAGINATION.POST,
-});
-
-const unpublished = computed(() => [...paginated.value].filter(x => !x.createdAt));
-const published = computed(() => [...paginated.value].filter(x => x.createdAt).sort((a, b) => a.pin && !b.pin ? -1 : !a.pin && b.pin ? 1 : 0));
+defineProps<{
+	post: Post;
+}>();
 
 </script>
 
@@ -56,7 +45,13 @@ const published = computed(() => [...paginated.value].filter(x => x.createdAt).s
 	@apply text-ellipsis-multiline-3;
 } .postbox-icon {
 	@apply absolute top-2 right-2;
-	@apply p-0.5 text-(--vp-c-brand-1);
+	@apply p-0.75;
+
+	&.unpublished {
+		@apply text-(--vp-c-text-2);
+	} &.pin {
+		@apply text-(--vp-c-brand-1);
+	}
 } @media (width >= 640px) {
 	.postbox {
 		@apply flex-row-reverse;
@@ -72,18 +67,20 @@ const published = computed(() => [...paginated.value].filter(x => x.createdAt).s
 </style>
 
 <template>
-	<Pagination
-		page="Posts"
-		pathname="posts"
-		:total="filtered.length"
-		:perPage="PAGINATION.POST"
-		:currPage="currPage"
-		:hasNext="hasNext"
-		:hasPrevious="hasPrevious"
-	>
-		<Postbox
-		 	v-for="post in [...unpublished, ...published]"
-			:post="post"
-		/>
-	</Pagination>
+	<article class="postbox-wrapper">
+		<a :href="post.url" class="postbox">
+			<div class="postbox-thumbnail">
+				<Pen v-if="!post.createdAt" class="postbox-icon unpublished"/>
+				<Pin v-if="post.pin" class="postbox-icon pin"/>
+				<img :src="post.thumbnail"/>
+			</div>
+			<div class="postbox-content">
+				<h2 class="postbox-title">{{ post.title }}</h2>
+				<p v-if="post.excerpt" class="postbox-excerpt">{{ post.excerpt }}</p>
+				<div class="postbox-info">
+					<time>{{  post.updatedAt?.string ?? post.createdAt?.string ?? "Unpublished" }}</time>
+				</div>
+			</div>
+		</a>
+	</article>
 </template>

@@ -9,6 +9,13 @@ const { frontmatter } = useData();
 
 const props = defineProps({
 	page: String,
+	titleBefore: String,
+	titleAfter: String,
+	description: String,
+	pathname: {
+		type: String,
+		default: "",
+	},
 	total: {
 		type: Number,
 		default: 1,
@@ -25,7 +32,6 @@ const props = defineProps({
 	hasPrevious: Boolean,
 });
 
-const pageLower = computed(() => props.page?.toLowerCase());
 const start = computed(() => props.perPage === 0 ? 1 : props.perPage * props.currPage - props.perPage + 1);
 const end = computed(() => props.perPage === 0 ? props.total : Math.min(start.value + props.perPage - 1, props.total));
 
@@ -45,6 +51,9 @@ const end = computed(() => props.perPage === 0 ? props.total : Math.min(start.va
 	@apply my-12;
 	@apply text-[28px] md:text-[32px];
 	@apply text-center font-semibold;
+} .page-description {
+	@apply my-8 px-2;
+	@apply text-center;
 } .page-info {
 	@apply px-2;
 	@apply text-subtle text-right;
@@ -67,21 +76,22 @@ const end = computed(() => props.perPage === 0 ? props.total : Math.min(start.va
 
 <template>
 	<div class="page-content">
-		<h1 class="page-title">{{ frontmatter.title ?? `List of ${page}`}}</h1>
-		<p class="page-info">{{ `${start}~${end}` }} of {{ total }} {{ pageLower }}</p>
+		<h1 class="page-title">{{ titleBefore }}{{ frontmatter.title ?? `List of ${page}`}}{{ titleAfter }}</h1>
+		<p v-if="description" class="page-description">{{ description }}</p>
+		<p class="page-info">{{ `${start}~${end}` }} of {{ total }} {{ page?.toLowerCase() }}</p>
 		<main>
 			<slot></slot>
 		</main>
-		<div class="pagination-controls">
+		<div v-if="hasNext || hasPrevious" class="pagination-controls">
 			<a
 				:aria-disabled="!hasPrevious || undefined"
 				:tabindex="hasPrevious ? undefined : -1"
-				:href="!hasPrevious ? undefined : currPage === 2 ? `${BASE}/${pageLower}/` : `${BASE}/${pageLower}/page/${currPage - 1}`"
+				:href="!hasPrevious ? undefined : currPage === 2 ? `${BASE}/${pathname}/` : `${BASE}/${pathname}/page/${currPage - 1}/`"
 			>&lt; PREV</a>
 			<a
 				:aria-disabled="!hasNext || undefined"
 				:tabindex="hasNext ? undefined : -1"
-				:href="!hasNext ? undefined : `${BASE}/${pageLower}/page/${currPage + 1}`"
+				:href="!hasNext ? undefined : `${BASE}/${pathname}/page/${currPage + 1}/`"
 			>NEXT &gt;</a>
 		</div>
 	</div>

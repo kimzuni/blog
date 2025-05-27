@@ -4,6 +4,7 @@ import type { ContentData } from "vitepress";
 
 import { BASE, SITE } from "../constants";
 import { parserPath, type Series } from "../utils/parserPath";
+import { parserHeading } from "../utils/parserHeading";
 import { stripHTML } from "../utils/stripHTML";
 
 
@@ -80,7 +81,7 @@ interface Frontmatter {
 }
 
 export interface Post extends Omit<ContentData, "frontmatter">, Frontmatter {
-	series?: Series;
+	series: Series;
 }
 
 export declare const data: Post[];
@@ -95,7 +96,7 @@ export default createContentLoader([
 	transform: (raw): Post[] => raw.map(({ url, src, html, excerpt, frontmatter: post }) => {
 		const filepath = `${url.endsWith("/") ? `${url}index` : url}.md`.slice(1);
 		const { pathname, series } = parserPath(url);
-		const heading = stripHTML(html?.slice(html.indexOf("<h1 "), html.indexOf("</h1>")+5));
+		const heading = parserHeading(html);
 		excerpt = stripHTML(excerpt);
 
 		return {
@@ -107,7 +108,7 @@ export default createContentLoader([
 			thumbnail: getThumbnail(post.thumbnail, html) || noImage,
 			createdAt: toTimestamp(post.createdAt) || getGitUpdatedTime(filepath, true),
 			updatedAt: toTimestamp(post.updatedAt) || getGitUpdatedTime(filepath, false),
-			series: series,
+			series: series!,
 			categories: toArray(post.categories),
 			tags: toArray(post.categories),
 		};

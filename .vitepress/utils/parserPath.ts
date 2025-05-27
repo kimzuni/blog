@@ -1,4 +1,4 @@
-import { BASE, SERIES_NUM_DELIMITER } from "../constants";
+import { BASE, UNSERIES, SERIES } from "../constants";
 
 
 
@@ -25,22 +25,20 @@ export const parserSeries =  (path: string) => {
 	path = path.slice(6);
 
 	const paths = path.split("/");
-	const filename = paths.pop()?.split(SERIES_NUM_DELIMITER);
+	const filename = paths.pop()?.split(SERIES.NUM_DELIMITER);
 	const idx = paths.findIndex(value => value.startsWith("_"));
-	const seriesName = paths.slice(0, idx !== -1 ? idx : Infinity).join("/") || undefined;
-	if (!seriesName) return undefined;
-
+	const seriesName = paths.slice(0, idx !== -1 ? idx : Infinity).join("/") || UNSERIES;
 	const series: Series = { name: seriesName };
 	if (filename && filename.length !== 1 && /^\d+$/.test(`${filename[0]}`)) {
 		series.order = Number(filename[0]) || undefined;
-		paths[1] = filename.slice(1).join(SERIES_NUM_DELIMITER)!;
+		paths[1] = filename.slice(1).join(SERIES.NUM_DELIMITER)!;
 	}
 	return series;
 };
 
 export const parserPath = (path: string) => {
 	const prefix = BASE && path.startsWith(BASE) ? `${BASE}/` : path.startsWith("/") ? "/" : "";
-	const suffix = path.endsWith(".md") ? ".md" : path.endsWith(".html") ? ".html" : path.endsWith("/") ? "/" : "";
+	const suffix = path.endsWith(".md") ? ".md" : path.endsWith(".html") ? ".html" : "";
 	let series: Series | undefined = undefined;
 	path = stripPath(path);
 
@@ -51,7 +49,7 @@ export const parserPath = (path: string) => {
 		const paths = path.split("/");
 		paths.splice(1, paths.length - 2);
 		if (series?.order) {
-			paths[1] = paths[1]!.split(`${series.order}${SERIES_NUM_DELIMITER}`).slice(1).join(`${series.order}${SERIES_NUM_DELIMITER}`);
+			paths[1] = paths[1]!.split(`${series.order}${SERIES.NUM_DELIMITER}`).slice(1).join(`${series.order}${SERIES.NUM_DELIMITER}`);
 		}
 		path = paths.join("/");
 	}
@@ -62,8 +60,8 @@ export const parserPath = (path: string) => {
 		path = `${path}/index`;
 	}
 
-	const rewrite = `${prefix}${path}${suffix === "/" ? "" : suffix}`;
-	const pathname = path === "index" ? rewrite : rewrite.slice(0, -5);
+	const rewrite = `${prefix}${path}${suffix}`.toLowerCase();
+	const pathname = path === "index" ? rewrite : rewrite.slice(0, -(5 + suffix.length));
 
 	return {
 		rewrite,

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import { watchEffect } from "vue";
+import { computed } from "vue";
 import { useData } from "vitepress";
 
 import Pagination from "./Pagination.vue";
@@ -9,13 +9,12 @@ import { PAGINATION } from "../../constants";
 
 const { params } = useData();
 
-const { filtered, paginated, hasPrevious, hasNext, currPage, setPage } = useSeries({
-	perPage: PAGINATION.SERIES_PREVIEW,
-	perSeries: PAGINATION.SERIES,
-});
+const currPage = computed(() => Number(params.value?.page) || 1);
 
-watchEffect(() => {
-	setPage(Number(params.value?.page));
+const { filtered, paginated, hasPrevious, hasNext } = useSeries({
+	currPage: currPage,
+	perPage: PAGINATION.SERIES,
+	perSeries: PAGINATION.SERIES_PREVIEW,
 });
 
 </script>
@@ -29,19 +28,21 @@ watchEffect(() => {
 .seriesbox {
 	@apply my-8;
 } .details {
-	@apply shadow-lg;
-	@apply border-1 border-(--vp-c-border);
+	@apply shadow-lg bg-(--vp-c-bg-soft);
+	@apply border-1 border-(--vp-c-divider);
 	@apply px-0 pb-0;
 } .details-summary {
 	@apply px-4 pb-2;
 } .summary-info {
 	@apply px-2 text-subtle;
 } .postbox {
-	@apply border-t-1 border-(--vp-c-border);
-	@apply m-0 px-8 py-2.5;
+	@apply border-t-1 border-(--vp-c-divider);
+	@apply flex items-center flex-nowrap gap-1;
+	@apply m-0 pl-8 pr-4 py-2.5;
+	@apply no-underline;
 
-	a {
-		@apply no-underline;
+	.title {
+		@apply flex-1 break-all;
 	}
 }
 
@@ -50,6 +51,7 @@ watchEffect(() => {
 <template>
 	<Pagination
 		page="Series"
+		pathname="series"
 		:total="filtered.length"
 		:perPage="PAGINATION.POST"
 		:currPage="currPage"
@@ -60,9 +62,10 @@ watchEffect(() => {
 			<details class="details custom-block">
 				<summary class="details-summary">{{ name }} <span class="summary-info">{{ items.length }} post{{ items.length === 1 ? "" : "s" }}</span></summary>
 				<div class="details-content">
-					<p class="postbox" v-for="item in items">
-						<a :href="item.post.url">{{ item.order }}. {{ item.post.title }}</a>
-					</p>
+					<a class="postbox" v-for="item in items" :href="item.post.url">
+						<span class="order">{{ item.order }}.</span>
+						<span class="title">{{ item.post.title }}</span>
+					</a>
 				</div>
 			</details>
 		</article>
