@@ -6,17 +6,17 @@ import { useData } from "vitepress";
 import Postbox from "./Postbox.vue";
 import Pagination from "./Pagination.vue";
 import { usePosts } from "../composables/usePosts";
-import { SERIES, PAGINATION } from "../../constants";
+import { PAGINATION } from "../../constants";
 
 const { params } = useData();
 
-const seriesName = computed(() => params.value?.series as string);
+const tagName = computed(() => params.value?.tag as string);
 const currPage = computed(() => Number(params.value?.page) || 1);
 
 const { filtered, paginated, hasPrevious, hasNext } = usePosts({
-	seriesName: seriesName,
+	tagName: tagName,
 	currPage: currPage,
-	perPage: PAGINATION.SERIES_POST,
+	perPage: PAGINATION.TAG_POST,
 });
 
 </script>
@@ -45,11 +45,10 @@ const { filtered, paginated, hasPrevious, hasNext } = usePosts({
 <template>
 	<Pagination
 		page="Posts"
-		:badge="seriesName"
-		:description="SERIES.DESCRIPTION[seriesName.toLowerCase()]"
-		:pathname="`series/${seriesName.toLowerCase()}`"
+		:badge="tagName"
+		:pathname="`tags/${tagName.toLowerCase()}`"
 		:total="filtered.length"
-		:perPage="PAGINATION.SERIES_POST"
+		:perPage="PAGINATION.TAG_POST"
 		:currPage="currPage"
 		:hasNext="hasNext"
 		:hasPrevious="hasPrevious"

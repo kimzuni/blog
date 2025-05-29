@@ -2,7 +2,7 @@ import { execSync } from "child_process";
 import { createContentLoader } from "vitepress";
 import type { ContentData } from "vitepress";
 
-import { BASE, SITE } from "../constants";
+import { BASE, SITE, UNSERIES } from "../constants";
 import { parserPath, type Series } from "../utils/parserPath";
 import { parserHeading } from "../utils/parserHeading";
 import { stripHTML } from "../utils/stripHTML";
@@ -76,7 +76,6 @@ interface Frontmatter {
 	thumbnail?: string;
 	createdAt: PostDate | null;
 	updatedAt: PostDate | null;
-	categories?: string | string[];
 	tags?: string | string[];
 }
 
@@ -108,9 +107,8 @@ export default createContentLoader([
 			thumbnail: getThumbnail(post.thumbnail, html) || noImage,
 			createdAt: toTimestamp(post.createdAt) || getGitUpdatedTime(filepath, true),
 			updatedAt: toTimestamp(post.updatedAt) || getGitUpdatedTime(filepath, false),
-			series: series!,
-			categories: toArray(post.categories),
-			tags: toArray(post.categories),
+			series: post.series !== false ? series! : { name: UNSERIES },
+			tags: toArray(post.tags)?.map(x => x.replace(/ /g, "_")),
 		};
 	}).sort((a, b) => {
 		const at = a.updatedAt?.timestamp ?? a.createdAt?.timestamp ?? Infinity;

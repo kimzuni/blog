@@ -17,6 +17,11 @@ const items: DefaultTheme.NavItem[] = [
 		link: "/series/",
 		activeMatch: "/series/",
 	},
+	{
+		text: "Tags",
+		link: "/tags/",
+		activeMatch: "/tags/",
+	},
 ];
 
 export default items;

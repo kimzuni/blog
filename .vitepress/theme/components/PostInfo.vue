@@ -3,11 +3,20 @@
 import { computed } from "vue";
 import { useData } from "vitepress";
 
-import { BASE } from "../../constants";
-import { data as posts } from "../../data/posts.data";
+import { BASE, UNSERIES } from "../../constants";
+import { data as postsData } from "../../data/posts.data";
+import { useSeries } from "../composables/useSeries";
+import Seriesbox from "../components/Seriesbox.vue";
 
 const { page } = useData();
-const post = computed(() => posts.find(x => `${x.url}index.md` === `${BASE}/${page.value.relativePath}`));
+
+const post = computed(() => postsData.find(x => `${x.url}index.md` === `${BASE}/${page.value.relativePath}`)!);
+const seriesName = computed(() => post.value.series.name)
+
+const { paginated } = useSeries({
+	seriesName: seriesName,
+	currPage: computed(() => 1),
+});
 
 </script>
 
@@ -31,14 +40,20 @@ const post = computed(() => posts.find(x => `${x.url}index.md` === `${BASE}/${pa
 
 <template>
 	<div class="post-info">
-		<h1 class="post-title">{{ post?.title }}</h1>
+		<h1 class="post-title">{{ post.title }}</h1>
 		<div class="post-date">
-			<p><span v-if="post?.updatedAt">작성: </span>
-				<time :datetime="new Date(post?.createdAt?.timestamp || 0).toISOString()">{{ post?.createdAt?.string ?? "Unpublished" }}</time>
+			<p><span v-if="post.updatedAt">작성: </span>
+				<time :datetime="new Date(post.createdAt?.timestamp || 0).toISOString()">{{ post.createdAt?.string ?? "Unpublished" }}</time>
 			</p>
-			<p v-if="post?.updatedAt"><span>수정: </span>
-				<time :datetime="new Date(post?.updatedAt?.timestamp || 0).toISOString()">{{ post?.updatedAt?.string }}</time>
+			<p v-if="post.updatedAt"><span>수정: </span>
+				<time :datetime="new Date(post.updatedAt?.timestamp || 0).toISOString()">{{ post.updatedAt?.string }}</time>
 			</p>
 		</div>
+	</div>
+	<div v-if="seriesName !== UNSERIES">
+		<Seriesbox
+			:series="series"
+			v-for="series in paginated"
+		/>
 	</div>
 </template>

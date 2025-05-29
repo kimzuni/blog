@@ -1,7 +1,6 @@
 import type { DefaultTheme } from "vitepress";
 
 import { UNSERIES, LIMIT } from "../constants";
-import { parserFrontmatter } from "../utils/parserFrontmatter";
 import { parserHeading } from "../utils/parserHeading";
 import { parserPath } from "../utils/parserPath";
 import { toPathname } from "../utils/toPathname";
@@ -15,10 +14,10 @@ const items: DefaultTheme.Sidebar = [
 		collapsed: false,
 		text: "Pinned",
 		items: posts.map(post => {
-			const { frontmatter, content } = parserFrontmatter(post) ?? {};
-			if (frontmatter?.pin !== "true") return undefined;
+			const { path, frontmatter, content } = post;
+			if (frontmatter.pin !== true) return undefined;
 			const title = frontmatter.title ?? parserHeading(content, "md");
-			const { pathname } = parserPath(post);
+			const { pathname } = parserPath(path);
 			return {
 				text: title,
 				link: `/${pathname}`,

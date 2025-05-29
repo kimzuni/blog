@@ -5,9 +5,12 @@ import { parserPath } from "../utils/parserPath";
 import { BASE, SITE } from "../constants";
 
 import transformPageData from "./transformPageData";
+import head from "./head";
 import nav from "./nav";
 import sidebar from "./sidebar";
 import socialLinks from "./socialLinks";
+import footer from "./footer";
+import notFound from "./notFound";
 import sitemap from "./sitemap";
 
 // https://vitepress.dev/reference/site-config
@@ -17,6 +20,7 @@ export default defineConfig({
 	description: SITE.DESCRIPTION,
 	srcDir: "./",
 	base: BASE,
+	head: head,
 	cleanUrls: true,
 	lastUpdated: false,
 	markdown: {
@@ -29,6 +33,7 @@ export default defineConfig({
 	sitemap: sitemap,
 	rewrites: (id) => parserPath(id).rewrite,
 	srcExclude: [
+		"drafts/",
 	],
 	themeConfig: {
 		externalLinkIcon: true,
@@ -37,22 +42,14 @@ export default defineConfig({
 		nav: nav,
 		sidebar: sidebar,
 		socialLinks: socialLinks,
+		notFound: notFound,
+		footer: footer,
 		sidebarMenuLabel: "More posts",
 		search: {
 			provider: "local",
 			options: {
 				detailedView: true,
 			},
-		},
-		notFound: {
-			code: "404",
-			title: "PAGE NOT FOUND",
-			quote: "길을 잃으셨나요? 집으로 안내해 드릴게요!",
-			linkText: "저를 따라오세요!",
-		},
-		footer: {
-			message: undefined,
-			copyright: `&copy; ${new Date().getFullYear()} zuni.kim`,
 		},
 		docFooter: {
 			prev: "Previous post",

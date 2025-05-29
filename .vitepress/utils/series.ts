@@ -2,8 +2,8 @@ import { UNSERIES } from "../constants";
 
 
 
-export const isInSeries = (series: string = UNSERIES, postSeries: string = UNSERIES) => {
+export const checkSeries = (series: string = UNSERIES, postSeries: string = UNSERIES, recursive: boolean = false) => {
 	series = series.toLowerCase();
 	postSeries = postSeries.toLowerCase();
-	return series === postSeries || postSeries.startsWith(`${series}/`) ? true : false;
+	return series === postSeries || (recursive && postSeries.startsWith(`${series}/`) ? true : false);
 };

@@ -16,6 +16,8 @@ export const PAGINATION = {
 	POST: 12,
 	SERIES: 5,
 	SERIES_POST: 15,
+	TAG: 35,
+	TAG_POST: 15,
 } as const;
 
 export const LIMIT = {
@@ -35,7 +37,6 @@ export const UNSERIES = "Unseries";
 
 
 export const GISCUS: Omit<GiscusProps, "theme"> = {
-	lang: "en",
 	repo: "jh1950/giscus-test",
 	repoId: "R_kgDOOxdddA",
 	category: "Announcements",

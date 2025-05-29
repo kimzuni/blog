@@ -1,50 +1,39 @@
 import { type ComputedRef, computed } from "vue";
 
 import { data, type Post } from "../../data/posts.data";
-import { checkSeries } from "../../utils/series";
 
 
 
-export interface UseSeriesFiltered {
+export interface UseTagsFiltered {
 	name: string;
 	total: number;
-	items: Array<{
-		order: number;
-		post: Post,
-	}>;
+	posts: Post[];
 }
 
 export interface UseSeriesProps {
 	posts?: Post[];
-	seriesName?: ComputedRef<string>;
-	perSeries?: number;
+	tagNames?: ComputedRef<string>;
+	perTag?: number;
 	perPage?: number;
 	currPage: ComputedRef<number>;
 }
 
-export const useSeries = ({
+export const useTags = ({
 	posts=data,
-	seriesName,
-	perSeries=0,
+	tagNames,
+	perTag=0,
 	perPage=0,
 	currPage,
 }: UseSeriesProps) => {
-	const filtered = computed<UseSeriesFiltered[]>(() => {
-		const names = [...new Set(posts.map(post => post.series.name).filter(name => !seriesName || checkSeries(seriesName.value, name)))];
+	const filtered = computed<UseTagsFiltered[]>(() => {
+		const names = [...new Set(posts.map(post => post.tags).flat().filter(name => name && (!tagNames || tagNames.value.includes(name))))].filter(x => x !== undefined);
 		return names.map(name => {
-			const items = posts.filter(post => checkSeries(name, post.series.name));
+			const items = posts.filter(post => post.tags?.includes(name));
 			const total = items.length;
 			return {
 				name,
 				total,
-				items: items.sort((a, b) => {
-					const ao = a.series?.order ?? 0;
-					const bo = b.series?.order ?? 0;
-					return bo - ao;
-				}).map((post, idx) => ({
-					order: items.length - idx,
-					post: post,
-				})).slice(0, perSeries ? perSeries : Infinity),
+				posts: items.slice(0, perTag ? perTag : Infinity),
 			};
 		});
 	});

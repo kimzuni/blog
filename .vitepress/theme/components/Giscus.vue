@@ -28,6 +28,8 @@ onBeforeUnmount(() => {
 
 </script>
 
+
+
 <style scoped>
 
 @reference "../styles/index.css";
@@ -49,8 +51,6 @@ onBeforeUnmount(() => {
 }
 
 </style>
-
-
 
 <template>
 	<div class="comment-container">

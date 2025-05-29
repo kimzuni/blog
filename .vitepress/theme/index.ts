@@ -7,6 +7,8 @@ import "./styles/index.css";
 import Posts from "./components/Posts.vue";
 import Series from "./components/Series.vue";
 import SeriesPosts from "./components/SeriesPosts.vue";
+import Tags from "./components/Tags.vue";
+import TagPosts from "./components/TagPosts.vue";
 import HomePinned from "./components/HomePinned.vue";
 import PostInfo from "./components/PostInfo.vue";
 import Giscus from "./components/Giscus.vue";
@@ -25,5 +27,7 @@ export default {
 		app.component("posts", Posts);
 		app.component("series", Series);
 		app.component("series_posts", SeriesPosts);
+		app.component("tags", Tags);
+		app.component("tag_posts", TagPosts);
 	},
 } satisfies Theme;

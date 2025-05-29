@@ -3,8 +3,6 @@
 import type { Post } from "../../data/posts.data";
 import { Pen, Pin } from "lucide-vue-next";
 
-
-
 defineProps<{
 	post: Post;
 	alwaysCard?: boolean;

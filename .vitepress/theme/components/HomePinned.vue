@@ -19,6 +19,8 @@ const { paginated } = usePosts({
 
 </script>
 
+
+
 <style scoped>
 
 @reference "../styles/index.css";
@@ -30,8 +32,6 @@ const { paginated } = usePosts({
 }
 
 </style>
-
-
 
 <template>
 	<Page class="page-content-wrapper" v-if="frontmatter.show_pinned_posts === true && paginated.length" :data-mt="frontmatter.features ? '' : undefined">
