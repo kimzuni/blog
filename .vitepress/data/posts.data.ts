@@ -97,7 +97,7 @@ export default createContentLoader([
 		const filepath = `${url.endsWith("/") ? `${url}index` : url}.md`.slice(1);
 		const { pathname, series } = parserPath(url);
 		const heading = parserHeading(html);
-		excerpt = stripHTML(excerpt);
+		excerpt = stripHTML(excerpt || html);
 
 		return {
 			src, html, excerpt,

@@ -1,0 +1,78 @@
+a {
+	text-decoration-line: underline;
+} a, button, [class^="link-"], [class*=" link-"] {
+	transition-property: color, background-color, border-color;
+	transition-duration: 250ms;
+} button:disabled {
+	cursor: auto;
+}
+
+
+
+.gsc-main > .gsc-reactions {
+	row-gap: 8px;
+} .gsc-reactions-count, .gsc-comments-count {
+	a:hover {
+		--color-fg-default: var(--vp-c-brand-1);
+	}
+} .gsc-comment-replies-count {
+	--color-border-default: var(--vp-c-text-2);
+} .gsc-reactions-button, .gsc-direct-reaction-button, .gsc-upvote-button {
+	background-color: var(--bg, var(--vp-c-bg-alt)) !important;
+	border: 1px solid var(--bd, var(--color-border-default)) !important;
+
+	&:disabled {
+		padding-inline: 4px;
+	} &.gsc-reactions-button:hover, &:not(.gsc-reactions-button):hover:enabled {
+		--bd: var(--vp-c-brand-1);
+
+		&:not(.has-reacted) {
+			--bg: var(--vp-c-bg-alt);
+		}
+	} &.has-reacted {
+		--bg: var(--vp-c-brand-soft);
+		--bd: var(--vp-c-brand-soft);
+	}
+} .gsc-reactions-popover {
+	.gsc-emoji-button.has-reacted {
+		border-color: var(--vp-c-brand-1);
+		border-radius: 100%;
+	}
+}
+
+.gsc-comment-box-tabs button {
+	transition-property: color;
+
+	&:hover {
+		--color-fg-muted: var(--vp-c-brand-1);
+	}
+} .gsc-comment-box-write, .gsc-reply-box button {
+	transition-property: background-color, border-color, box-shadow;
+	transition-duration: 250ms;
+	outline-style: none;
+
+	&:focus-within, &:focus {
+		box-shadow: 0 0 0 1px var(--color-accent-fg,var(--color-text-link));
+	}
+} .gsc-comment-box-textarea {
+		transition: background-color 250ms;
+} .markdown a {
+	&:hover {
+		--color-accent-fg: var(--vp-c-brand-2);
+	}
+} .user-mention, .team-mention {
+	&:hover {
+		--color-fg-default: var(--vp-c-brand-1);
+	}
+}
+
+.gsc-comment-author-avatar, .gsc-reply-author > a:first-child {
+	--color-accent-fg: var(--vp-c-text-1);
+	text-decoration-line: none !important;
+
+	&:hover {
+		--color-accent-fg: var(--vp-c-brand-1);
+	} span {
+		color: inherit;
+	}
+}

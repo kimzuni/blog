@@ -1,6 +1,10 @@
+import type { GiscusProps } from "@giscus/vue";
+
+
+
 export const URL = "https://blog.kimzuni.com";
 
-export const BASE: string = "";
+export const BASE: string = "/base";
 
 export const SITE = {
 	LANG: "ko",
@@ -24,6 +28,19 @@ export const SERIES = {
 	NUM_DELIMITER: "-",
 	DESCRIPTION: {
 	} as Record<string, string>,
-};
+} as const;
 
 export const UNSERIES = "Unseries";
+
+
+
+export const GISCUS: Omit<GiscusProps, "theme"> = {
+	lang: "en",
+	repo: "jh1950/giscus-test",
+	repoId: "R_kgDOOxdddA",
+	category: "Announcements",
+	categoryId: "DIC_kwDOOxdddM4CqpRt",
+	mapping: "pathname",
+	reactionsEnabled: "1",
+	inputPosition: "top",
+} as const;

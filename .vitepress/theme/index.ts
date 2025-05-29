@@ -9,6 +9,7 @@ import Series from "./components/Series.vue";
 import SeriesPosts from "./components/SeriesPosts.vue";
 import HomePinned from "./components/HomePinned.vue";
 import PostInfo from "./components/PostInfo.vue";
+import Giscus from "./components/Giscus.vue";
 
 export default {
 	extends: DefaultTheme,
@@ -17,6 +18,7 @@ export default {
 			// https://vitepress.dev/guide/extending-default-theme#layout-slots
 			"doc-before": () => h(PostInfo),
 			"home-features-after": () => h(HomePinned),
+			"doc-after": () => h(Giscus),
 		});
 	},
 	enhanceApp({ app, router, siteData }) {

@@ -2,8 +2,9 @@ import { defineConfig } from "vitepress";
 import tailwindcss from "@tailwindcss/vite";
 
 import { parserPath } from "../utils/parserPath";
-import { URL, BASE, SITE } from "../constants";
+import { BASE, SITE } from "../constants";
 
+import transformPageData from "./transformPageData";
 import nav from "./nav";
 import sidebar from "./sidebar";
 import socialLinks from "./socialLinks";
@@ -24,6 +25,7 @@ export default defineConfig({
 		},
 		lineNumbers: true,
 	},
+	transformPageData: transformPageData,
 	sitemap: sitemap,
 	rewrites: (id) => parserPath(id).rewrite,
 	srcExclude: [

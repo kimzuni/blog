@@ -1,5 +1,8 @@
 :root {
 	@apply break-all;
+} ::selection {
+	@apply bg-theme-primary/85;
+	@apply text-(--vp-c-bg);
 }
 
 

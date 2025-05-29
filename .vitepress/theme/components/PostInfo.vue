@@ -21,7 +21,8 @@ const post = computed(() => posts.find(x => `${x.url}index.md` === `${BASE}/${pa
 	@apply leading-10 -tracking-[0.02em];
 	@apply text-[28px] md:text-[32px];
 } .post-date {
-	@apply mb-8 text-right;
+	@apply mb-8;
+	@apply text-right text-subtle;
 }
 
 </style>
@@ -31,7 +32,7 @@ const post = computed(() => posts.find(x => `${x.url}index.md` === `${BASE}/${pa
 <template>
 	<div class="post-info">
 		<h1 class="post-title">{{ post?.title }}</h1>
-		<div class="text-subtle post-date">
+		<div class="post-date">
 			<p><span v-if="post?.updatedAt">작성: </span>
 				<time :datetime="new Date(post?.createdAt?.timestamp || 0).toISOString()">{{ post?.createdAt?.string ?? "Unpublished" }}</time>
 			</p>

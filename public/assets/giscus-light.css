@@ -1,0 +1,106 @@
+/*! MIT License
+ * Copyright (c) 2018 GitHub Inc.
+ * https://github.com/primer/primitives/blob/main/LICENSE
+ */
+
+@import "vitepress-vars-light.css";
+@import "giscus.css";
+
+
+
+main {
+	--color-prettylights-syntax-comment: #6e7781;
+	--color-prettylights-syntax-constant: #0550ae;
+	--color-prettylights-syntax-entity: #8250df;
+	--color-prettylights-syntax-storage-modifier-import: #24292f;
+	--color-prettylights-syntax-entity-tag: #116329;
+	--color-prettylights-syntax-keyword: #cf222e;
+	--color-prettylights-syntax-string: #0a3069;
+	--color-prettylights-syntax-variable: #953800;
+	--color-prettylights-syntax-brackethighlighter-unmatched: #82071e;
+	--color-prettylights-syntax-invalid-illegal-text: #f6f8fa;
+	--color-prettylights-syntax-invalid-illegal-bg: #82071e;
+	--color-prettylights-syntax-carriage-return-text: #f6f8fa;
+	--color-prettylights-syntax-carriage-return-bg: #cf222e;
+	--color-prettylights-syntax-string-regexp: #116329;
+	--color-prettylights-syntax-markup-list: #3b2300;
+	--color-prettylights-syntax-markup-heading: #0550ae;
+	--color-prettylights-syntax-markup-italic: #24292f;
+	--color-prettylights-syntax-markup-bold: #24292f;
+	--color-prettylights-syntax-markup-deleted-text: #82071e;
+	--color-prettylights-syntax-markup-deleted-bg: #ffebe9;
+	--color-prettylights-syntax-markup-inserted-text: #116329;
+	--color-prettylights-syntax-markup-inserted-bg: #dafbe1;
+	--color-prettylights-syntax-markup-changed-text: #953800;
+	--color-prettylights-syntax-markup-changed-bg: #ffd8b5;
+	--color-prettylights-syntax-markup-ignored-text: #eaeef2;
+	--color-prettylights-syntax-markup-ignored-bg: #0550ae;
+	--color-prettylights-syntax-meta-diff-range: #8250df;
+	--color-prettylights-syntax-brackethighlighter-angle: #57606a;
+	--color-prettylights-syntax-sublimelinter-gutter-mark: #8c959f;
+	--color-prettylights-syntax-constant-other-reference-link: #0a3069;
+
+	--color-btn-text: var(--vp-c-text-1);													/* #24292f */
+	--color-btn-bg: var(--vp-button-alt-bg);												/* #f6f8fa */
+	--color-btn-border: var(--vp-button-alt-border);										/* rgb(31 35 40 / 15%) */
+	--color-btn-shadow: transparent;														/* rgb(31 35 40 / 4%) */
+	--color-btn-inset-shadow: transparent;													/* rgb(255 255 255 / 25%) */
+	--color-btn-hover-bg: var(--vp-button-alt-hover-bg);									/* #f3f4f6 */
+	--color-btn-hover-border: var(--vp-button-alt-hover-border);							/* rgb(31 35 40 / 15%) */
+	--color-btn-active-bg: var(--vp-button-alt-hover-bg);									/* hsl(220deg 14% 93% / 100%) */
+	--color-btn-active-border: var(--vp-button-alt-hover-border);							/* rgb(31 35 40 / 15%) */
+	--color-btn-selected-bg: var(--vp-button-brand-hover-bg);								/* hsl(220deg 14% 94% / 100%) */
+	--color-btn-primary-text: var(--vp-button-brand-text);									/* #fff */
+	--color-btn-primary-bg: var(--vp-button-brand-bg);										/* #1f883d */
+	--color-btn-primary-border: var(--vp-button-brand-border);								/* rgb(31 35 40 / 15%) */
+	--color-btn-primary-shadow: transparent;												/* rgb(31 35 40 / 10%) */
+	--color-btn-primary-inset-shadow: transparent;											/* rgb(255 255 255 / 3%) */
+	--color-btn-primary-hover-bg: var(--vp-button-brand-hover-bg);							/* #1a7f37 */
+	--color-btn-primary-hover-border: var(--vp-button-brand-hover-border);					/* rgb(31 35 40 / 15%) */
+	--color-btn-primary-selected-bg: var(--vp-button-brand-hover-bg);						/* hsl(137deg 66% 28% / 100%) */
+	--color-btn-primary-selected-shadow: transparent;										/* rgb(0 45 17 / 20%) */
+	--color-btn-primary-disabled-text: var(--vp-c-text-3);									/* rgb(255 255 255 / 80%) */
+	--color-btn-primary-disabled-bg: var(--vp-button-alt-bg);								/* #94d3a2, submit button */
+	--color-btn-primary-disabled-border: var(--vp-button-brand-border);						/* rgb(31 35 40 / 15%) */
+
+	--color-action-list-item-default-hover-bg: var(--vp-c-bg);								/* rgb(208 215 222 / 32%) */
+	--color-segmented-control-bg: var(--vp-c-bg-alt);										/* #eaeef2 */
+	--color-segmented-control-button-bg: var(--vp-c-bg);									/* #fff */
+	--color-segmented-control-button-selected-border: var(--vp-c-brand-1);					/* #8c959f */
+	--color-fg-default: var(--vp-c-text-1);													/* #1F2328 */
+	--color-fg-muted: var(--vp-c-text-2);													/* #656d76 */
+	--color-fg-subtle: var(--vp-c-text-3);													/* #6e7781 */
+	--color-canvas-default: var(--vp-c-bg);													/* #fff */
+	--color-canvas-overlay: var(--vp-c-bg);													/* #fff */
+	--color-canvas-inset: var(--vp-c-bg-alt);												/* #f6f8fa */
+	--color-canvas-subtle: var(--vp-c-bg-alt);												/* #f6f8fa */
+	--color-border-default: var(--vp-c-divider);											/* #d0d7de */
+	--color-border-muted: var(--vp-c-divider);												/* hsl(210deg 18% 87% / 100%) */
+	--color-neutral-muted: var(--vp-c-bg-elv);												/* rgb(175 184 193 / 20%) */
+	--color-accent-fg: var(--vp-c-brand-1);													/* #0969da */
+	--color-accent-emphasis: var(--vp-c-brand-1);											/* #0969da */
+	--color-accent-muted: var(--vp-c-brand-1);												/* rgb(84 174 255 / 40%) */
+	--color-accent-subtle: var(--vp-c-bg-alt);												/* #ddf4ff */
+	--color-success-fg: var(--vp-c-brand-1);												/* #1a7f37 */
+	--color-attention-fg: var(--vp-c-warning-1);											/* #9a6700 */
+	--color-attention-muted: var(--vp-c-warning-2);											/* rgb(212 167 44 / 40%) */
+	--color-attention-subtle: var(--vp-c-warning-3);										/* #fff8c5 */
+	--color-danger-fg: var(--vp-c-danger-1);												/* #d1242f */
+	--color-danger-muted: var(--vp-c-danger-2);												/* rgb(255 129 130 / 40%) */
+	--color-danger-subtle: var(--vp-c-danger-3);											/* #ffebe9 */
+	--color-primer-shadow-inset: var(--vp-c-danger-soft);									/* rgb(208 215 222 / 20%) */
+	--color-scale-gray-1: var(--vp-c-bg);													/* #eaeef2 */
+	--color-scale-blue-1: var(--vp-c-bg);													/* #b6e3ff */
+
+	/*! Extensions from @primer/css/alerts/flash.scss */
+	--color-social-reaction-bg-hover: var(--color-scale-gray-1);
+	--color-social-reaction-bg-reacted-hover: var(--color-scale-blue-1);
+}
+
+main .pagination-loader-container {
+	background-image: url("https://github.com/images/modules/pulls/progressive-disclosure-line.svg");
+}
+
+main .gsc-loading-image {
+	background-image: url("https://github.githubassets.com/images/mona-loading-default.gif");
+}
