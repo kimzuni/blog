@@ -1,11 +1,13 @@
-import { execSync } from "child_process";
 import { createContentLoader } from "vitepress";
 import type { ContentData } from "vitepress";
 
-import { BASE, SITE, UNSERIES } from "../constants";
+import { BASE, UNSERIES } from "../constants";
 import { parserPath, type Series } from "../utils/parserPath";
 import { parserHeading } from "../utils/parserHeading";
 import { stripHTML } from "../utils/stripHTML";
+
+import { getGitUpdatedTime } from "../utils/getGitUpdatedTime";
+import { toTimestamp, type PostDate } from "../utils/toTimestamp";
 
 
 
@@ -27,17 +29,6 @@ const toArray = (item?: string | string[]) => {
 	return arr.map(x => x.trim());
 };
 
-const toTimestamp = (value?: string): PostDate | null => {
-	const date = new Date(value || "");
-	const timestamp = date.getTime();
-	const string = date.toLocaleString(SITE.LANG);
-
-	return isNaN(timestamp) ? null : {
-		timestamp,
-		string,
-	};
-};
-
 const toPath = (path?: string) => {
 	if (!path) return undefined;
 	if (path.startsWith("http")) return path;
@@ -55,20 +46,6 @@ const getThumbnail = (path?: string, html?: string) => {
 	return toPath(html?.split(qut)[1]);
 };
 
-const getGitUpdatedTime = (path: string, createdAt=true) => {
-	try {
-		const time = execSync(`git log --diff-filter=${createdAt ? "A" : "M"} --follow --format=%cI -1 "${path}"`, { encoding: "utf-8" }).trim();
-		return toTimestamp(time) || null;
-	} catch {
-		return null
-	}
-};
-
-interface PostDate {
-	timestamp: number;
-	string: string;
-}
-
 interface Frontmatter {
 	pin: boolean;
 	title: string;
@@ -76,7 +53,7 @@ interface Frontmatter {
 	thumbnail?: string;
 	createdAt: PostDate | null;
 	updatedAt: PostDate | null;
-	tags?: string | string[];
+	tags?: string[];
 }
 
 export interface Post extends Omit<ContentData, "frontmatter">, Frontmatter {
@@ -108,7 +85,7 @@ export default createContentLoader([
 			createdAt: toTimestamp(post.createdAt) || getGitUpdatedTime(filepath, true),
 			updatedAt: toTimestamp(post.updatedAt) || getGitUpdatedTime(filepath, false),
 			series: post.series !== false ? series! : { name: UNSERIES },
-			tags: toArray(post.tags)?.map(x => x.replace(/ /g, "_")),
+			tags: toArray(post.tags),
 		};
 	}).sort((a, b) => {
 		const at = a.updatedAt?.timestamp ?? a.createdAt?.timestamp ?? Infinity;

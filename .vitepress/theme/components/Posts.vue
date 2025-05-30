@@ -17,8 +17,8 @@ const { filtered, paginated, hasPrevious, hasNext } = usePosts({
 	perPage: PAGINATION.POST,
 });
 
-const unpublished = computed(() => [...paginated.value].filter(x => !x.createdAt));
-const published = computed(() => [...paginated.value].filter(x => x.createdAt).sort((a, b) => a.pin && !b.pin ? -1 : !a.pin && b.pin ? 1 : 0));
+const unpublished = computed(() => paginated.value.filter(x => !x.createdAt));
+const published = computed(() => paginated.value.filter(x => x.createdAt).toSorted((a, b) => a.pin && !b.pin ? -1 : !a.pin && b.pin ? 1 : 0));
 
 </script>
 

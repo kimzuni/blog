@@ -2,6 +2,7 @@ import { type ComputedRef, computed } from "vue";
 
 import { data, type Post } from "../../data/posts.data";
 import { checkSeries } from "../../utils/series";
+import { toPathname } from "../../utils/toPathname";
 
 
 
@@ -25,7 +26,7 @@ export const usePosts = ({
 	const filtered = computed(() => posts.filter(post => (
 		(!seriesName || checkSeries(seriesName.value, post.series?.name))
 		&&
-		(!tagName || post.tags?.includes(tagName.value))
+		(!tagName || post.tags?.map(toPathname).includes(toPathname(tagName.value)))
 		&&
 		(pinned === undefined || post.pin === (typeof pinned === "boolean" ? pinned : pinned.value))
 	)));

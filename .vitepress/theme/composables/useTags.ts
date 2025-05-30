@@ -1,6 +1,7 @@
 import { type ComputedRef, computed } from "vue";
 
 import { data, type Post } from "../../data/posts.data";
+import { toPathname } from "../../utils/toPathname";
 
 
 
@@ -12,7 +13,7 @@ export interface UseTagsFiltered {
 
 export interface UseSeriesProps {
 	posts?: Post[];
-	tagNames?: ComputedRef<string>;
+	tagNames?: ComputedRef<string[]>;
 	perTag?: number;
 	perPage?: number;
 	currPage: ComputedRef<number>;
@@ -26,7 +27,17 @@ export const useTags = ({
 	currPage,
 }: UseSeriesProps) => {
 	const filtered = computed<UseTagsFiltered[]>(() => {
-		const names = [...new Set(posts.map(post => post.tags).flat().filter(name => name && (!tagNames || tagNames.value.includes(name))))].filter(x => x !== undefined);
+		const names = 
+			posts.map(post => post.tags).flat()
+			.filter(x => x !== undefined)
+			.filter(name => !tagNames || tagNames.value.map(toPathname).includes(toPathname(name)))
+			.reduce<string[]>((acc, cur) => {
+				if (!acc.map(toPathname).includes(toPathname(cur))) {
+					acc.push(cur);
+				}
+				return acc;
+			}, [])
+		;
 		return names.map(name => {
 			const items = posts.filter(post => post.tags?.includes(name));
 			const total = items.length;

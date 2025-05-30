@@ -1,9 +1,9 @@
 import type { DefaultTheme } from "vitepress";
 
 import { UNSERIES, LIMIT } from "../constants";
-import { parserHeading } from "../utils/parserHeading";
 import { parserPath } from "../utils/parserPath";
 import { toPathname } from "../utils/toPathname";
+import { getGitUpdatedTime } from "../utils/getGitUpdatedTime";
 import { posts } from "../data/posts";
 import { series } from "../data/series";
 
@@ -12,11 +12,10 @@ import { series } from "../data/series";
 const items: DefaultTheme.Sidebar = [
 	{
 		collapsed: false,
-		text: "Pinned",
+		text: "Pinned Posts",
 		items: posts.map(post => {
-			const { path, frontmatter, content } = post;
+			const { path, title, frontmatter, content } = post;
 			if (frontmatter.pin !== true) return undefined;
-			const title = frontmatter.title ?? parserHeading(content, "md");
 			const { pathname } = parserPath(path);
 			return {
 				text: title,
@@ -26,9 +25,20 @@ const items: DefaultTheme.Sidebar = [
 	},
 	{
 		collapsed: false,
+		text: "Latest Posts",
+		items: posts.map(x => ({
+			...x,
+			updatedAt: getGitUpdatedTime(x.path)?.timestamp,
+		})).filter(x => x.updatedAt).toSorted(x => x.updatedAt!).map(post => ({
+			text: post.title,
+			link: `/${parserPath(post.path).pathname}`,
+		})).slice(0, LIMIT.SIDEBAR_LATEST)
+	},
+	{
+		collapsed: false,
 		text: "Series",
 		items: [
-			...series.filter(x => x !== UNSERIES).sort((a, b) => a.localeCompare(b)).map(name => ({
+			...series.filter(x => x !== UNSERIES).toSorted((a, b) => a.localeCompare(b)).map(name => ({
 				text: name,
 				link: `/series/${toPathname(name)}/`,
 			})),

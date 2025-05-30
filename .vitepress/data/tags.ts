@@ -1,5 +1,15 @@
+import { toPathname } from "../utils/toPathname";
 import { posts } from "./posts";
 
 
 
-export const tags = posts.map(x => x.frontmatter.tags).flat().filter(Boolean).map(x => `${x}`.trim());
+export const tags = [...new Set(posts
+	.map(x => x.frontmatter.tags)
+	.flat()
+	.filter(Boolean)
+	.map(x =>
+		`${x}`
+		.trim()
+	)
+	.map(toPathname)
+)];
