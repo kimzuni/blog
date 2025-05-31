@@ -1,14 +1,16 @@
 import fs from "fs";
-import matter from "gray-matter";
+import matter, { type GrayMatterFile } from "gray-matter";
 
 
+
+export type Frontmatter = GrayMatterFile<string>["data"];
 
 export const parserFrontmatter = (path: string) => {
 	const str = fs.readFileSync(path, { encoding: "utf-8" });
-	const data = matter(str);
+	const { data, ...more } = matter(str);
 	return {
 		path,
-		frontmatter: data.data,
-		content: data.content,
+		frontmatter: data,
+		...more,
 	};
 };

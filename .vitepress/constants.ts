@@ -4,7 +4,9 @@ import type { GiscusProps } from "@giscus/vue";
 
 export const URL = "https://blog.kimzuni.com";
 
-export const BASE: string = "/base";
+export const BASE: string = "";
+
+export const ASSETS_DIR = "assets/";
 
 export const SITE = {
 	LANG: "ko",
@@ -33,7 +35,10 @@ export const SERIES = {
 	} as Record<string, string>,
 } as const;
 
-export const UNSERIES = "Unseries";
+export const UNSERIES = {
+	INCLUDE: true,
+	LABEL: "Unseries",
+} as const;
 
 
 

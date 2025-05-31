@@ -1,12 +1,25 @@
 <script setup lang="ts">
 
-import type { Post } from "../../data/posts.data";
+import { computed } from "vue";
 import { Pen, Pin } from "lucide-vue-next";
 
-defineProps<{
-	post: Post;
-	alwaysCard?: boolean;
-}>();
+import { BASE } from "../../constants";
+import { data as posts, type Post } from "../../data/posts.data";
+
+export type Props = {
+	post?: Post;
+	title?: string;
+	direction?: "row" | "col" | "auto";
+	headingTagName?: string;
+};
+
+const props = withDefaults(defineProps<Props>(), {
+	headingTagName: "p",
+});
+const direction = computed(() => props.direction ?? "row");
+
+const post = props.post !== undefined ? props.post : props.title === undefined ? undefined : posts.find(x => [x.title, x.slug, x.url.slice(BASE.length, -1), `${x.url.slice(BASE.length)}`].includes(props.title!));
+const postDate = computed(() => post?.updatedAt ?? post?.createdAt);
 
 </script>
 
@@ -19,15 +32,20 @@ defineProps<{
 .postbox-wrapper {
 	@apply my-8;
 } .postbox {
-	@apply @container/postbox h-full;
-	@apply flex flex-col gap-4 p-6;
+	@apply @container/postbox;
+	@apply h-full no-underline;
+	@apply flex gap-4 p-6;
 	@apply rounded-2xl shadow-(--vp-shadow-2);
 	@apply bg-(--vp-c-bg-soft) border-1 border-(--vp-c-bg-soft);
-	@apply hover:border-(--vp-c-brand-1) transition-[border-color];
+	@apply not-[&.not-found]:hover:border-(--vp-c-brand-1) transition-[border-color];
+
+	@apply flex-row-reverse group-[:not(.row)]:flex-col sm:group-[:not(.col)]:flex-row-reverse;
 } .postbox-thumbnail {
 	@apply relative bg-(--vp-c-default-soft);
-	@apply w-full aspect-[3/2];
 	@apply rounded-md overflow-hidden;
+
+	@apply w-30 group-[:not(.row)]:w-full sm:group-[:not(.col)]:w-30;
+	@apply aspect-square group-[:not(.row)]:aspect-video sm:group-[:not(.col)]:aspect-square;
 
 	img {
 		@apply size-full;
@@ -37,12 +55,15 @@ defineProps<{
 	@apply flex-1;
 	@apply flex flex-col justify-between gap-2;
 } .postbox-title {
-	@apply font-semibold;
+	@apply text-base text-(--vp-c-text-1) font-semibold;
 	@apply text-ellipsis-multiline-2;
+} .postbox-title, .postbox-excerpt {
+	@apply border-0 m-0 p-0;
 } .postbox-excerpt, .postbox-info {
 	@apply text-sm font-medium text-(--vp-c-text-2);
-} .postbox-excerpt {
 	@apply text-ellipsis-multiline-3;
+} .postbox-info {
+	@apply grow-1 flex items-end-safe;
 } .postbox-icon {
 	@apply absolute top-2 right-2;
 	@apply p-0.75;
@@ -52,37 +73,34 @@ defineProps<{
 	} &.pin {
 		@apply text-(--vp-c-brand-1);
 	}
-} .postbox-wrapper:not(.card) {
-	@media (width >= 640px) {
-		.postbox {
-			@apply flex-row-reverse;
-		} .postbox-thumbnail {
-			@apply w-32 aspect-[1/1];
-		} .postbox-excerpt-wrapper {
-			@apply flex-1;
-		}
-	}
 }
 
 </style>
 
 <template>
-	<article :class="`postbox-wrapper ${alwaysCard ? 'card' : ''}`.trim()">
-		<a :href="post.url" class="postbox">
+	<article :class="`postbox-wrapper group ${direction}`">
+		<a v-if="post" :href="post.url" class="postbox" :aria-labelledby="`postbox-title-${post.slug}`">
 			<div class="postbox-thumbnail">
 				<Pen v-if="!post.createdAt" class="postbox-icon unpublished"/>
 				<Pin v-if="post.pin" class="postbox-icon pin"/>
-				<img :src="post.thumbnail"/>
+				<img :src="post.thumbnail" :alt="`Thumbnail for post: ${post.title}`"/>
 			</div>
 			<div class="postbox-content">
-				<h2 class="postbox-title">{{ post.title }}</h2>
-				<div v-if="post.excerpt" class="postbox-excerpt-wrapper">
-					<p class="postbox-excerpt">{{ post.excerpt }}</p>
-				</div>
+				<component :is="props.headingTagName" :id="`postbox-title-${post.slug}`" class="postbox-title">{{ post.title }}</component>
+				<p v-if="post.excerpt" class="postbox-excerpt">
+					{{ post.excerpt }}
+				</p>
 				<div class="postbox-info">
-					<time>{{  post.updatedAt?.string ?? post.createdAt?.string ?? "Unpublished" }}</time>
+					<time :datetime="new Date(postDate?.timestamp || 0).toISOString()">{{ postDate?.string ?? "Unpublished" }}</time>
 				</div>
 			</div>
 		</a>
+		<div v-else class="postbox not-found" role="alert" aria-live="polite">
+			<div class="postbox-content">
+				<p class="postbox-excerpt">
+					Post not found: {{ props.post?.title ?? props.title ?? "Missing post or title in props" }}
+				</p>
+			</div>
+		</div>
 	</article>
 </template>

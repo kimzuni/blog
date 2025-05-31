@@ -2,9 +2,9 @@ import { defineConfig } from "vitepress";
 import tailwindcss from "@tailwindcss/vite";
 
 import { parserPath } from "../utils/parserPath";
-import { BASE, SITE } from "../constants";
+import { BASE, SITE, ASSETS_DIR } from "../constants";
 
-import transformPageData from "./transformPageData";
+import * as transform from "./transform";
 import head from "./head";
 import nav from "./nav";
 import sidebar from "./sidebar";
@@ -23,18 +23,19 @@ export default defineConfig({
 	head: head,
 	cleanUrls: true,
 	lastUpdated: false,
+	sitemap: sitemap,
+	assetsDir: ASSETS_DIR,
+	transformPageData: transform.pageData,
+	rewrites: (id) => parserPath(id).rewrite,
+	srcExclude: [
+		"drafts/",
+	],
 	markdown: {
 		image: {
 			lazyLoading: true,
 		},
 		lineNumbers: true,
 	},
-	transformPageData: transformPageData,
-	sitemap: sitemap,
-	rewrites: (id) => parserPath(id).rewrite,
-	srcExclude: [
-		"drafts/",
-	],
 	themeConfig: {
 		externalLinkIcon: true,
 		outline: "deep",

@@ -8,34 +8,26 @@ import Page from "./Page.vue";
 
 const { frontmatter } = useData();
 
-const props = defineProps({
-	page: String,
-	titleBefore: String,
-	titleAfter: String,
-	badge: String,
-	description: String,
-	pathname: {
-		type: String,
-		default: "",
-	},
-	total: {
-		type: Number,
-		default: 1,
-	},
-	perPage: {
-		type: Number,
-		default: 0,
-	},
-	currPage: {
-		type: Number,
-		default: 1,
-	},
-	hasNext: Boolean,
-	hasPrevious: Boolean,
-});
+export interface Props {
+	page: string;
+	badge?: string;
+	description?: string;
+	pathname?: string;
+	total?: number;
+	perPage?: number;
+	currPage?: number;
+	hasNext: boolean;
+	hasPrevious: boolean;
+}
 
-const start = computed(() => props.perPage === 0 ? 1 : props.perPage * props.currPage - props.perPage + 1);
-const end = computed(() => props.perPage === 0 ? props.total : Math.min(start.value + props.perPage - 1, props.total));
+const props = defineProps<Props>();
+const pathname = computed(() => props.pathname ?? "");
+const total = computed(() => props.total ?? 1);
+const perPage = computed(() => props.perPage ?? 0);
+const currPage = computed(() => props.currPage ?? 1);
+
+const start = computed(() => perPage.value === 0 ? 1 : perPage.value * currPage.value - perPage.value + 1);
+const end = computed(() => perPage.value === 0 ? total.value : Math.min(start.value + perPage.value - 1, total.value));
 
 </script>
 
@@ -56,18 +48,18 @@ const end = computed(() => props.perPage === 0 ? props.total : Math.min(start.va
 } .page-info {
 	@apply flex flex-row-reverse flex-wrap justify-between;
 	@apply pr-2 text-subtle;
+} .no-items {
+	@apply text-subtle text-center text-xl;
 } .pagination-controls {
 	@apply flex justify-center-safe gap-4;
 	@apply pt-6 text-subtle-style;
 
-	a {
+	a, span {
 		@apply px-2 py-2;
+	} a {
 		@apply hover:text-(--vp-c-brand-1);
-
-		&[tabindex="-1"] {
-			@apply text-subtle-color;
-			@apply pointer-events-none;
-		}
+	} span {
+		@apply text-subtle-color;
 	}
 }
 
@@ -76,25 +68,28 @@ const end = computed(() => props.perPage === 0 ? props.total : Math.min(start.va
 <template>
 	<Page>
 		<h1 class="page-title">
-			<Badge v-if="badge" type="tip" :text="badge"/>
-			<span>{{ titleBefore }}{{ frontmatter.title ?? `List of ${page}`}}{{ titleAfter }}</span>
+			<Badge v-if="badge" type="tip" :text="badge" role="text"/>
+			<span>{{ frontmatter.title ?? `All ${page}`}}</span>
 		</h1>
 		<p v-if="description" class="page-description">{{ description }}</p>
-		<p class="page-info">{{ `${start}~${end}` }} of {{ total }} {{ page?.toLowerCase() }}</p>
-		<main>
-			<slot></slot>
-		</main>
+		<p v-if="total !== 0" class="page-info">{{ `${start}~${end}` }} of {{ total }} {{ page?.toLowerCase() }}</p>
+		<div>
+			<slot v-if="total !== 0"></slot>
+			<div v-else class="no-items" role="status" aria-live="polite">
+				{{ page }} Not Found
+			</div>
+		</div>
 		<div v-if="hasNext || hasPrevious" class="pagination-controls">
-			<a
-				:aria-disabled="!hasPrevious || undefined"
-				:tabindex="hasPrevious ? undefined : -1"
+			<component
+				:is="hasPrevious ? 'a' : 'span'"
+				:aria-label="!hasPrevious ? undefined : 'Go to previous page'"
 				:href="!hasPrevious ? undefined : currPage === 2 ? `${BASE}/${pathname}/` : `${BASE}/${pathname}/page/${currPage - 1}/`"
-			>&lt; PREV</a>
-			<a
-				:aria-disabled="!hasNext || undefined"
-				:tabindex="hasNext ? undefined : -1"
+			>&lt; PREV</component>
+			<component
+				:is="hasNext ? 'a' : 'span'"
+				:aria-label="!hasNext ? undefined : 'Go to next page'"
 				:href="!hasNext ? undefined : `${BASE}/${pathname}/page/${currPage + 1}/`"
-			>NEXT &gt;</a>
+			>NEXT &gt;</component>
 		</div>
 	</Page>
 </template>

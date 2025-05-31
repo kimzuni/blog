@@ -5,9 +5,8 @@ import { useData } from "vitepress";
 
 import { usePosts } from "../composables/usePosts";
 import { LIMIT } from "../../constants";
+import Postboxes from "./Postboxes.vue";
 import Page from "./Page.vue";
-
-import Postbox from "./Postbox.vue";
 
 const { frontmatter } = useData();
 
@@ -25,8 +24,8 @@ const { paginated } = usePosts({
 
 @reference "../styles/index.css";
 
-.page-content-wrapper {
-	@apply [[data-mt]]:pt-16;
+.page-content-wrapper.has-features {
+	@apply pt-16;
 } .home-pinned-title {
 	@apply text-subtle text-base;
 }
@@ -34,14 +33,11 @@ const { paginated } = usePosts({
 </style>
 
 <template>
-	<Page class="page-content-wrapper" v-if="frontmatter.show_pinned_posts === true && paginated.length" :data-mt="frontmatter.features ? '' : undefined">
-		<p class="home-pinned-title">Pinned Posts</p>
-		<main>
-			<Postbox
-				class="postbox-wrapper"
-				v-for="post in paginated"
-				:post="post"
-			/>
-		</main>
+	<Page :class="`page-content-wrapper ${frontmatter.features ? 'has-features' : ''}`.trim()" v-if="frontmatter.show_pinned_posts === true && paginated.length">
+		<h2 class="home-pinned-title">Pinned Posts</h2>
+		<Postboxes
+			:posts="paginated"
+			:grid="true"
+		/>
 	</Page>
 </template>

@@ -38,14 +38,14 @@ const items: DefaultTheme.Sidebar = [
 		collapsed: false,
 		text: "Series",
 		items: [
-			...series.filter(x => x !== UNSERIES).toSorted((a, b) => a.localeCompare(b)).map(name => ({
+			...series.filter(x => x !== UNSERIES.LABEL).toSorted((a, b) => a.localeCompare(b)).map(name => ({
 				text: name,
 				link: `/series/${toPathname(name)}/`,
 			})),
-			{
-				text: UNSERIES,
-				link: `/series/${toPathname(UNSERIES)}/`,
-			},
+			(!UNSERIES.INCLUDE || !series.find(x => x === UNSERIES.LABEL) ? {} : {
+				text: UNSERIES.LABEL,
+				link: `/series/${toPathname(UNSERIES.LABEL)}/`,
+			}),
 		],
 	},
 ];

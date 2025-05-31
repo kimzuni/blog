@@ -16,9 +16,12 @@ const seriesName = computed(() => post.value.series.name)
 const { paginated } = useSeries({
 	seriesName: seriesName,
 	currPage: computed(() => 1),
+	sort: "oldest",
 });
 
 </script>
+
+
 
 <style scoped>
 
@@ -30,30 +33,37 @@ const { paginated } = useSeries({
 	@apply leading-10 -tracking-[0.02em];
 	@apply text-[28px] md:text-[32px];
 } .post-date {
-	@apply mb-8;
-	@apply text-right text-subtle;
+	@apply grid grid-cols-[1fr_auto] gap-x-1;
+	@apply mb-8 text-right text-subtle;
 }
 
 </style>
 
-
-
 <template>
 	<div class="post-info">
 		<h1 class="post-title">{{ post.title }}</h1>
-		<div class="post-date">
-			<p><span v-if="post.updatedAt">작성: </span>
-				<time :datetime="new Date(post.createdAt?.timestamp || 0).toISOString()">{{ post.createdAt?.string ?? "Unpublished" }}</time>
-			</p>
-			<p v-if="post.updatedAt"><span>수정: </span>
-				<time :datetime="new Date(post.updatedAt?.timestamp || 0).toISOString()">{{ post.updatedAt?.string }}</time>
-			</p>
-		</div>
+		<dl class="post-date">
+			<dt :class="post.updatedAt ? '' : 'sr-only'">Published</dt>
+			<dd>
+				<time :datetime="new Date(post.createdAt?.timestamp || 0).toISOString()">
+					{{ post.createdAt?.string ?? "Unpublished" }}
+				</time>
+			</dd>
+			<template v-if="post.updatedAt">
+				<dt>Last Modified</dt>
+				<dd>
+					<time :datetime="new Date(post.updatedAt.timestamp || 0).toISOString()">
+						{{ post.updatedAt.string }}
+					</time>
+				</dd>
+			</template>
+		</dl>
 	</div>
-	<div v-if="seriesName !== UNSERIES">
+	<div v-if="seriesName !== UNSERIES.LABEL">
 		<Seriesbox
-			:series="series"
 			v-for="series in paginated"
+			:key="series.name"
+			:series="series"
 		/>
 	</div>
 </template>

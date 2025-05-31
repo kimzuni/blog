@@ -12,9 +12,9 @@
 </style>
 
 <template>
-	<div class="page-content-wrapper">
+	<main class="page-content-wrapper">
 		<div class="page-content">
 			<slot></slot>
 		</div>
-	</div>
+	</main>
 </template>

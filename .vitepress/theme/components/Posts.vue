@@ -3,7 +3,7 @@
 import { computed } from "vue";
 import { useData } from "vitepress";
 
-import Postbox from "./Postbox.vue";
+import Postboxes from "./Postboxes.vue";
 import Pagination from "./Pagination.vue";
 import { usePosts } from "../composables/usePosts";
 import { PAGINATION } from "../../constants";
@@ -17,8 +17,9 @@ const { filtered, paginated, hasPrevious, hasNext } = usePosts({
 	perPage: PAGINATION.POST,
 });
 
-const unpublished = computed(() => paginated.value.filter(x => !x.createdAt));
-const published = computed(() => paginated.value.filter(x => x.createdAt).toSorted((a, b) => a.pin && !b.pin ? -1 : !a.pin && b.pin ? 1 : 0));
+const sorted = computed(() => paginated.value.toSorted((a, b) => a.pin && !b.pin ? -1 : !a.pin && b.pin ? 1 : 0));
+const unpublished = computed(() => sorted.value.filter(x => !x.createdAt));
+const published = computed(() => sorted.value.filter(x => x.createdAt));
 
 </script>
 
@@ -34,9 +35,9 @@ const published = computed(() => paginated.value.filter(x => x.createdAt).toSort
 		:hasNext="hasNext"
 		:hasPrevious="hasPrevious"
 	>
-		<Postbox
-		 	v-for="post in [...unpublished, ...published]"
-			:post="post"
+		<Postboxes
+			:posts="[...unpublished, ...published]"
+			:grid="true"
 		/>
 	</Pagination>
 </template>

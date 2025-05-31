@@ -6,7 +6,7 @@ import { useData } from "vitepress";
 import { PAGINATION } from "../../constants";
 import { useTags } from "../composables/useTags";
 import Pagination from "./Pagination.vue";
-import Tagbox from "./Tagbox.vue";
+import Tagboxes from "./Tagboxes.vue";
 
 const { params } = useData();
 const currPage = computed(() => Number(params.value?.page) || 1);
@@ -20,21 +20,6 @@ const { paginated, hasNext, hasPrevious } = useTags({
 
 
 
-<style scoped>
-
-@reference "../styles/index.css";
-
-.tagbox-container {
-	@apply flex justify-center-safe items-center-safe flex-wrap;
-	@apply mt-8 gap-4;
-
-	a {
-		@apply hover:text-(--vp-c-brand-1);
-	}
-}
-
-</style>
-
 <template>
 	<Pagination
 		page="Tags"
@@ -45,12 +30,11 @@ const { paginated, hasNext, hasPrevious } = useTags({
 		:hasNext="hasNext"
 		:hasPrevious="hasPrevious"
 	>
-		<div class="tagbox-container">
-			<Tagbox
-				:tagName="tag.name"
-				:number="tag.posts.length"
-				v-for="tag in paginated"
-			/>
-		</div>
+		<Tagboxes
+			:items="paginated.map(x => ({
+				tagName: x.name,
+				number: x.total,
+			}))"
+		/>
 	</Pagination>
 </template>

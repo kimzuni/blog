@@ -53,16 +53,17 @@ onBeforeUnmount(() => {
 </style>
 
 <template>
-	<div class="comment-container">
-		<div v-if="frontmatter.comment === false" class="not-allowed">
+	<section class="comment-container" aria-labelledby="comment-heading">
+		<h2 id="comment-heading" class="sr-only">Comments</h2>
+		<div v-if="frontmatter.comment === false" class="not-allowed" role="alert">
 			Comments not allowed
 		</div>
 		<div v-else class="giscus-wrapper">
-			<p class="giscus-desc" hidden>
+			<p class="giscus-desc" role="alert" hidden>
 				Not supported comment edit and upvote
 				<br/>
 				You can do it on
-				<a href="https://github.com/jh1950/giscus-test/discussions" target="_blank">this page</a>
+				<a href="https://github.com/jh1950/giscus-test/discussions" target="_blank" ref="noopener noreferrer">this page</a>
 				if you want.
 			</p>
 			<Giscus
@@ -83,5 +84,5 @@ onBeforeUnmount(() => {
 				:loading="GISCUS.loading ?? 'lazy'"
 			/>
 		</div>
-	</div>
+	</section>
 </template>

@@ -12,6 +12,7 @@ import TagPosts from "./components/TagPosts.vue";
 import HomePinned from "./components/HomePinned.vue";
 import PostInfo from "./components/PostInfo.vue";
 import Giscus from "./components/Giscus.vue";
+import Postbox from "./components/Postbox.vue";
 
 export default {
 	extends: DefaultTheme,
@@ -29,5 +30,7 @@ export default {
 		app.component("series_posts", SeriesPosts);
 		app.component("tags", Tags);
 		app.component("tag_posts", TagPosts);
+
+		app.component("Postbox", Postbox);
 	},
 } satisfies Theme;

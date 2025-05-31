@@ -7,7 +7,7 @@ import { tags } from "../../../.vitepress/data/tags";
 
 
 const paths = () => tags.map(name => {
-	const count = posts.filter(x => x.frontmatter.tags?.map(toPathname).includes(name)).length;
+	const count = posts.filter(x => x.frontmatter.tags?.map(toPathname).includes(toPathname(name))).length;
 	return Array.from({ length: Math.ceil(count/PAGINATION.TAG_POST) }).map((_, i) => ({
 		params: {
 			page: i + 1,

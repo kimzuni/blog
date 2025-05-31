@@ -3,10 +3,12 @@
 import { BASE } from "../../constants";
 import { toPathname } from "../../utils/toPathname";
 
-const { tagName, number=0 } = defineProps<{
+export interface Props {
 	tagName: string;
 	number?: number
-}>();
+}
+
+const { tagName, number=0 } = defineProps<Props>();
 
 </script>
 
@@ -28,5 +30,8 @@ const { tagName, number=0 } = defineProps<{
 	<a
 		class="tagbox"
 		:href="`${BASE}/tags/${toPathname(tagName)}/`"
-	>#{{ tagName }} {{ number }}</a>
+	>
+		<span aria-hidden="true">#{{ tagName }} {{ number }}</span>
+		<span class="sr-only">View {{ number }} posts tagged with {{ tagName }}</span>
+	</a>
 </template>

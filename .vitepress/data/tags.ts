@@ -1,4 +1,3 @@
-import { toPathname } from "../utils/toPathname";
 import { posts } from "./posts";
 
 
@@ -11,5 +10,4 @@ export const tags = [...new Set(posts
 		`${x}`
 		.trim()
 	)
-	.map(toPathname)
 )];

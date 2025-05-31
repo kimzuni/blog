@@ -33,10 +33,11 @@ const { filtered, paginated, hasPrevious, hasNext } = useSeries({
 		:hasPrevious="hasPrevious"
 	>
 		<Seriesbox
+			v-for="series in paginated"
+			:key="series.name"
 			:series="series"
 			:open="false"
 			:viewMore="LIMIT.SERIES_POST < series.total"
-			v-for="series in paginated"
 		/>
 	</Pagination>
 </template>

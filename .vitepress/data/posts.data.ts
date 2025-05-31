@@ -4,6 +4,7 @@ import type { ContentData } from "vitepress";
 import { BASE, UNSERIES } from "../constants";
 import { parserPath, type Series } from "../utils/parserPath";
 import { parserHeading } from "../utils/parserHeading";
+import { parserSlug } from "../utils/parserSlug";
 import { stripHTML } from "../utils/stripHTML";
 
 import { getGitUpdatedTime } from "../utils/getGitUpdatedTime";
@@ -49,6 +50,7 @@ const getThumbnail = (path?: string, html?: string) => {
 interface Frontmatter {
 	pin: boolean;
 	title: string;
+	slug: string;
 	description?: string;
 	thumbnail?: string;
 	createdAt: PostDate | null;
@@ -71,7 +73,7 @@ export default createContentLoader([
 	includeSrc: true,
 	transform: (raw): Post[] => raw.map(({ url, src, html, excerpt, frontmatter: post }) => {
 		const filepath = `${url.endsWith("/") ? `${url}index` : url}.md`.slice(1);
-		const { pathname, series } = parserPath(url);
+		const { pathname, series } = parserPath(url, post);
 		const heading = parserHeading(html);
 		excerpt = stripHTML(excerpt || html);
 
@@ -80,11 +82,12 @@ export default createContentLoader([
 			url: `${BASE}${pathname}`,
 			pin: Boolean(post.pin),
 			title: toString(post.title) || heading || "Untitled",
+			slug: parserSlug(pathname)!,
 			description: toString(post.description),
 			thumbnail: getThumbnail(post.thumbnail, html) || noImage,
-			createdAt: toTimestamp(post.createdAt) || getGitUpdatedTime(filepath, true),
-			updatedAt: toTimestamp(post.updatedAt) || getGitUpdatedTime(filepath, false),
-			series: post.series !== false ? series! : { name: UNSERIES },
+			createdAt: toTimestamp(post.createdAt ?? post.date) || getGitUpdatedTime(filepath, true),
+			updatedAt: toTimestamp(post.updatedAt ?? post.lastModified) || getGitUpdatedTime(filepath, false),
+			series: post.series !== false ? series! : { name: UNSERIES.LABEL },
 			tags: toArray(post.tags),
 		};
 	}).sort((a, b) => {

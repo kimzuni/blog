@@ -46,7 +46,7 @@ export const useTags = ({
 				total,
 				posts: items.slice(0, perTag ? perTag : Infinity),
 			};
-		});
+		}).sort((a, b) => b.posts.length - a.posts.length);
 	});
 	const totalPages = computed(() => perPage === 0 ? 1 : Math.ceil(filtered.value.length / perPage));
 	const paginated = computed(() => perPage === 0 ? filtered.value : filtered.value.slice((currPage.value-1) * perPage, currPage.value * perPage));

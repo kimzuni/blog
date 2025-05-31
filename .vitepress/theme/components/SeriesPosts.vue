@@ -3,7 +3,7 @@
 import { computed } from "vue";
 import { useData } from "vitepress";
 
-import Postbox from "./Postbox.vue";
+import Postboxes from "./Postboxes.vue";
 import Pagination from "./Pagination.vue";
 import { usePosts } from "../composables/usePosts";
 import { SERIES, PAGINATION } from "../../constants";
@@ -54,9 +54,9 @@ const { filtered, paginated, hasPrevious, hasNext } = usePosts({
 		:hasNext="hasNext"
 		:hasPrevious="hasPrevious"
 	>
-		<Postbox
-		 	v-for="post in paginated"
-			:post="post"
+		<Postboxes
+			:posts="paginated"
+			:grid="true"
 		/>
 	</Pagination>
 </template>

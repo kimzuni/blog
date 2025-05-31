@@ -8,7 +8,7 @@ import { series } from "../../../.vitepress/data/series";
 
 
 const paths = () => series.map(name => {
-	const count = posts.filter(x => checkSeries(name, parserSeries(x.path)?.name)).length;
+	const count = posts.filter(x => checkSeries(name, parserSeries(x.path, x.frontmatter)?.name)).length;
 	return Array.from({ length: Math.ceil(count/PAGINATION.SERIES_POST) }).map((_, i) => ({
 		params: {
 			page: i + 1,

@@ -2,7 +2,9 @@ import type { DefaultTheme, UserConfig } from "vitepress";
 
 
 
-const item: UserConfig<DefaultTheme.Config>["transformPageData"] = ({ relativePath, frontmatter, params }) => {
+type Config = UserConfig<DefaultTheme.Config>;
+
+export const pageData: Config["transformPageData"] = ({ relativePath, frontmatter, params }) => {
 	if (!relativePath.includes("page/") && typeof frontmatter?.title === "string") {
 		if (relativePath.startsWith("series/")) {
 			const series = relativePath.split("/").slice(1, -1).join("/");
@@ -19,5 +21,3 @@ const item: UserConfig<DefaultTheme.Config>["transformPageData"] = ({ relativePa
 		}
 	}
 };
-
-export default item;
