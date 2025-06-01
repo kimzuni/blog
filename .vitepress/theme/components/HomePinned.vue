@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import { computed } from "vue";
+import { ref, computed } from "vue";
 import { useData } from "vitepress";
 
 import { usePosts } from "../composables/usePosts";
@@ -10,11 +10,16 @@ import Page from "./Page.vue";
 
 const { frontmatter } = useData();
 
+const isPinned = ref(true);
 const { paginated } = usePosts({
-	pinned: computed(() => true),
+	pinned: computed(() => isPinned.value),
 	currPage: computed(() => 1),
 	perPage: LIMIT.HOME_PINNED,
 });
+
+if (!paginated.value.length) {
+	isPinned.value = false;
+}
 
 </script>
 
@@ -34,7 +39,7 @@ const { paginated } = usePosts({
 
 <template>
 	<Page :class="`page-content-wrapper ${frontmatter.features ? 'has-features' : ''}`.trim()" v-if="frontmatter.show_pinned_posts === true && paginated.length">
-		<h2 class="home-pinned-title">Pinned Posts</h2>
+		<h2 class="home-pinned-title">{{ isPinned === true ? "Pinned Posts" : "Recently Updated" }}</h2>
 		<Postboxes
 			:posts="paginated"
 			:grid="true"

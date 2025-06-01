@@ -1,16 +1,13 @@
 <script setup lang="ts">
 
 import { computed } from "vue";
-import { useData } from "vitepress";
 
-import { BASE, UNSERIES } from "../../constants";
-import { data as postsData } from "../../data/posts.data";
+import { UNSERIES } from "../../constants";
+import { useCurrentPost } from "../composables/useCurrentPost";
 import { useSeries } from "../composables/useSeries";
 import Seriesbox from "../components/Seriesbox.vue";
 
-const { page } = useData();
-
-const post = computed(() => postsData.find(x => `${x.url}index.md` === `${BASE}/${page.value.relativePath}`)!);
+const post = useCurrentPost();
 const seriesName = computed(() => post.value.series.name)
 
 const { paginated } = useSeries({
@@ -43,14 +40,14 @@ const { paginated } = useSeries({
 	<div class="post-info">
 		<h1 class="post-title">{{ post.title }}</h1>
 		<dl class="post-date">
-			<dt :class="post.updatedAt ? '' : 'sr-only'">Published</dt>
+			<dt :class="post.updatedAt ? '' : 'sr-only'">Posted on</dt>
 			<dd>
 				<time :datetime="new Date(post.createdAt?.timestamp || 0).toISOString()">
-					{{ post.createdAt?.string ?? "Unpublished" }}
+					{{ post.createdAt?.string ?? "Not yet published" }}
 				</time>
 			</dd>
 			<template v-if="post.updatedAt">
-				<dt>Last Modified</dt>
+				<dt>Last updated on</dt>
 				<dd>
 					<time :datetime="new Date(post.updatedAt.timestamp || 0).toISOString()">
 						{{ post.updatedAt.string }}

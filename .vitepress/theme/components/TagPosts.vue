@@ -3,8 +3,9 @@
 import { computed } from "vue";
 import { useData } from "vitepress";
 
-import Postboxes from "./Postboxes.vue";
+import Page from "./Page.vue";
 import Pagination from "./Pagination.vue";
+import Postboxes from "./Postboxes.vue";
 import { usePosts } from "../composables/usePosts";
 import { PAGINATION } from "../../constants";
 
@@ -43,19 +44,20 @@ const { filtered, paginated, hasPrevious, hasNext } = usePosts({
 </style>
 
 <template>
-	<Pagination
-		page="Posts"
-		:badge="tagName"
-		:pathname="`tags/${tagName.toLowerCase()}`"
-		:total="filtered.length"
-		:perPage="PAGINATION.TAG_POST"
-		:currPage="currPage"
-		:hasNext="hasNext"
-		:hasPrevious="hasPrevious"
-	>
-		<Postboxes
-			:posts="paginated"
-			:grid="true"
-		/>
-	</Pagination>
+	<Page :badge="tagName">
+		<Pagination
+			page="Posts"
+			:pathname="`tags/${tagName.toLowerCase()}`"
+			:total="filtered.length"
+			:perPage="PAGINATION.TAG_POST"
+			:currPage="currPage"
+			:hasNext="hasNext"
+			:hasPrevious="hasPrevious"
+		>
+			<Postboxes
+				:posts="paginated"
+				:grid="true"
+			/>
+		</Pagination>
+	</Page>
 </template>

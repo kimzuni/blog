@@ -25,7 +25,7 @@ const items: DefaultTheme.Sidebar = [
 	},
 	{
 		collapsed: false,
-		text: "Latest Posts",
+		text: "Recently Updated",
 		items: posts.map(x => ({
 			...x,
 			updatedAt: getGitUpdatedTime(x.path)?.timestamp,
@@ -36,7 +36,7 @@ const items: DefaultTheme.Sidebar = [
 	},
 	{
 		collapsed: false,
-		text: "Series",
+		text: "All Series",
 		items: [
 			...series.filter(x => x !== UNSERIES.LABEL).toSorted((a, b) => a.localeCompare(b)).map(name => ({
 				text: name,

@@ -3,8 +3,9 @@
 import { computed } from "vue";
 import { useData } from "vitepress";
 
-import Postboxes from "./Postboxes.vue";
+import Page from "./Page.vue";
 import Pagination from "./Pagination.vue";
+import Postboxes from "./Postboxes.vue";
 import { usePosts } from "../composables/usePosts";
 import { PAGINATION } from "../../constants";
 
@@ -26,18 +27,20 @@ const published = computed(() => sorted.value.filter(x => x.createdAt));
 
 
 <template>
-	<Pagination
-		page="Posts"
-		pathname="posts"
-		:total="filtered.length"
-		:perPage="PAGINATION.POST"
-		:currPage="currPage"
-		:hasNext="hasNext"
-		:hasPrevious="hasPrevious"
-	>
-		<Postboxes
-			:posts="[...unpublished, ...published]"
-			:grid="true"
-		/>
-	</Pagination>
+	<Page>
+		<Pagination
+			page="Posts"
+			pathname="posts"
+			:total="filtered.length"
+			:perPage="PAGINATION.POST"
+			:currPage="currPage"
+			:hasNext="hasNext"
+			:hasPrevious="hasPrevious"
+		>
+			<Postboxes
+				:posts="[...unpublished, ...published]"
+				:grid="true"
+			/>
+		</Pagination>
+	</Page>
 </template>

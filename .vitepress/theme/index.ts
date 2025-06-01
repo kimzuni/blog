@@ -4,14 +4,17 @@ import type { Theme } from "vitepress";
 import DefaultTheme from "vitepress/theme";
 
 import "./styles/index.css";
+
+import DocAfter from "./components/DocAfter.vue";
+import HomePinned from "./components/HomePinned.vue";
+import PostInfo from "./components/PostInfo.vue";
+
 import Posts from "./components/Posts.vue";
 import Series from "./components/Series.vue";
 import SeriesPosts from "./components/SeriesPosts.vue";
 import Tags from "./components/Tags.vue";
 import TagPosts from "./components/TagPosts.vue";
-import HomePinned from "./components/HomePinned.vue";
-import PostInfo from "./components/PostInfo.vue";
-import Giscus from "./components/Giscus.vue";
+
 import Postbox from "./components/Postbox.vue";
 
 export default {
@@ -21,7 +24,7 @@ export default {
 			// https://vitepress.dev/guide/extending-default-theme#layout-slots
 			"doc-before": () => h(PostInfo),
 			"home-features-after": () => h(HomePinned),
-			"doc-after": () => h(Giscus),
+			"doc-after": () => h(DocAfter),
 		});
 	},
 	enhanceApp({ app, router, siteData }) {

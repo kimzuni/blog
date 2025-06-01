@@ -1,16 +1,11 @@
 <script setup lang="ts">
 
 import { computed } from "vue";
-import { useData } from "vitepress";
 
 import { BASE } from "../../constants";
-import Page from "./Page.vue";
-
-const { frontmatter } = useData();
 
 export interface Props {
 	page: string;
-	badge?: string;
 	description?: string;
 	pathname?: string;
 	total?: number;
@@ -37,17 +32,12 @@ const end = computed(() => perPage.value === 0 ? total.value : Math.min(start.va
 
 @reference "../styles/index.css";
 
-.page-title {
-	@apply my-12 leading-10;
-	@apply flex flex-wrap justify-center-safe items-center-safe gap-3;
-	@apply text-[28px] md:text-[32px];
-	@apply text-center font-semibold;
-} .page-description {
+.page-description {
 	@apply my-8 px-2;
 	@apply text-center;
 } .page-info {
-	@apply flex flex-row-reverse flex-wrap justify-between;
-	@apply pr-2 text-subtle;
+	@apply px-2;
+	@apply text-subtle text-right;
 } .no-items {
 	@apply text-subtle text-center text-xl;
 } .pagination-controls {
@@ -66,30 +56,24 @@ const end = computed(() => perPage.value === 0 ? total.value : Math.min(start.va
 </style>
 
 <template>
-	<Page>
-		<h1 class="page-title">
-			<Badge v-if="badge" type="tip" :text="badge" role="text"/>
-			<span>{{ frontmatter.title ?? `All ${page}`}}</span>
-		</h1>
-		<p v-if="description" class="page-description">{{ description }}</p>
-		<p v-if="total !== 0" class="page-info">{{ `${start}~${end}` }} of {{ total }} {{ page?.toLowerCase() }}</p>
-		<div>
-			<slot v-if="total !== 0"></slot>
-			<div v-else class="no-items" role="status" aria-live="polite">
-				{{ page }} Not Found
-			</div>
+	<p v-if="description" class="page-description">{{ description }}</p>
+	<p v-if="total !== 0" class="page-info">Showing {{ start }}~{{ end }} of {{ total }} {{ page?.toLowerCase() }}</p>
+	<div>
+		<slot v-if="total !== 0"></slot>
+		<div v-else class="no-items" role="status" aria-live="polite">
+			{{ page }} Not Found
 		</div>
-		<div v-if="hasNext || hasPrevious" class="pagination-controls">
-			<component
-				:is="hasPrevious ? 'a' : 'span'"
-				:aria-label="!hasPrevious ? undefined : 'Go to previous page'"
-				:href="!hasPrevious ? undefined : currPage === 2 ? `${BASE}/${pathname}/` : `${BASE}/${pathname}/page/${currPage - 1}/`"
-			>&lt; PREV</component>
-			<component
-				:is="hasNext ? 'a' : 'span'"
-				:aria-label="!hasNext ? undefined : 'Go to next page'"
-				:href="!hasNext ? undefined : `${BASE}/${pathname}/page/${currPage + 1}/`"
-			>NEXT &gt;</component>
-		</div>
-	</Page>
+	</div>
+	<div v-if="hasNext || hasPrevious" class="pagination-controls">
+		<component
+			:is="hasPrevious ? 'a' : 'span'"
+			:aria-label="!hasPrevious ? undefined : 'Go to previous page'"
+			:href="!hasPrevious ? undefined : currPage === 2 ? `${BASE}/${pathname}/` : `${BASE}/${pathname}/page/${currPage - 1}/`"
+		>&lt; PREV</component>
+		<component
+			:is="hasNext ? 'a' : 'span'"
+			:aria-label="!hasNext ? undefined : 'Go to next page'"
+			:href="!hasNext ? undefined : `${BASE}/${pathname}/page/${currPage + 1}/`"
+		>NEXT &gt;</component>
+	</div>
 </template>

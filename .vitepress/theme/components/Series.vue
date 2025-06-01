@@ -3,6 +3,7 @@
 import { computed } from "vue";
 import { useData } from "vitepress";
 
+import Page from "./Page.vue";
 import Pagination from "./Pagination.vue";
 import Seriesbox from "./Seriesbox.vue";
 import { PAGINATION, LIMIT } from "../../constants";
@@ -23,21 +24,23 @@ const { filtered, paginated, hasPrevious, hasNext } = useSeries({
 
 
 <template>
-	<Pagination
-		page="Series"
-		pathname="series"
-		:total="filtered.length"
-		:perPage="PAGINATION.SERIES"
-		:currPage="currPage"
-		:hasNext="hasNext"
-		:hasPrevious="hasPrevious"
-	>
-		<Seriesbox
-			v-for="series in paginated"
-			:key="series.name"
-			:series="series"
-			:open="false"
-			:viewMore="LIMIT.SERIES_POST < series.total"
-		/>
-	</Pagination>
+	<Page>
+		<Pagination
+			page="Series"
+			pathname="series"
+			:total="filtered.length"
+			:perPage="PAGINATION.SERIES"
+			:currPage="currPage"
+			:hasNext="hasNext"
+			:hasPrevious="hasPrevious"
+		>
+			<Seriesbox
+				v-for="series in paginated"
+				:key="series.name"
+				:series="series"
+				:open="false"
+				:viewMore="LIMIT.SERIES_POST < series.total"
+			/>
+		</Pagination>
+	</Page>
 </template>

@@ -10,7 +10,7 @@ const items: DefaultTheme.NavItem[] = [
 	{
 		text: "Posts",
 		link: "/posts/",
-		activeMatch: "/posts/",
+		activeMatch: "/posts/$|/posts/page/",
 	},
 	{
 		text: "Series",

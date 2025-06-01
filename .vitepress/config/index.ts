@@ -50,11 +50,12 @@ export default defineConfig({
 			provider: "local",
 			options: {
 				detailedView: true,
+				disableQueryPersistence: true,
 			},
 		},
 		docFooter: {
-			prev: "Previous post",
-			next: "Next post",
+			prev: false,
+			next: false,
 		},
 	},
 	vite: {
