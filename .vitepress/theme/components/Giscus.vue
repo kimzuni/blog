@@ -63,7 +63,7 @@ onBeforeUnmount(() => {
 				Not supported comment edit and upvote
 				<br/>
 				You can do it on
-				<a href="https://github.com/jh1950/giscus-test/discussions" target="_blank" ref="noopener noreferrer">this page</a>
+				<a :href="`https://github.com/${GISCUS.repo}/discussions`" target="_blank" ref="noopener noreferrer">this page</a>
 				if you want.
 			</p>
 			<Giscus

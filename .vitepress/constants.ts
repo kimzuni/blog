@@ -43,11 +43,15 @@ export const UNSERIES = {
 
 
 export const GISCUS: Omit<GiscusProps, "theme"> = {
-	repo: "jh1950/giscus-test",
-	repoId: "R_kgDOOxdddA",
-	category: "Announcements",
-	categoryId: "DIC_kwDOOxdddM4CqpRt",
+	repo: "kimzuni/comments",
+	repoId: "R_kgDOHtCl5Q",
+	category: "Blog",
+	categoryId: "DIC_kwDOHtCl5c4CQZlo",
 	mapping: "pathname",
-	reactionsEnabled: "1",
+	strict: "1",
+	reactionsEnabled: "0",
+	emitMetadata: "1",
 	inputPosition: "top",
+	lang: "en",
+	loading: "lazy",
 } as const;
