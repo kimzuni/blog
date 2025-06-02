@@ -6,7 +6,7 @@ import { useData } from "vitepress";
 import Page from "./Page.vue";
 import Pagination from "./Pagination.vue";
 import Postboxes from "./Postboxes.vue";
-import { usePosts } from "../composables/usePosts";
+import { useSeries } from "../composables/useSeries";
 import { SERIES, PAGINATION } from "../../constants";
 
 const { params } = useData();
@@ -14,9 +14,9 @@ const { params } = useData();
 const seriesName = computed(() => params.value?.series as string);
 const currPage = computed(() => Number(params.value?.page) || 1);
 
-const { filtered, paginated, hasPrevious, hasNext } = usePosts({
-	seriesName: seriesName,
+const { filtered, paginated, hasPrevious, hasNext } = useSeries({
 	currPage: currPage,
+	seriesName: seriesName,
 	perPage: PAGINATION.SERIES_POST,
 });
 
@@ -56,7 +56,7 @@ const { filtered, paginated, hasPrevious, hasNext } = usePosts({
 			:hasPrevious="hasPrevious"
 		>
 			<Postboxes
-				:posts="paginated"
+				:posts="paginated.find(x => x.name === seriesName)?.items.map(x => x.post)"
 				:grid="true"
 			/>
 		</Pagination>

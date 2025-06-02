@@ -9,33 +9,50 @@ export interface Series {
 	order?: number;
 }
 
+export const splitSeriesNum = (name: string) => {
+	const data: {
+		num?: number;
+		name: string;
+	} = { name };
+
+	const split = name.split(SERIES.NUM_DELIMITER);
+	if (1 < split.length && /^\d+$/.test(split[0]!)) {
+		data.num = Number(split[0]) || undefined;
+		data.name = split.slice(1).join(SERIES.NUM_DELIMITER)!;
+	}
+
+	return data;
+};
+
 export const parserSeries =  (path: string, frontmatter?: Frontmatter): Series | undefined => {
 	path = stripPath(path);
 	if (!path.startsWith("posts/")) return undefined;
 	path = path.slice(6);
 
 	const series: Partial<Series> = {};
-	if (frontmatter?.series) {
-		if (typeof frontmatter.series === "string") {
+	if (frontmatter?.series !== undefined) {
+		if (typeof frontmatter.series === "boolean") {
+			series.name = UNSERIES.LABEL;
+		} else if (typeof frontmatter.series === "string") {
 			series.name = frontmatter.series;
 		} else if (typeof frontmatter.series === "number") {
 			series.order = frontmatter.series;
 		} else {
-			series.name = frontmatter.series.name;
-			series.order = frontmatter.series.order;
+			series.name = frontmatter.series.include === false ? UNSERIES.LABEL : frontmatter.series.name ? String(frontmatter.series.name) : undefined;
+			series.order = Number(frontmatter.series.order) || undefined;
 		}
 	}
 
 	const paths = path.split("/");
-	const filename = paths.pop()?.split(SERIES.NUM_DELIMITER);
+	const filename = paths.pop();
 	if (!series.name) {
 		const idx = paths.findIndex(value => value.startsWith("_"));
-		series.name = paths.slice(0, idx !== -1 ? idx : Infinity).join("/");
+		series.name = paths.slice(0, idx !== -1 ? idx : Infinity).map(x => splitSeriesNum(x).name).join("/");
 	}
 
-	if (series.name && series.order === undefined && filename && filename.length !== 1 && /^\d+$/.test(`${filename[0]}`)) {
-		series.order = Number(filename[0]) || undefined;
-		paths[1] = filename.slice(1).join(SERIES.NUM_DELIMITER)!;
+	if (series.name && series.order === undefined) {
+		const { num } = splitSeriesNum(filename!);
+		series.order = Number(num) || undefined;
 	}
 
 	return {

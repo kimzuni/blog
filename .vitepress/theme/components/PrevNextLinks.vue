@@ -1,10 +1,7 @@
 <script setup lang="ts">
 
-import { useData } from "vitepress";
-
 import { usePrevNext } from '../composables/usePrevNext';
 
-const { theme } = useData();
 const control = usePrevNext();
 
 </script>

@@ -54,7 +54,7 @@ onBeforeUnmount(() => {
 
 <template>
 	<section class="comment-container" aria-labelledby="comment-heading">
-		<h2 id="comment-heading" class="sr-only">Comments</h2>
+		<p id="comment-heading" class="sr-only">Comments</p>
 		<div v-if="frontmatter.comment === false" class="not-allowed" role="alert">
 			Comments not allowed
 		</div>

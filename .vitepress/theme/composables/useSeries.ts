@@ -6,13 +6,15 @@ import { checkSeries } from "../../utils/series";
 
 
 
+export interface UseSeriesFilteredItem {
+	order: number;
+	post: Post,
+}
+
 export interface UseSeriesFiltered {
 	name: string;
 	total: number;
-	items: Array<{
-		order: number;
-		post: Post,
-	}>;
+	items: UseSeriesFilteredItem[];
 }
 
 export interface UseSeriesProps {

@@ -8,7 +8,7 @@ import { useSeries } from "../composables/useSeries";
 import Seriesbox from "../components/Seriesbox.vue";
 
 const post = useCurrentPost();
-const seriesName = computed(() => post.value.series.name)
+const seriesName = computed(() => post.value.series.name);
 
 const { paginated } = useSeries({
 	seriesName: seriesName,

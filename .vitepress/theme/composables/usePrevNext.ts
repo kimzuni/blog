@@ -1,30 +1,29 @@
 import { computed } from 'vue';
 import { useData } from 'vitepress';
 
-import type { Post } from '../../data/posts.data';
-import { usePosts } from './usePosts';
+import { useSeries, type UseSeriesFilteredItem } from './useSeries';
 import { useCurrentPost } from "../composables/useCurrentPost";
 
 
 
-const setData = (post: Post | undefined, data: any) => {
+const setData = (item: UseSeriesFilteredItem | undefined, data: any) => {
 	if (data === false) return;
 
 	let text: string;
 	let link: string | undefined = undefined;
 	if (typeof data === "string") {
-		if (!post) return;
+		if (!item) return;
 		text = data;
-		link = post.url;
+		link = item.post.url;
 	} else if (typeof data === "object") {
 		if (!("text" in data)) return;
 		text = data.text;
 		if ("link" in data) link = data.link;
-	} else if (!post) {
+	} else if (!item) {
 		return;
 	} else {
-		text = post.title;
-		link = post.url;
+		text = item.post.title;
+		link = item.post.url;
 	}
 
 	return { text, link };
@@ -33,14 +32,15 @@ const setData = (post: Post | undefined, data: any) => {
 export const usePrevNext = () => {
 	const { frontmatter } = useData();
 	const post = useCurrentPost();
-	const posts = usePosts({
+	const series = useSeries({
 		currPage: computed(() => 1),
 		seriesName: computed(() => post.value.series.name),
 	});
 
-	const currIdx = computed(() => posts.paginated.value.indexOf(post.value));
+	const items = computed(() => series.paginated.value[0]?.items ?? []);
+	const currIdx = computed(() => items.value.findIndex(x => x.post === post.value));
 	return computed(() => ({
-		prev: setData(posts.paginated.value[currIdx.value + 1], frontmatter.value.prev),
-		next: setData(posts.paginated.value[currIdx.value - 1], frontmatter.value.next),
+		prev: setData(items.value[currIdx.value + 1], frontmatter.value.prev),
+		next: setData(items.value[currIdx.value - 1], frontmatter.value.next),
 	}));
 };

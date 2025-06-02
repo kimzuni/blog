@@ -1,5 +1,6 @@
 import { defineConfig } from "vitepress";
 import tailwindcss from "@tailwindcss/vite";
+import footnote from "markdown-it-footnote";
 
 import { parserPath } from "../utils/parserPath";
 import { BASE, SITE, ASSETS_DIR } from "../constants";
@@ -28,13 +29,28 @@ export default defineConfig({
 	transformPageData: transform.pageData,
 	rewrites: (id) => parserPath(id).rewrite,
 	srcExclude: [
+		"README.md",
 		"drafts/",
 	],
 	markdown: {
+		externalLinks: {
+			rel: "noopener noreferrer",
+		},
+		anchor: {
+			slugify: (str) =>
+				`${str}`
+				.toLowerCase()
+				.replace(/[^\w -]/g, "")
+				.replace(/ /g, "-")
+			,
+		},
 		image: {
 			lazyLoading: true,
 		},
 		lineNumbers: true,
+		config: (md) => {
+			md.use(footnote);
+		},
 	},
 	themeConfig: {
 		externalLinkIcon: true,

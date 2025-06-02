@@ -40,6 +40,7 @@ const { filtered, paginated, hasPrevious, hasNext } = useSeries({
 				:series="series"
 				:open="false"
 				:viewMore="LIMIT.SERIES_POST < series.total"
+				headingTagName="h2"
 			/>
 		</Pagination>
 	</Page>

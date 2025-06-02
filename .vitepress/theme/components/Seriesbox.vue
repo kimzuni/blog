@@ -10,10 +10,11 @@ export interface Props {
 	series: UseSeriesFiltered;
 	open?: boolean;
 	viewMore?: boolean;
+	headingTagName?: string;
 }
 
 const data = useData();
-const { series, open=false, viewMore=false } = defineProps<Props>();
+const { headingTagName="p", series, open=false, viewMore=false } = defineProps<Props>();
 
 </script>
 
@@ -48,7 +49,7 @@ const { series, open=false, viewMore=false } = defineProps<Props>();
 
 <template>
 	<section class="seriesbox" :aria-labelledby="`series-${series.name}`">
-		<h2 :id="`series-${series.name}`" class="sr-only">Series: {{ series.name }}</h2>
+		<component :is="headingTagName" :id="`series-${series.name}`" class="sr-only">Series: {{ series.name }}</component>
 		<details class="details custom-block" :open="open || undefined" aria-live="polite">
 			<summary class="details-summary">
 				{{ series.name }}
