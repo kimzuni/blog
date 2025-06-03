@@ -1,7 +1,11 @@
 import type { HeadConfig } from "vitepress";
 
+import favicon from "./favicon";
 
 
-const config: HeadConfig[] | undefined = undefined;
+
+const config: HeadConfig[] = [
+	...favicon,
+];
 
 export default config;
