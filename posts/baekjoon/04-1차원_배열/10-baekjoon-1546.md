@@ -6,8 +6,12 @@ tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
 
 ![Baekjoon No.1546 문제](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-1546-1.png)
 
+<Imgbox>
+
 ![Baekjoon No.1546 예제-1](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-1546-2.png)
 ![Baekjoon No.1546 예제-2](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-1546-3.png)
+
+</Imgbox>
 
 점수 조작은 나빠요..!
 

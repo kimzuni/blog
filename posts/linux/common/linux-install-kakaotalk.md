@@ -43,8 +43,12 @@ CentOS를 사용하던 시절부터 카카오톡을 설치해 보려고 `wine`, 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ```
 
+<Imgbox>
+
 ![apt install flatpak](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-flatpak-1.png)
 ![flatpak remote add](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-flatpak-2.png)
+
+</Imgbox>
 
 ### Bottles 설치
 
@@ -55,29 +59,45 @@ flatpak install flathub com.usebottles.bottles
 sudo reboot
 ```
 
+<Imgbox>
+
 ![flatpak install bottles 1](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-bottles-1.png)
 ![flatpak install bottles 2](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-bottles-2.png)
+
+</Imgbox>
 
 ### KakaoTalk 설치 준비
 
 터미널에서 `flatpak run com.usebottles.bottles`를 입력하거나 우분투 메뉴에서 Bottles 선택해서 실행 후 계속 진행
 
+<Imgbox>
+
 ![bottles start 1](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-bottles-3.png)
 ![bottles start 2](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-bottles-4.png)
 ![bottles start 3](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-bottles-5.png)
 
+</Imgbox>
+
 오른쪽 상단 삼선 메뉴 - Preferences - Runners에서 원하는 것으로 다운로드
+
+<Imgbox>
 
 ![bottles settings 1](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-bottles-6.png)
 ![bottles settings 2](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-bottles-7.png)
 
+</Imgbox>
+
 왼쪽 상단 + 누른 후 Bottle 생성
+
+<Imgbox>
 
 ![Create Bottle 1](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-bottles-8.png)
 ![Create Bottle 2](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-bottles-9.png)
 ![Create Bottle 3](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-bottles-10.png)
 ![Create Bottle 4](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-bottles-11.png)
 ![Create Bottle 5](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-bottles-12.png)
+
+</Imgbox>
 
 ### 폰트 설치
 
@@ -87,13 +107,19 @@ sudo reboot
 Bottle에서 제공하는 폰트(cjkfonts)를 설치할 수 있다.
 cjkfonts 설치 시 굴림, 돋움, 맑은 고딕, 바탕 등의 폰트를 포함한 중국어(c), 일본어(j), 한국어(k)의 여러 폰트가 설치된다.
 
+<Imgbox>
+
 ![bottles - Dependencies](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-cjkfonts-1.png)
 ![bottles - Dependencies - cjkfonts](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-cjkfonts-2.png)
+
+</Imgbox>
 
 ### KakaoTalk 설치
 
 [카카오톡 사이트](https://www.kakaocorp.com/page/service/service/KakaoTalk)에서
 Windows 설치 파일 다운로드 및 "Run Executable..."에서 카카오톡 설치 파일 선택.
+
+<Imgbox>
 
 ![Install KakaoTalk 1](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-1.png)
 ![Install KakaoTalk 2](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-2.png)
@@ -105,6 +131,8 @@ Windows 설치 파일 다운로드 및 "Run Executable..."에서 카카오톡 �
 ![Install KakaoTalk 8](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-8.png)
 ![Install KakaoTalk 9](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-9.png)
 
+</Imgbox>
+
 #### 2023.05.01 - caffe-7.20 에러
 
 2023년 5월 1일 현재 caffe(v7.20)로 진행 시 에러가 발생한다.
@@ -112,9 +140,13 @@ Windows 설치 파일 다운로드 및 "Run Executable..."에서 카카오톡 �
 아무런 업데이트가 없었는데 갑자기 되던 게 안 되니 내가 문제인지 caffe가 문제인지는 모르겠다.
 Bottle을 제거 후 다른 Runner로 새로 생성하거나 Bottle의 Settings에 들어가서 Runner를 변경하면 문제없이 설치가 된다.
 
+<Imgbox>
+
 ![Install KakaoTalk - Error](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-caffe-error.png)
 ![Bottle - Settings](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-change-runner-1.png)
 ![Bottle - Settings - Runner](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-change-runner-2.png)
+
+</Imgbox>
 
 ## 설정
 
@@ -171,9 +203,13 @@ flatpak override com.usebottles.bottles --user --filesystem=xdg-data/application
 
 이제 Bottles에서 아래 버튼을 클릭하면 .desktop 파일이 생성되는 것을 확인할 수 있다.
 
+<Imgbox>
+
 ![KakaoTalk - Create icon in Show Applications 2](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-run-2.png)
 ![KakaoTalk - Create icon in Show Applications 3](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-run-3.png)
 ![KakaoTalk - Create icon in Show Applications 4](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-run-4.png)
+
+</Imgbox>
 
 #### 실행 파일 생성
 
@@ -207,14 +243,22 @@ unzip nanum-all.zip
 find 나눔\ 글꼴/ -type f -exec cp {} ~/.var/app/com.usebottles.bottles/data/bottles/bottles/KakaoTalk/drive_c/windows/Fonts/ \;
 ```
 
+<Imgbox>
+
 ![KakaoTalk Fonts 1](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-fonts-1.png)
 ![KakaoTalk Fonts 2](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-fonts-2.png)
+
+</Imgbox>
 
 한글은 이제 안 깨지고 보이는데.. ~~하단 광고와~~ 입력란의 한글은 여전히 깨진다.
 이건 카카오톡 설정에서 폰트를 변경하면 된다.
 
+<Imgbox>
+
 ![KakaoTalk Fonts 3](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-fonts-3.png)
 ![KakaoTalk Fonts 4](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-fonts-4.png)
+
+</Imgbox>
 
 ### 카카오톡에서 파일 업로드 및 다운로드
 
@@ -239,8 +283,12 @@ flatpak override --user --filesystem=host com.usebottles.bottles
 
 위 명령어를 사용하면 모든 디렉토리에 접근이 가능하다고 한다.
 
+<Imgbox>
+
 ![filesystem=host - before](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-sendmail-override-filesystem-1.png)
 ![filesystem=host - after](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-sendmail-override-filesystem-2.png)
+
+</Imgbox>
 
 다만, 시스템의 모든 파일에 접근이 가능하기 때문에 주의가 필요할 듯.
 권한을 제거하려면 `--filesystem`을 `--nofilesystem`으로 바꿔주기만 하면 된다.
@@ -261,8 +309,12 @@ flatpak override --user --nofilesystem=host com.usebottles.bottles
 Documents 폴더에서 "카카오톡 받은 파일"을 제외한 나머지 폴더가 모두 리눅스의 홈 디렉토리에 심볼릭 링크가 걸려있다.
 즉, 아무거나 선택 후 Downloads 폴더를 선택하면 파일 다운로드 시 홈 디렉토리에 저장된다.
 
+<Imgbox>
+
 ![KakaoTalk - Settings - Chatting](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-downloads-1.png)
 ![KakaoTalk - Settings - Chatting - Download Folder](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-kakaotalk-downloads-2.png)
+
+</Imgbox>
 
 이게 귀찮다면 그냥 터미널에서 `카카오톡 받은 파일` 폴더를 직접 홈 디렉토리의 `Downloads`에 심볼릭 링크를 걸어도 된다.
 

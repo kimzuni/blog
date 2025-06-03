@@ -6,8 +6,12 @@ tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
 
 ![Baekjoon No.5597 문제](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-5597-1.png)
 
+<Imgbox>
+
 ![Baekjoon No.5597 예제-1](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-5597-2.png)
 ![Baekjoon No.5597 예제-2](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-5597-3.png)
+
+</Imgbox>
 
 1부터 30중에 빠진 숫자를 찾아라!
 

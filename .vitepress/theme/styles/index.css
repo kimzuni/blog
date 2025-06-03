@@ -56,6 +56,14 @@
 	--color-theme-light: color-mix(in srgb, var(--color-theme-primary) 75%, black);
 	--color-theme-dark: color-mix(in srgb, var(--color-theme-primary) 60%, black);
 	--color-theme-soft: color-mix(in srgb, var(--color-theme-primary) 25%, transparent);
+
+	--color-caution: var(--vp-c-danger-2);
+	--color-danger: var(--vp-c-danger-2);
+	--color-error: var(--vp-c-danger-2);
+	--color-warning: var(--vp-c-warning-2);
+	--color-important: var(--vp-c-important-2);
+	--color-tip: var(--vp-c-tip-2);
+	--color-success: var(--vp-c-success-2);
 }
 
 :root {

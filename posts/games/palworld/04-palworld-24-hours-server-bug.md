@@ -27,13 +27,14 @@ tags: [GitHub, Bug, Issue]
 
 아래 코드는 조금 수정한 코드.
 
-```python
+```python [auto_check_player.py]
 import subprocess
 import time
 
 TARGET_PORT = 8211
 CONTAINER_NAME = "palworld-server"
 sudo_password = "your_sudo_password_here" # sudo 명령어 사용 시 패스워드 입력이 필요없다면 삭제
+
 
 
 def check_players():
@@ -49,7 +50,6 @@ def run_command(command):
         command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, text=True
     )
     return result.stdout.strip()
-
 
 def main():
     if not check_players():

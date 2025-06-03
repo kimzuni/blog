@@ -1,6 +1,7 @@
 import { defineConfig } from "vitepress";
 import tailwindcss from "@tailwindcss/vite";
 import footnote from "markdown-it-footnote";
+import { groupIconMdPlugin, groupIconVitePlugin } from "vitepress-plugin-group-icons";
 
 import { parserPath } from "../utils/parserPath";
 import { BASE, SITE, ASSETS_DIR } from "../constants";
@@ -50,6 +51,7 @@ export default defineConfig({
 		lineNumbers: true,
 		config: (md) => {
 			md.use(footnote);
+			md.use(groupIconMdPlugin);
 		},
 	},
 	themeConfig: {
@@ -77,6 +79,7 @@ export default defineConfig({
 	vite: {
 		plugins: [
 			tailwindcss(),
+			groupIconVitePlugin(),
 		],
 	},
 });

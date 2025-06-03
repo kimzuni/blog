@@ -7,8 +7,12 @@ tags: [VMware, Update, Error]
 
 리눅스에서 VMware를 사용하다 보면 `vmmon`, `vmnet` 모듈을 업데이트해야 할 때가 있다.
 
+<Imgbox>
+
 ![VMware Kernal Module Updater 1](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/vmware-kernel-module-updater-error-1.png)
 ![VMware Kernal Module Updater 2](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/vmware-kernel-module-updater-error-2.png)
+
+</Imgbox>
 
 하지만 VMware와 커널 버전이 호환되지 않으면 에러가 발생하면서 업데이트가 되지 않는다.
 업데이트를 하지 않으면 VMware를 사용할 수 없기 때문에 어떻게든 해결을 해야 한다.

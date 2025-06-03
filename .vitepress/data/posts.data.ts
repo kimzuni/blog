@@ -76,7 +76,7 @@ export default createContentLoader([
 		const { pathname, series } = parserPath(url, post);
 		const heading = parserHeading(html);
 		const thumbnail = getThumbnail(post.thumbnail, html);
-		excerpt = stripHTML(excerpt || html);
+		excerpt = stripHTML(excerpt || html)?.slice(0, 120);
 
 		return {
 			src, excerpt,

@@ -172,7 +172,7 @@
     // Allowed elements
     "allowed_elements": [
       "Postbox",
-      "Img"
+      "Imgbox"
     ]
   },
 

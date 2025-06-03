@@ -15,7 +15,7 @@ tags: [Linux, GitHub, ARM64, Issue]
 
 `docker-compose.yml` 파일 작성 후 `docker compose up -d` 실행
 
-```yaml
+```yaml [docker-compose.yml]
 version: "3.9"
 services:
   palworld:

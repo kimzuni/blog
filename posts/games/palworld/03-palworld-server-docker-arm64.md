@@ -29,7 +29,7 @@ tags: [Linux, Docker, ARM64]
 주요 내용은 AMD 버전만 지원하는 것을 ARM에서 실행하기 위해
 [FEX-Emu](https://github.com/FEX-Emu/FEX)를 사용하는 것이다.
 
-```dockerfile
+```dockerfile [Dockerfile]
 # ARM steamcmd: https://github.com/TeriyakiGod/steamcmd-docker-arm64
 # FROM teriyakigod/steamcmd:arm64 # CPU_MHZ Error
 FROM ubuntu:22.04
@@ -87,7 +87,6 @@ RUN curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.t
  && FEXBash -c "/home/steam/steamcmd/steamcmd.sh +quit" \
  && mkdir -p ~/.steam/sdk64/ \
  && ln -sf ../../steamcmd/linux64/steamclient.so ~/.steam/sdk64/
-
 
 
 
@@ -178,7 +177,7 @@ ENTRYPOINT ["/home/steam/server/init.sh"]
 
 ### init.sh
 
-```bash
+```bash [init.sh]
 #!/bin/bash
 
 :<< "END"
@@ -237,7 +236,7 @@ FEX-Emu를 사용하는 것 때문에 `/home/steam/.fex-emu/RootFS`의 용량이
 
 ### start.sh
 
-```bash {61,97,398}
+```bash {61,97,398}  [start.sh]
 #!/bin/bash
 
 dirExists() {

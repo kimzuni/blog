@@ -10,17 +10,13 @@ tags: [Install]
 
 ## apt, snap install
 
-1. apt
-    - net-tools, openssh, curl
-    - gcc, g++, make, build-essential
-    - rename, p7zip, python3-pip, git, vim, gedit
-    - ufw, ffmpeg, gnome-shell-extensions, gimp, icoutils
-2. snap
-    - chromium, discord, steam, notion-snap-reborn
-
 ```shell
-# sudo apt -y install [package_name]
-# sudo snap install [package_name]
+sudo apt -y install \
+     net-tools, openssh, curl \
+     gcc, g++, make, build-essential \
+     rename, p7zip, python3-pip, git, vim, gedit \
+     ufw, ffmpeg, gnome-shell-extensions, gimp, icoutils
+sudo snap install chromium, discord, steam, notion-snap-reborn
 ```
 
 ## RealVNC Viewer
@@ -33,7 +29,7 @@ VNC Viewer 검색 후 [다운로드 사이트](https://www.realvnc.com/en/connec
 dpke 명령어로 설치
 
 ```shell
-# sudo dpkg -i VNC-Viewer.deb
+sudo dpkg -i VNC-Viewer.deb
 ```
 
 ![dpkg -i VNC Viewer](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/ubuntu-install-apps-vnc-viewer-2.png)
@@ -125,8 +121,12 @@ VirtualBox 6, 7 버전의 패키지만 추가되었고 기존에 존재하던 �
 제대로 추가되었나 확인
 왼쪽이 Repo 추가하기 전 확인한 내용이다.
 
+<Imgbox>
+
 ![Virtualbox - Check Repository](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/ubuntu-install-apps-virtualbox-repository-3.png)
 ![Virtualbox - Check Repository](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/ubuntu-install-apps-virtualbox-repository-4.png)
+
+</Imgbox>
 
 7.0 버전으로 설치
 
@@ -143,16 +143,24 @@ sudo apt -y install virtualbox-7.0
 [Player](https://www.vmware.com/kr/products/workstation-player/workstation-player-evaluation.html),
 [Pro](https://www.vmware.com/kr/products/workstation-pro/workstation-pro-evaluation.html)
 
+<Imgbox>
+
 ![VMware Player Download Site](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/ubuntu-install-apps-vmware-player-1.png)
 ![VMware Pro Download Site](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/ubuntu-install-apps-vmware-pro-1.png)
+
+</Imgbox>
 
 최신 버전이 아닌 다른 버전을 받으려면 아래 사이트에서 원하는 버전을 선택하면 된다.
 
 [Player](https://customerconnect.vmware.com/en/downloads/info/slug/desktop_end_user_computing/vmware_workstation_player/17_0),
 [Pro](https://customerconnect.vmware.com/en/downloads/info/slug/desktop_end_user_computing/vmware_workstation_pro/17_0)
 
+<Imgbox>
+
 ![VMware Player Old Version Download Site](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/ubuntu-install-apps-vmware-player-2.png)
 ![VMware Pro Old Version Download Site](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/ubuntu-install-apps-vmware-pro-2.png)
+
+</Imgbox>
 
 Player는 Pro와 달리 GO TO DOWNLOADS를 누른 후에 Windows/Linux 선택해서 다운로드하는 방식이다.
 이 파일은 .deb가 아닌 .bundle 파일이다.
@@ -185,9 +193,13 @@ sudo apt install gns3-gui gns3-server
 
 설치 시 Wireshark가 자동으로 설치된다.
 
+<Imgbox>
+
 ![GNS3 PPA](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/ubuntu-install-apps-gns3-add-ppa.png)
 ![apt update](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/ubuntu-install-apps-gns3-apt-update.png)
 ![GNS3 Install](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/ubuntu-install-apps-gns3-install.png)
+
+</Imgbox>
 
 ## Packet Tracer
 
@@ -231,8 +243,12 @@ curl -sL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 sudo apt -y install nodejs
 ```
 
+<Imgbox>
+
 ![Node.js PPA](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/ubuntu-install-apps-nodejs-1.png)
 ![Node.js install](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/ubuntu-install-apps-nodejs-2.png)
+
+</Imgbox>
 
 ## Rclone
 

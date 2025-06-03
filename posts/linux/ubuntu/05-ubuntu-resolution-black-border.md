@@ -28,13 +28,21 @@ tags: [Xorg, Error]
 
 Xorg가 아닌 기본 설정으로 로그인 후 각 해상도에서 `xrandr -q` 명령어를 사용하면 결과가 아래처럼 뜬다.
 
+<Imgbox>
+
 ![xrandr command - 2880x1800](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/ubuntu-resolution-black-border-2.png)
 ![xrandr command - 2560x1600](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/ubuntu-resolution-black-border-3.png)
 
+</Imgbox>
+
 그리고 아래 사진들은 Xorg로 로그인 후 같은 명령어를 사용한 결과다.
+
+<Imgbox>
 
 ![xrandr command - 2880x1800 on Xorg](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/ubuntu-resolution-black-border-4.png)
 ![xrandr command - 2560x1600 on Xorg](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/ubuntu-resolution-black-border-5.png)
+
+</Imgbox>
 
 설정은 모두 바탕화면에서 마우스 우클릭 - Display Settings에서 했는데도 결과가 다르다.
 Xorg가 아닌 기본 설정에서는 해상도를 바꾸면 `xrandr` 명령에서 현재 해상도가 제일 높은 해상도로 설정되어 있지만, Xorg에서는 화면의 최대 해상도인 2880x1800에서 설정한 해상도가 선택되어 있다.

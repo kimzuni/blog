@@ -24,8 +24,12 @@ bash Anaconda3.sh
 
 라이센스다. q를 누른 후 `yes` 입력
 
+<Imgbox>
+
 ![Anaconda3 - Installing 2](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-anaconda-2.png)
 ![Anaconda3 - Installing 3](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-anaconda-3.png)
+
+</Imgbox>
 
 설치할 경로 선택. 기본값은 홈 디렉토리에 설치된다.
 
@@ -76,8 +80,12 @@ Natigator에서 실행해도 되지만 터미널에서 바로 실행할 수도 �
 ./anaconda3/bin/jupyter lab
 ```
 
+<Imgbox>
+
 ![Anaconda3 - Jupyter Notebook Start](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-anaconda-jupyter-notebook.png)
 ![Anaconda3 - Jupyter Lab Start](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/linux-install-anaconda-jupyter-lab.png)
+
+</Imgbox>
 
 ## 실행 파일 생성
 
@@ -94,7 +102,7 @@ Natigator에서 실행해도 되지만 터미널에서 바로 실행할 수도 �
 이 파일에 아나콘다 설치 경로가 입력되어 있다.
 다른 경로에 설치했다면 `CONDA_HOME` 값만 변경해 주면 된다.
 
-```bash [conda.conf]
+```bash [~/bin/conda.conf]
 FILENAME="${0##*/}"
 
 CONDA_HOME="$HOME"/anaconda3
@@ -111,7 +119,7 @@ NAVIGATOR="$CONDA_BIN"/anaconda-navigator
 
 사용법: `anaconda-navigator`
 
-```bash [anaconda-navigator]
+```bash [~/bin/anaconda-navigator]
 #!/usr/bin/env bash
 
 source `dirname "$0"`/conda.conf
@@ -143,7 +151,7 @@ notebook은 `http://localhost:8888/tree`, lab은 `http://localhost:8888/lab`.
 - 목록: `jupyter lab list`
   + 서버의 포트 및 토큰 인증을 위한 URL 확인 가능
 
-```bash [jupyter]
+```bash [~/bin/jupyter]
 #!/usr/bin/env bash
 
 source `dirname "$0"`/conda.conf
@@ -225,5 +233,5 @@ fi
 `anaconda3` 디렉토리에 모두 설치되기 때문에 해당 디렉토리만 삭제하면 된다.
 
 ```shell
-# rm -rf ./anaconda3
+rm -rf ./anaconda3
 ```
