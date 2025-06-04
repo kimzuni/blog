@@ -3,14 +3,15 @@ import type { DefaultTheme } from "vitepress";
 import { UNSERIES, LIMIT } from "../constants";
 import { parserPath } from "../utils/parserPath";
 import { toPathname } from "../utils/toPathname";
-import { getGitUpdatedTime } from "../utils/getGitUpdatedTime";
+import { postsToSort } from "../utils/postsToSort";
+import { parserDatetimes } from "../utils/parserDatetimes";
 import { posts } from "../data/posts";
 import { series as seriesNames } from "../data/series";
 
 
 
 const pinned = posts.map(post => {
-	const { path, title, frontmatter, content } = post;
+	const { path, title, frontmatter } = post;
 	if (frontmatter.pin !== true) return undefined;
 	const { pathname } = parserPath(path);
 	return {
@@ -19,12 +20,20 @@ const pinned = posts.map(post => {
 	};
 }).filter(x => x !== undefined).slice(0, LIMIT.SIDEBAR_PINNED);
 
-const recont = posts.map(x => ({
+const postsWithDate = posts.map(x => ({
 	...x,
-	updatedAt: getGitUpdatedTime(x.path)?.timestamp,
-})).filter(x => x.updatedAt).toSorted(x => x.updatedAt!).map(post => ({
+	...parserDatetimes(x.path, x.frontmatter),
+	pathname: `/${parserPath(x.path).pathname}`,
+}));
+
+const unpublished = postsWithDate.filter(x => !x.createdAt).map(post => ({
 	text: post.title,
-	link: `/${parserPath(post.path).pathname}`,
+	link: post.pathname,
+}));
+
+const recent = postsWithDate.filter(x => x.createdAt || x.updatedAt).toSorted(postsToSort).map(post => ({
+	text: post.title,
+	link: post.pathname,
 })).slice(0, LIMIT.SIDEBAR_LATEST);
 
 const series = [
@@ -42,6 +51,13 @@ const series = [
 
 const items: DefaultTheme.Sidebar = [
 	...(
+		!unpublished.length ? [] : [{
+			collapsed: false,
+			text: "Unpublished",
+			items: unpublished,
+		}]
+	),
+	...(
 		!pinned.length ? [] : [{
 			collapsed: false,
 			text: "Pinned Posts",
@@ -49,10 +65,10 @@ const items: DefaultTheme.Sidebar = [
 		}]
 	),
 	...(
-		!recont.length ? [] : [{
+		!recent.length ? [] : [{
 			collapsed: false,
 			text: "Recently Updated",
-			items: recont,
+			items: recent,
 		}]
 	),
 	...(

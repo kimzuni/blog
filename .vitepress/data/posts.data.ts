@@ -2,13 +2,14 @@ import { createContentLoader } from "vitepress";
 import type { ContentData } from "vitepress";
 
 import { BASE } from "../constants";
+import { postsToSort } from "../utils/postsToSort";
 import { parserPath, type Series } from "../utils/parserPath";
 import { parserHeading } from "../utils/parserHeading";
 import { parserSlug } from "../utils/parserSlug";
 import { stripHTML } from "../utils/stripHTML";
+import { parserDatetimes } from "../utils/parserDatetimes";
 
-import { getGitUpdatedTime } from "../utils/getGitUpdatedTime";
-import { toTimestamp, type PostDate } from "../utils/toTimestamp";
+import { type PostDate } from "../utils/toTimestamp";
 
 
 
@@ -78,8 +79,6 @@ export default createContentLoader([
 		const thumbnail = getThumbnail(post.thumbnail, html);
 		excerpt = stripHTML(excerpt || html)?.slice(0, 120);
 
-		const createdAt = post.createdAt ?? post.date;
-		const updatedAt = post.updatedAt ?? post.last_modified_at;
 		return {
 			src, excerpt,
 			url: `${BASE}${pathname}`,
@@ -88,14 +87,9 @@ export default createContentLoader([
 			slug: parserSlug(pathname)!,
 			description: toString(post.description),
 			thumbnail: post.thumbnail === false || !thumbnail ? noImage : thumbnail,
-			createdAt: toTimestamp(createdAt) || getGitUpdatedTime(filepath, true),
-			updatedAt: updatedAt === false ? null : toTimestamp(updatedAt) || getGitUpdatedTime(filepath, false),
 			series: series!,
 			tags: toArray(post.tags),
+			...parserDatetimes(filepath, post),
 		};
-	}).sort((a, b) => {
-		const at = a.updatedAt?.timestamp ?? a.createdAt?.timestamp ?? Infinity;
-		const bt = b.updatedAt?.timestamp ?? b.createdAt?.timestamp ?? Infinity;
-		return bt - at;
-	}),
+	}).sort(postsToSort),
 });
