@@ -1,6 +1,7 @@
 ---
 title: 1998년생인 내가 태국에서는 2541년생?! (18108)
 date: 2023-01-27 13:15:00 +0900
+last_modified_at: false
 tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
 ---
 

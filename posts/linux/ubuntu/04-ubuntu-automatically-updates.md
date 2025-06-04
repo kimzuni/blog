@@ -1,6 +1,7 @@
 ---
 title: 소프트웨어 자동 업데이트 기능 켜기/끄기
 date: 2023-02-16 14:18:00 +0900
+last_modified_at: false
 tags: [Update, On/Off]
 ---
 

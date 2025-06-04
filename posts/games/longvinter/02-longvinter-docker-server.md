@@ -1,6 +1,7 @@
 ---
 title: Docker로 Longvinter 서버 열기 (AMD64, ARM64)
 date: 2024-04-04 16:04:53 +0900
+last_modified_at: false
 tags: [Linux, Docker, steamcmd, AMD64, ARM64]
 ---
 

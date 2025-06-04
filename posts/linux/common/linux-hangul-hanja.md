@@ -1,7 +1,7 @@
 ---
 title: 리눅스에서 한/영 키, 한자 키 사용하기
 date: 2023-02-12 17:31:00 +0900
-categories: [Linux]
+last_modified_at: false
 tags: [한글]
 ---
 

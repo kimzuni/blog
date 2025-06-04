@@ -1,6 +1,7 @@
 ---
 title: 숫자의 합 (11720)
 date: 2023-02-17 17:46:00 +0900
+last_modified_at: false
 tags: ["Bash", "Node.js", "Python3", "Ruby"]
 ---
 

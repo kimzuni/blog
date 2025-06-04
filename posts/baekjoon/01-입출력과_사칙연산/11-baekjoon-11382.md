@@ -1,6 +1,7 @@
 ---
 title: 꼬마 정민 (11382)
 date: 2023-02-22 18:21:00 +0900
+last_modified_at: false
 tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
 ---
 

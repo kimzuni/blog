@@ -1,6 +1,7 @@
 ---
 title: 너의 평점은 (25206)
 date: 2023-02-28 16:14:00 +0900
+last_modified_at: false
 tags: ["Bash", "Node.js", "Python3", "Ruby"]
 ---
 

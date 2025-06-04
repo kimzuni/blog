@@ -1,6 +1,7 @@
 ---
 title: 한수 (1065)
 date: 2023-02-04 19:45:00 +0900
+last_modified_at: false
 tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
 ---
 

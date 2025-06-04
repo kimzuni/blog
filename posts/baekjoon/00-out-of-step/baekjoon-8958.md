@@ -1,6 +1,7 @@
 ---
 title: OX퀴즈 (8958)
 date: 2023-02-02 21:30:00 +0900
+last_modified_at: false
 tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
 ---
 

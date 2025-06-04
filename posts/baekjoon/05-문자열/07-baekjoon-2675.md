@@ -1,6 +1,7 @@
 ---
 title: 문자열 반복 (2675)
 date: 2023-02-18 17:52:00 +0900
+last_modified_at: false
 tags: ["Bash", "Node.js", "Python3", "Ruby"]
 ---
 

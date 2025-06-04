@@ -1,6 +1,7 @@
 ---
 title: 코딩은 체육과목 입니다 (25314)
 date: 2023-02-22 20:28:00 +0900
+last_modified_at: false
 tags: ["Bash", "Node.js", "PHP", "Python3", "Ruby"]
 ---
 

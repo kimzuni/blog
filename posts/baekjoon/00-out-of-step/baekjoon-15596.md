@@ -1,6 +1,7 @@
 ---
 title: 정수 N개의 합 (15596)
 date: 2023-02-03 21:50:00 +0900
+last_modified_at: false
 tags: ["C", "Python3"]
 ---
 

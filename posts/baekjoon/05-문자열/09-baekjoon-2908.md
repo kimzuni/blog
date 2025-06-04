@@ -1,6 +1,7 @@
 ---
 title: 상수 (2908)
 date: 2023-02-19 15:10:00 +0900
+last_modified_at: false
 tags: ["Bash", "Node.js", "Python3", "Ruby"]
 ---
 

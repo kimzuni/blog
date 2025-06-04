@@ -1,6 +1,7 @@
 ---
 title: X보다 작은 수 (10871)
 date: 2023-01-30 21:56:00 +0900
+last_modified_at: false
 tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
 ---
 

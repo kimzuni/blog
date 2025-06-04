@@ -1,6 +1,7 @@
 ---
 title: 그룹 단어 체커 (1316)
 date: 2023-02-19 16:43:00 +0900
+last_modified_at: false
 tags: ["Bash", "Node.js", "Python3", "Ruby"]
 ---
 

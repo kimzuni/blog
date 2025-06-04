@@ -1,6 +1,7 @@
 ---
 title: 곱셈 (2588)
 date: 2023-01-27 15:42:00 +0900
+last_modified_at: false
 tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
 ---
 

@@ -2,7 +2,6 @@
 title: 우분투 설치 후 필요한 것들 설치
 date: 2023-04-22 16:53:00 +0900
 last_modified_at: 2023-04-25 13:48:00 +0900
-categories: [Linux, Ubuntu]
 tags: [Install]
 ---
 

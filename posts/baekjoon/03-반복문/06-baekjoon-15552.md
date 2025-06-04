@@ -1,6 +1,7 @@
 ---
 title: 빠른 A+B (15552)
 date: 2023-01-29 15:47:00 +0900
+last_modified_at: false
 tags: ["C", "Node.js", "PHP", "Python3", "Ruby"]
 ---
 

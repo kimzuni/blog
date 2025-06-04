@@ -41,7 +41,7 @@ export default defineConfig({
 			slugify: (str) =>
 				`${str}`
 				.toLowerCase()
-				.replace(/[^\w -]/g, "")
+				.replace(/[^\p{L}\p{N} -]/gu, "")
 				.replace(/ /g, "-")
 			,
 		},

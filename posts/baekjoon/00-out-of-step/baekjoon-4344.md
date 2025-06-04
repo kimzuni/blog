@@ -1,6 +1,7 @@
 ---
 title: 평균은 넘겠지 (4344)
 date: 2023-02-02 22:28:00 +0900
+last_modified_at: false
 tags: ["C", "Node.js", "PHP", "Python3", "Ruby"]
 ---
 

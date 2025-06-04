@@ -1,6 +1,7 @@
 ---
 title: 새싹 (25083)
 date: 2023-01-27 17:03:00 +0900
+last_modified_at: false
 tags: ["Bash", "C", "Node.js", "Python3", "Ruby"]
 ---
 

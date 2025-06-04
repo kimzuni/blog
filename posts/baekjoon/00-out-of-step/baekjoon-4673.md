@@ -1,6 +1,7 @@
 ---
 title: 셀프 넘버 (4673)
 date: 2023-02-04 12:10:00 +0900
+last_modified_at: false
 tags: ["C", "Node.js", "PHP", "Python3", "Ruby"]
 ---
 

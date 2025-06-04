@@ -1,6 +1,7 @@
 ---
 title: AxB (10998)
 date: 2023-01-27 11:57:00 +0900
+last_modified_at: false
 tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
 ---
 

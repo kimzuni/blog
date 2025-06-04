@@ -1,6 +1,7 @@
 ---
 title: 아나콘다 설치 및 실행 (Linux)
 date: 2023-04-25 18:15:00 +0900
+last_modified_at: false
 tags: [Install]
 ---
 

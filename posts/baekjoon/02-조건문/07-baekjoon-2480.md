@@ -1,6 +1,7 @@
 ---
 title: 주세위 세개 (2480)
 date: 2023-01-27 21:48:00 +0900
+last_modified_at: false
 tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
 ---
 

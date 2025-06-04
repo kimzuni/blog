@@ -1,6 +1,7 @@
 ---
 title: 별 찍기 - 7 (2444)
 date: 2023-02-24 10:02:00 +0900
+last_modified_at: false
 tags: ["Bash", "Node.js", "Python3", "Ruby"]
 ---
 

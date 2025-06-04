@@ -1,6 +1,7 @@
 ---
 title: 평균 (1546)
 date: 2023-02-01 22:10:00 +0900
+last_modified_at: false
 tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
 ---
 

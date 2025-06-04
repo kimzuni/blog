@@ -1,6 +1,7 @@
 ---
 title: 나머지 (10430)
 date: 2023-01-27 14:08:00 +0900
+last_modified_at: false
 tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
 ---
 

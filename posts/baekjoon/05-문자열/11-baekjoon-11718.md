@@ -1,6 +1,7 @@
 ---
 title: 그대로 출력하기 (11718)
 date: 2023-02-23 20:27:00 +0900
+last_modified_at: false
 tags: ["Bash", "Node.js", "Python3", "Ruby"]
 ---
 

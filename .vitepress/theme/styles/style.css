@@ -11,9 +11,13 @@ a {
 	@apply transition-[color];
 } input[type="search"]::-webkit-search-cancel-button {
 	@apply hidden;
-} .vp-doc img {
-	@apply mx-auto;
-	@apply max-w-full max-h-[75svh];
+} .vp-doc {
+	img {
+		@apply mx-auto;
+		@apply max-w-full max-h-[75svh];
+	} table {
+		@apply text-nowrap;
+	}
 }
 
 

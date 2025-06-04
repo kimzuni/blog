@@ -1,6 +1,7 @@
 ---
 title: 별 찍기 - 1 (2438)
 date: 2023-01-29 18:09:00 +0900
+last_modified_at: false
 tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
 ---
 

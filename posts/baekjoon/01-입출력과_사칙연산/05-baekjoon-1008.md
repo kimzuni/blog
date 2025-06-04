@@ -1,6 +1,7 @@
 ---
 title: A/B (1008)
 date: 2023-01-27 12:02:00 +0900
+last_modified_at: false
 tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
 ---
 

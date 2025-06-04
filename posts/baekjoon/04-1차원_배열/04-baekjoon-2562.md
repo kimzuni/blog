@@ -1,6 +1,7 @@
 ---
 title: 최댓값 (2562)
 date: 2023-01-31 22:13:00 +0900
+last_modified_at: false
 tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: 다이얼 (5622)
 date: 2023-02-19 15:41:00 +0900
+last_modified_at: false
 tags: ["Bash", "Node.js", "Python3", "Ruby"]
 ---
 

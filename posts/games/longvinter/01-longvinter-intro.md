@@ -1,6 +1,7 @@
 ---
 title: 롱빈터(Longvinter)
 date: 2024-04-04 11:38:11 +0900
+last_modified_at: false
 ---
 
 AMD64, ARM64 아키텍처에서 서버 여는 법은 아래 글 참고 바람

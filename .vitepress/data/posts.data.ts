@@ -78,6 +78,8 @@ export default createContentLoader([
 		const thumbnail = getThumbnail(post.thumbnail, html);
 		excerpt = stripHTML(excerpt || html)?.slice(0, 120);
 
+		const createdAt = post.createdAt ?? post.date;
+		const updatedAt = post.updatedAt ?? post.last_modified_at;
 		return {
 			src, excerpt,
 			url: `${BASE}${pathname}`,
@@ -86,8 +88,8 @@ export default createContentLoader([
 			slug: parserSlug(pathname)!,
 			description: toString(post.description),
 			thumbnail: post.thumbnail === false || !thumbnail ? noImage : thumbnail,
-			createdAt: toTimestamp(post.createdAt ?? post.date) || getGitUpdatedTime(filepath, true),
-			updatedAt: toTimestamp(post.updatedAt ?? post.last_modified_at) || getGitUpdatedTime(filepath, false),
+			createdAt: toTimestamp(createdAt) || getGitUpdatedTime(filepath, true),
+			updatedAt: updatedAt === false ? null : toTimestamp(updatedAt) || getGitUpdatedTime(filepath, false),
 			series: series!,
 			tags: toArray(post.tags),
 		};
