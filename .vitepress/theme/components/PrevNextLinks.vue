@@ -41,7 +41,7 @@ footer {
 </style>
 
 <template>
-	<footer>
+	<footer class="VPDocFooter">
 		<nav
 			v-if="control.prev?.link || control.next?.link"
 			class="prev-next"

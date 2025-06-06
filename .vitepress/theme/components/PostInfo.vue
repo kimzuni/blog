@@ -56,7 +56,7 @@ const { paginated } = useSeries({
 			</template>
 		</dl>
 	</div>
-	<div v-if="seriesName !== UNSERIES.LABEL">
+	<div v-if="seriesName !== UNSERIES.LABEL" class="seriesbox-container">
 		<Seriesbox
 			v-for="series in paginated"
 			:key="series.name"

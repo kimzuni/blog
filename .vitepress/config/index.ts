@@ -2,6 +2,8 @@ import { defineConfig } from "vitepress";
 import tailwindcss from "@tailwindcss/vite";
 import footnote from "markdown-it-footnote";
 import { groupIconMdPlugin, groupIconVitePlugin } from "vitepress-plugin-group-icons";
+import { InlineLinkPreviewElementTransform } from "@nolebase/vitepress-plugin-inline-link-preview/markdown-it";
+import lightbox from "vitepress-plugin-lightbox";
 
 import { parserPath } from "../utils/parserPath";
 import { BASE, SITE, ASSETS_DIR } from "../constants";
@@ -52,6 +54,8 @@ export default defineConfig({
 		config: (md) => {
 			md.use(footnote);
 			md.use(groupIconMdPlugin);
+			md.use(InlineLinkPreviewElementTransform);
+			md.use(lightbox, {});
 		},
 	},
 	themeConfig: {
@@ -81,5 +85,14 @@ export default defineConfig({
 			tailwindcss(),
 			groupIconVitePlugin(),
 		],
+		optimizeDeps: {
+			exclude: ["@nolebase/vitepress-plugin-inline-link-preview/client"],
+		},
+		ssr: {
+			noExternal: [
+				"@nolebase/vitepress-plugin-inline-link-preview",
+				"@nolebase/ui",
+			],
+		},
 	},
 });

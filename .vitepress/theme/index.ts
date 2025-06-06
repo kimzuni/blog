@@ -1,14 +1,13 @@
 // https://vitepress.dev/guide/custom-theme
-import { h } from "vue";
 import type { Theme } from "vitepress";
 import DefaultTheme from "vitepress/theme";
+import { NolebaseInlineLinkPreviewPlugin } from "@nolebase/vitepress-plugin-inline-link-preview/client";
 
 import "virtual:group-icons.css";
-import "./styles/index.css";
+import "@nolebase/vitepress-plugin-inline-link-preview/client/style.css";
 
-import DocAfter from "./components/DocAfter.vue";
-import HomePinned from "./components/HomePinned.vue";
-import PostInfo from "./components/PostInfo.vue";
+import "./styles/index.css";
+import Layout from "./Layout.vue";
 
 import Posts from "./components/Posts.vue";
 import Series from "./components/Series.vue";
@@ -22,15 +21,15 @@ import Imgbox from "./components/Imgbox.vue";
 
 export default {
 	extends: DefaultTheme,
-	Layout: () => {
-		return h(DefaultTheme.Layout, null, {
-			// https://vitepress.dev/guide/extending-default-theme#layout-slots
-			"doc-before": () => h(PostInfo),
-			"home-features-after": () => h(HomePinned),
-			"doc-after": () => h(DocAfter),
-		});
-	},
+	Layout,
 	enhanceApp({ app, router, siteData }) {
+		app.use(NolebaseInlineLinkPreviewPlugin, {
+			selectorsToBeHided: [
+				".VPNav", ".VPFooter", ".VPLocalNav", ".VPSidebar", ".VPDocFooter", ".prev-next", // default values
+				".seriesbox-container",
+				".comment-container",
+			],
+		});
 		app.component("posts", Posts);
 		app.component("series", Series);
 		app.component("series_posts", SeriesPosts);
