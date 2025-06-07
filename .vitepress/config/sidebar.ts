@@ -73,7 +73,7 @@ const items: DefaultTheme.Sidebar = [
 	),
 	...(
 		!series.length ? [] : [{
-			collapsed: false,
+			collapsed: true,
 			text: "All Series",
 			items: series,
 		}]

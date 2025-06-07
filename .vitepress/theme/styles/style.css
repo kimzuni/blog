@@ -15,6 +15,11 @@ a {
 	img {
 		@apply mx-auto;
 		@apply max-w-full max-h-[75svh];
+	} s, del {
+		@apply text-(--vp-c-text-3);
+		@apply hover:no-underline;
+	} .footnote-ref a {
+		@apply no-underline;
 	} table {
 		@apply text-nowrap;
 	}

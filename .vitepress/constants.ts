@@ -1,5 +1,7 @@
 import type { GiscusProps } from "@giscus/vue";
 
+export { default as archives } from "./archivess";
+
 
 
 export const URL = "https://blog.kimzuni.com";
