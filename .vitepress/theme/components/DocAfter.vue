@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import PrevNextLinks from "./PrevNextLinks.vue";
+import PostFooter from "./PostFooter.vue";
 import Giscus from "./Giscus.vue";
 
 </script>
@@ -8,6 +8,6 @@ import Giscus from "./Giscus.vue";
 
 
 <template>
-	<PrevNextLinks/>
+	<PostFooter/>
 	<Giscus/>
 </template>

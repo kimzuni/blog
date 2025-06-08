@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import { usePrevNext } from '../composables/usePrevNext';
+import { usePrevNext } from "../composables/usePrevNext";
 
 const control = usePrevNext();
 
@@ -12,9 +12,7 @@ const control = usePrevNext();
 
 @reference "../styles/index.css";
 
-footer {
-	@apply mt-16;
-} .prev-next {
+.prev-next {
 	@apply pt-6 border-t-1 border-(--vp-c-divider);
 	@apply grid gap-y-2 gap-x-4;
 	@apply sm:grid-cols-[repeat(2,1fr)];
@@ -41,34 +39,32 @@ footer {
 </style>
 
 <template>
-	<footer class="VPDocFooter">
-		<nav
-			v-if="control.prev?.link || control.next?.link"
-			class="prev-next"
-			aria-labelledby="doc-footer-aria-label"
-		>
-			<span class="sr-only" id="doc-footer-aria-label">Pager</span>
+	<nav
+		v-if="control.prev?.link || control.next?.link"
+		class="prev-next"
+		aria-labelledby="doc-footer-aria-label"
+	>
+		<span class="sr-only" id="doc-footer-aria-label">Pager</span>
 
-			<div class="pager">
-				<a
-					v-if="control.prev?.link"
-					class="pager-link prev"
-					:href="control.prev.link"
-				>
-					<span class="desc">Read Previous</span>
-					<span class="title" v-html="control.prev.text"></span>
-				</a>
-			</div>
-			<div class="pager">
-				<a
-					v-if="control.next?.link"
-					class="pager-link next"
-					:href="control.next.link"
-				>
-					<span class="desc">Read Next</span>
-					<span class="title" v-html="control.next.text"></span>
-				</a>
-			</div>
-		</nav>
-	</footer>
+		<div class="pager">
+			<a
+				v-if="control.prev?.link"
+				class="pager-link prev"
+				:href="control.prev.link"
+			>
+				<span class="desc">Read Previous</span>
+				<span class="title" v-html="control.prev.text"></span>
+			</a>
+		</div>
+		<div class="pager">
+			<a
+				v-if="control.next?.link"
+				class="pager-link next"
+				:href="control.next.link"
+			>
+				<span class="desc">Read Next</span>
+				<span class="title" v-html="control.next.text"></span>
+			</a>
+		</div>
+	</nav>
 </template>
