@@ -29,6 +29,7 @@ export default defineConfig({
 	lastUpdated: false,
 	sitemap: sitemap,
 	assetsDir: ASSETS_DIR,
+	ignoreDeadLinks: true,
 	transformPageData: transform.pageData,
 	rewrites: (id) => parserPath(id).rewrite,
 	srcExclude: [
