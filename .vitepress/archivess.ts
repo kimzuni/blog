@@ -10,7 +10,7 @@ const archives: AddUserItem[] = [
 	},
 	{
 		type: "event",
-		title: "블로그 마이그레이션 (Jekyll to Vitepress)",
+		title: "블로그 시스템 개편 (Jekyll -> VitePress)",
 		timestamp: new Date("2025-06-03").getTime(),
 	},
 ];
