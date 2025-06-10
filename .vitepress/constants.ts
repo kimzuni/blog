@@ -4,6 +4,8 @@ export { default as archives } from "./archivess";
 
 
 
+export const TIME_ZONE = "Asia/Seoul";
+
 export const URL = "https://blog.kimzuni.com";
 
 export const BASE: string = "";
