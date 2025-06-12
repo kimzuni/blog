@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "bunx --bun vitepress dev",
-    "build": "bunx --bun vitepress build",
+    "build": "bunx --bun vitepress build && bun scripts/prepare-deploy.ts",
     "preview": "bunx --bun vitepress preview"
   },
   "devDependencies": {
