@@ -1,58 +1,10 @@
 <script setup lang="ts">
 
-import { archives } from "../../constants";
 import Page from "./Page.vue";
 import { data as posts } from "../../data/posts.data";
-import type { PostDate } from "../../utils/toTimestamp";
+import { getArchiveTree } from "../../utils/getArchiveTree";
 
-export interface GroupItem {
-	type: "post" | "event" | "notice";
-	url?: string;
-	title: string;
-	date: PostDate;
-}
-
-export interface AddUserItem extends Omit<GroupItem, "date"> {
-	timestamp: number;
-};
-
-export type Group = Array<[number, Array<[number, Array<[number, Array<GroupItem>]>]>]>;
-const group = [...posts, ...archives].reduce<Group>((acc, cur) => {
-	const isPost = "createdAt" in cur;
-	const { timestamp } = isPost ? (cur.createdAt ?? {}) : { timestamp: cur.timestamp };
-	if (timestamp) {
-		const date = new Date(timestamp);
-		const [year, month, day] = date.toISOString().split(/-|T/g).map(x => parseInt(x));
-		if (day && month && year) {
-			if (!acc[year]) acc[year] = [year, []];
-			if (!acc[year][1][month]) acc[year][1][month] = [month, []];
-			if (!acc[year][1][month][1][day]) acc[year][1][month][1][day] = [day, []];
-			acc[year][1][month][1][day][1].push({
-				type: isPost ? "post" : "event",
-				url: cur.url,
-				title: cur.title,
-				date: {
-					string: new Date(timestamp).toLocaleDateString(),
-					timestamp,
-				},
-			});
-		}
-	}
-	return acc;
-}, [])
-	.filter(Boolean).toReversed()
-	.map(([year, yearItems]) => {
-		const items = yearItems.filter(Boolean).toReversed().map(([month, monthItems]) => {
-			const items = monthItems.filter(Boolean).toReversed().map(([day, dayItems]) => {
-				const items = dayItems.toSorted((a, b) => b.date!.timestamp - a.date!.timestamp);
-				return [day, items] as const;
-			});
-			return [month, items] as const;
-		});
-		return [year, items] as const;
-	});
-
-const onlyItems = group.map(x => x[1].map(x => x[1].map(x => x[1]))).flat().flat().flat();
+const [tree, items] = getArchiveTree({ posts });
 
 </script>
 
@@ -138,7 +90,7 @@ const onlyItems = group.map(x => x[1].map(x => x[1].map(x => x[1]))).flat().flat
 			<span class="notice">NOTICE</span>
 		</div>
 		<ul class="container">
-			<li v-for="[year, yearItems] of group">
+			<li v-for="[year, yearItems] of tree">
 				<h2 class="year">{{ year }}</h2>
 				<ul>
 					<li v-for="[month, monthItems], monthItemIdx in yearItems" :class="`line ${monthItemIdx ? '' : 'short'}`.trim()">
@@ -153,7 +105,7 @@ const onlyItems = group.map(x => x[1].map(x => x[1].map(x => x[1]))).flat().flat
 											item line ${item.type}
 											${dayItemIdx || itemIdx ? '' : 'short'}
 										`.replace(/\s+/g, ' ').trim()"
-										:style="`--to: var(--${onlyItems[onlyItems.indexOf(item)-1]?.type})`"
+										:style="`--to: var(--${items[items.indexOf(item)-1]?.type})`"
 									>
 										<span class="sr-only">{{ item.type }}</span>
 										<component

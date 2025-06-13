@@ -3,7 +3,7 @@
 import { computed } from "vue";
 import { Pen, Pin } from "lucide-vue-next";
 
-import { BASE } from "../../constants";
+import { BASE, NO_IMAGE } from "../../constants";
 import { data as posts, type Post } from "../../data/posts.data";
 
 export type Props = {
@@ -83,7 +83,7 @@ const postDate = computed(() => post?.updatedAt ?? post?.createdAt);
 			<div class="postbox-thumbnail">
 				<Pen v-if="!post.createdAt" class="postbox-icon unpublished"/>
 				<Pin v-if="post.pin" class="postbox-icon pin"/>
-				<img :src="post.thumbnail" :alt="`Thumbnail for post: ${post.title}`"/>
+				<img :src="post.thumbnail ?? NO_IMAGE" :alt="`Thumbnail for post: ${post.title}`"/>
 			</div>
 			<div class="postbox-content">
 				<component :is="props.headingTagName" :id="`postbox-title-${post.slug}`" class="postbox-title">{{ post.title }}</component>

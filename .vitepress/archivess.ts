@@ -1,8 +1,8 @@
-import type { AddUserItem } from "./theme/components/Archives.vue";
+import type { AddItem } from "./utils/getArchiveTree";
 
 
 
-const archives: AddUserItem[] = [
+const archives: Array<AddItem> = [
 	{
 		type: "event",
 		title: "Jekyll 기반 블로그 개설",

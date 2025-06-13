@@ -36,12 +36,17 @@ export const LIMIT = {
 export const SERIES = {
 	NUM_DELIMITER: "-",
 	DESCRIPTION: {
-	} as Record<string, string>,
+	} as Partial<Record<string, string>>,
 } as const;
 
 export const UNSERIES = {
 	INCLUDE: true,
 	LABEL: "Unseries",
+} as const;
+
+export const TAGS = {
+	DESCRIPTION: {
+	} as Partial<Record<string, string>>,
 } as const;
 
 
@@ -59,3 +64,11 @@ export const GISCUS: Omit<GiscusProps, "theme"> = {
 	lang: "en",
 	loading: "lazy",
 } as const;
+
+
+
+export const NO_IMAGE = "data:image/svg+xml;base64," + btoa(`
+	<svg xmlns="http://www.w3.org/2000/svg" height="160" width="160">
+		<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">No Image :(</text>
+	</svg>
+`.replace(/\s+/g, " ").trim());
