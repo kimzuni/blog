@@ -5,5 +5,5 @@ import type { GetPostsReturnType } from "./getPosts";
 
 
 export const getSeries = (posts: GetPostsReturnType) => [
-	...new Set(posts.map(x => parserSeries(x.path, x.frontmatter)!.name).flat()),
-].filter(x => UNSERIES.INCLUDE || x !== UNSERIES.LABEL).map(x => x.trim());
+	...new Set(posts.map(x => parserSeries(x.path, x.frontmatter)?.name).flat()),
+].filter(x => x !== undefined).filter(x => UNSERIES.INCLUDE || x !== UNSERIES.LABEL).map(x => x.trim());

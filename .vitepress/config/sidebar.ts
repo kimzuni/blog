@@ -2,14 +2,22 @@ import type { DefaultTheme } from "vitepress";
 
 import { UNSERIES, LIMIT } from "../constants";
 import { toPathname } from "../utils/toPathname";
-import { getPinnedPosts } from "../utils/getPinnedPosts";
+import { parserPath } from "../utils/parserPath";
 import { getPostsWithDate } from "../utils/getPostsWithDate";
 import { posts } from "../data/posts";
 import { series as seriesNames } from "../data/series";
 
 
 
-const pinned = getPinnedPosts(posts).slice(0, LIMIT.SIDEBAR_PINNED);
+const pinned = posts.map(post => {
+	const { path, title, frontmatter } = post;
+	if (frontmatter.pin !== true) return undefined;
+	const { pathname } = parserPath(path);
+	return {
+		text: title,
+		link: `/${pathname}`,
+	};
+}).filter(x => x !== undefined).slice(0, LIMIT.SIDEBAR_PINNED);
 
 const postsWithDate = getPostsWithDate(posts);
 

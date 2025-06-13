@@ -5,7 +5,15 @@ import type { GetPostsReturnType } from "./getPosts";
 
 
 
-export const getPostsWithDate = (posts: GetPostsReturnType) => posts.map(x => ({
+type GetPostsWithDateReturnType =
+	& GetPostsReturnType[number]
+	& ReturnType<typeof parserDatetimes>
+	& {
+		pathname: string;
+	}
+;
+
+export const getPostsWithDate = (posts: GetPostsReturnType): GetPostsWithDateReturnType[] => posts.map(x => ({
 	...x,
 	...parserDatetimes(x.path, x.frontmatter),
 	pathname: `/${parserPath(x.path).pathname}`,
