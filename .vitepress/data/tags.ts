@@ -1,13 +1,6 @@
+import { getTags } from "../utils/getTags";
 import { posts } from "./posts";
 
 
 
-export const tags = [...new Set(posts
-	.map(x => x.frontmatter.tags)
-	.flat()
-	.filter(Boolean)
-	.map(x =>
-		`${x}`
-		.trim()
-	)
-)];
+export const tags = getTags(posts);
