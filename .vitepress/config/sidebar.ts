@@ -1,6 +1,6 @@
 import type { DefaultTheme } from "vitepress";
 
-import { UNSERIES, LIMIT } from "../constants";
+import { LIMIT } from "../constants";
 import { toPathname } from "../utils/toPathname";
 import { posts } from "../data/posts";
 import { series as seriesNames } from "../data/series";
@@ -22,16 +22,10 @@ const recent = posts.filter(x => x.createdAt || x.updatedAt).map(post => ({
 	link: `/posts/${post.slug}/`,
 })).slice(0, LIMIT.SIDEBAR_LATEST);
 
-const series = [
-	...seriesNames.filter(x => x !== UNSERIES.LABEL).toSorted((a, b) => a.localeCompare(b)).map(name => ({
-		text: name,
-		link: `/series/${toPathname(name)}/`,
-	})),
-	(!UNSERIES.INCLUDE || !seriesNames.find(x => x === UNSERIES.LABEL) ? {} : {
-		text: UNSERIES.LABEL,
-		link: `/series/${toPathname(UNSERIES.LABEL)}/`,
-	}),
-];
+const series = seriesNames.map(name => ({
+	text: name,
+	link: `/series/${toPathname(name)}/`,
+})).slice(0, LIMIT.SIDEBAR_SERIES);
 
 
 
@@ -39,7 +33,7 @@ const items: DefaultTheme.Sidebar = [
 	...(
 		!unpublished.length ? [] : [{
 			collapsed: false,
-			text: "Unpublished",
+			text: "Unpublished Posts",
 			items: unpublished,
 		}]
 	),
@@ -53,14 +47,14 @@ const items: DefaultTheme.Sidebar = [
 	...(
 		!recent.length ? [] : [{
 			collapsed: false,
-			text: "Recently Updated",
+			text: "Recently Updated Posts",
 			items: recent,
 		}]
 	),
 	...(
 		!series.length ? [] : [{
-			collapsed: true,
-			text: "All Series",
+			collapsed: false,
+			text: "Recently Updated Series",
 			items: series,
 		}]
 	),
