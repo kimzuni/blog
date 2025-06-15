@@ -2,7 +2,7 @@
 title: "Dovecot: SSL_accept() failed"
 date: 2023-06-01 23:03:16 +0900
 last_modified_at: false
-tags: [Error, Dovecot, Gmail, SSL/TLS]
+tags: [Linux, RaspberryPi, Error, Dovecot, Gmail, SSL/TLS]
 ---
 
 crontab 설정 시 설정된 명령어가 실행되면 root가 root에게 메일을 보낸다.

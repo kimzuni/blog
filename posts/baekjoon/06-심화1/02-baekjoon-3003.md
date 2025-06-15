@@ -2,7 +2,7 @@
 title: 킹, 퀸, 룩, 비숍, 나이트, 폰 (3003)
 date: 2023-01-27 13:27:00 +0900
 last_modified_at: false
-tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.3003](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-3003.png)

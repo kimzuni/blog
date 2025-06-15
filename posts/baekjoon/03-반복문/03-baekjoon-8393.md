@@ -2,7 +2,7 @@
 title: 합 (8393)
 date: 2023-01-29 13:28:00 +0900
 last_modified_at: false
-tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.8393](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-8393.png)

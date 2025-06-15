@@ -2,7 +2,7 @@
 title: 빠른 A+B (15552)
 date: 2023-01-29 15:47:00 +0900
 last_modified_at: false
-tags: ["C", "Node.js", "PHP", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.15552 문제](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-15552.png)

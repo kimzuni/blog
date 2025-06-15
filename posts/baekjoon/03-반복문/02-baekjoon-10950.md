@@ -2,7 +2,7 @@
 title: A+B - 3 (10950)
 date: 2023-01-29 12:05:00 +0900
 last_modified_at: false
-tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.10950](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-10950.png)

@@ -2,7 +2,7 @@
 title: 단어의 개수 (1152)
 date: 2023-02-19 14:56:00 +0900
 last_modified_at: false
-tags: ["Bash", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.1152](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-1152.png)

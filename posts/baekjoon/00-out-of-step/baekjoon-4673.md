@@ -2,7 +2,7 @@
 title: 셀프 넘버 (4673)
 date: 2023-02-04 12:10:00 +0900
 last_modified_at: false
-tags: ["C", "Node.js", "PHP", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.4673 문제](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-4673-1.png)

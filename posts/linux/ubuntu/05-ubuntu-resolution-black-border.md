@@ -2,7 +2,7 @@
 title: 해상도 설정 시 Black Border 문제
 date: 2023-03-01 16:25:00 +0900
 last_modified_at: false
-tags: [Xorg, Error]
+tags: [Linux, Ubuntu, Xorg, Error]
 ---
 
 지금 사용하고 있는 노트북 화면 비율이 16:10이고 최대 해상도가 2880x1800인데,

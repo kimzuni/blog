@@ -2,7 +2,7 @@
 title: 최소, 최대 (10818)
 date: 2023-01-30 22:33:00 +0900
 last_modified_at: false
-tags: ["C", "Node.js", "PHP", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.10818](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-10818.png)

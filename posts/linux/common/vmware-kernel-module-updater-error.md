@@ -2,7 +2,7 @@
 title: VMware Kernel Module Updater Error
 date: 2023-02-21 20:01:00 +0900
 last_modified_at: 2023-04-27 20:25:00 +0900
-tags: [VMware, Update, Error]
+tags: [Linux, VMware, Update, Error]
 ---
 
 리눅스에서 VMware를 사용하다 보면 `vmmon`, `vmnet` 모듈을 업데이트해야 할 때가 있다.

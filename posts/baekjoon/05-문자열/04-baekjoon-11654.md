@@ -2,7 +2,7 @@
 title: 아스키 코드 (11654)
 date: 2023-02-16 16:37:00 +0900
 last_modified_at: false
-tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.11654 문제](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-11654-1.png)

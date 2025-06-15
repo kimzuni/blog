@@ -2,7 +2,7 @@
 title: 리눅스에서 카카오톡 사용하기
 date: 2023-04-25 22:05:00 +0900
 last_modified_at: 2023-08-09 19:42:22 +0900
-tags: [KakaoTalk, Install, Setting]
+tags: [Linux, KakaoTalk, Install, Setting]
 ---
 
 이 글에서는 우분투에 설치했지만 Flatpak을 사용하기 때문에 리눅스 배포판 종류와 상관없이 설치할 수 있다.

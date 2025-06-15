@@ -2,7 +2,7 @@
 title: 단어 공부 (1157)
 date: 2023-02-18 18:05:00 +0900
 last_modified_at: false
-tags: ["Node.js", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.1157](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-1157.png)

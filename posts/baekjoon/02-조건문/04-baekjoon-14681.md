@@ -2,7 +2,7 @@
 title: 사분면 고르기 (14681)
 date: 2023-01-27 20:00:00 +0900
 last_modified_at: false
-tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.14681](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-14681.png)

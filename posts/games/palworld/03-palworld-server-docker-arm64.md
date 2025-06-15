@@ -2,7 +2,7 @@
 title: Docker로 Palworld 서버 열기 (ARM64)
 date: 2024-02-08 15:30:46 +0900
 last_modified_at: 2024-02-09 21:25:01 +0900
-tags: [Linux, Docker, ARM64]
+tags: [Linux, Docker, ARM64, steamcmd]
 ---
 
 <Postbox title="palworld-server-docker-arm64-2"/>

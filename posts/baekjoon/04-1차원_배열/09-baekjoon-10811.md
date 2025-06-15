@@ -2,7 +2,7 @@
 title: 바구니 뒤집기 (10811)
 date: 2023-02-23 18:09:00 +0900
 last_modified_at: false
-tags: ["Bash", "Node.js", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.10811](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-10811.png)

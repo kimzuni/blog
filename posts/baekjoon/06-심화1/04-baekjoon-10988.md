@@ -2,7 +2,7 @@
 title: 팰린드롬인지 확인하기 (10988)
 date: 2023-02-27 20:49:00 +0900
 last_modified_at: false
-tags: ["Bash", "Node.js", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.10988](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-10988.png)

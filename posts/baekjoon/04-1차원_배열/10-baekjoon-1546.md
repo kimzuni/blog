@@ -2,7 +2,7 @@
 title: 평균 (1546)
 date: 2023-02-01 22:10:00 +0900
 last_modified_at: false
-tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.1546 문제](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-1546-1.png)

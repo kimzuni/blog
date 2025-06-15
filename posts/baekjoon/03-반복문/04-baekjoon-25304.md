@@ -2,7 +2,7 @@
 title: 영수증 (25304)
 date: 2023-01-29 13:49:00 +0900
 last_modified_at: false
-tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.25304 문제](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-25304-1.png)

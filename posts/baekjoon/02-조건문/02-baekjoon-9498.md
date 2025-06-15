@@ -2,7 +2,7 @@
 title: 시험 성적 (9498)
 date: 2023-01-27 19:37:00 +0900
 last_modified_at: false
-tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.9498](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-9498.png)

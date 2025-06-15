@@ -2,7 +2,7 @@
 title: 우분투 설치
 date: 2023-04-16 10:08:00 +0900
 last_modified_at: 2023-04-21 17:30:00 +0900
-tags: [Install]
+tags: [Linux, Ubuntu, Install]
 ---
 
 > [!CAUTION]

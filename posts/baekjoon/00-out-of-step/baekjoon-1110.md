@@ -2,7 +2,7 @@
 title: 더하기 사이클 (1110)
 date: 2023-01-29 20:52:00 +0900
 last_modified_at: false
-tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 > [!NOTE]

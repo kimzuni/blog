@@ -2,7 +2,7 @@
 title: 단어 길이 재기 (2743)
 date: 2023-02-23 20:05:00 +0900
 last_modified_at: false
-tags: ["Bash", "Node.js", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.2743](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-2743.png)

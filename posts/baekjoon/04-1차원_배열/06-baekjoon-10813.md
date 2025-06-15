@@ -2,7 +2,7 @@
 title: 공 바꾸기 (10813)
 date: 2023-02-23 17:46:00 +0900
 last_modified_at: false
-tags: ["Bash", "Node.js", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.10813](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-10813.png)

@@ -2,7 +2,7 @@
 title: A + B - 4 (10951)
 date: 2023-01-29 20:11:00 +0900
 last_modified_at: false
-tags: ["Bash", "Node.js", "PHP", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.10951](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-10951.png)

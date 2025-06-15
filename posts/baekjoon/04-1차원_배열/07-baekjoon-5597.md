@@ -2,7 +2,7 @@
 title: 과제 안 내신 분..? (5597)
 date: 2023-01-31 22:36:00 +0900
 last_modified_at: false
-tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.5597 문제](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-5597-1.png)

@@ -2,7 +2,7 @@
 title: A+B - 8 (11022)
 date: 2023-01-29 18:00:00 +0900
 last_modified_at: false
-tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.11022](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-11022.png)

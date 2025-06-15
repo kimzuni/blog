@@ -2,7 +2,7 @@
 title: 문자열 (9086)
 date: 2023-02-23 20:23:00 +0900
 last_modified_at: false
-tags: ["Bash", "Node.js", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.9086](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-9086.png)

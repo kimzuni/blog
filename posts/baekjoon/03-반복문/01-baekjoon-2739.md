@@ -2,7 +2,7 @@
 title: 구구단 (2739)
 date: 2023-01-29 11:27:00 +0900
 last_modified_at: false
-tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.2739](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-2739.png)

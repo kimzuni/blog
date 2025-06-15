@@ -2,7 +2,7 @@
 title: 소프트웨어 자동 업데이트 기능 켜기/끄기
 date: 2023-02-16 14:18:00 +0900
 last_modified_at: false
-tags: [Update, On/Off]
+tags: [Linux, Ubuntu, Update, On/Off]
 ---
 
 우분투는 자동으로 업데이트가 가능한 소프트웨어가 있는지 체크하고 있다면 업데이트하라고 창을 띄워 알려준다.

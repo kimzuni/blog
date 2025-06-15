@@ -2,7 +2,7 @@
 title: 크로아티아 알파벳 (2941)
 date: 2023-02-19 16:19:00 +0900
 last_modified_at: false
-tags: ["Bash", "Node.js", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.2941 문제](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-2941-1.png)

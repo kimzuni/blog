@@ -2,7 +2,7 @@
 title: 오븐 시계 (2525)
 date: 2023-01-27 21:35:00 +0900
 last_modified_at: false
-tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.2525](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-2525.png)

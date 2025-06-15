@@ -2,7 +2,7 @@
 title: 바구니 순서 바꾸기 (10812)
 date: 2023-02-27 20:04:00 +0900
 last_modified_at: false
-tags: ["Bash", "Node.js", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.10812](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-10812.png)

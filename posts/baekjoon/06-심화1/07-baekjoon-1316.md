@@ -2,7 +2,7 @@
 title: 그룹 단어 체커 (1316)
 date: 2023-02-19 16:43:00 +0900
 last_modified_at: false
-tags: ["Bash", "Node.js", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.1316 문제](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-1316-1.png)

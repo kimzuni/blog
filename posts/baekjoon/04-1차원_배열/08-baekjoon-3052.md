@@ -2,7 +2,7 @@
 title: 나머지 (3052)
 date: 2023-02-01 21:30:00 +0900
 last_modified_at: false
-tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.3052 문제](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-3052-1.png)

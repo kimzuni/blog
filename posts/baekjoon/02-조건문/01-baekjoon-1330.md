@@ -2,7 +2,7 @@
 title: 두 수 비교하기 (1330)
 date: 2023-01-27 18:24:00 +0900
 last_modified_at: false
-tags: ["Bash", "C", "Node.js", "PHP", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.1330](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-1330.png)

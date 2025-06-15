@@ -2,7 +2,7 @@
 title: 다이얼 (5622)
 date: 2023-02-19 15:41:00 +0900
 last_modified_at: false
-tags: ["Bash", "Node.js", "Python3", "Ruby"]
+tags: ["Baekjoon"]
 ---
 
 ![Baekjoon No.5622 문제](https://cdn.jsdelivr.net/gh/kimzuni/cdn/blog/baekjoon-5622-1.png)
