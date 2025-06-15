@@ -23,6 +23,8 @@ a {
 	} table {
 		@apply text-nowrap;
 	}
+} .footnote-item p {
+	@apply m-0;
 }
 
 
