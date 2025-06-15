@@ -1,5 +1,6 @@
 import type { GiscusProps } from "@giscus/vue";
 
+export * as SERIES from "./series";
 export { default as archives } from "./archivess";
 
 
@@ -19,8 +20,8 @@ export const SITE = {
 } as const;
 
 export const PAGINATION = {
-	POST: 12,
-	SERIES: 6,
+	POST: 15,
+	SERIES: 10,
 	SERIES_POST: 15,
 	TAG: 35,
 	TAG_POST: 15,
@@ -34,14 +35,9 @@ export const LIMIT = {
 	SIDEBAR_SERIES: 5,
 } as const;
 
-export const SERIES = {
-	NUM_DELIMITER: "-",
-	DESCRIPTION: {
-	} as Partial<Record<string, string>>,
-} as const;
-
 export const UNSERIES = {
 	INCLUDE: true,
+	SLUG: "unseries",
 	LABEL: "Unseries",
 } as const;
 

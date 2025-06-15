@@ -9,12 +9,12 @@ import type { UseSeriesFiltered } from "../composables/useSeries";
 export interface Props {
 	series: UseSeriesFiltered;
 	open?: boolean;
-	viewMore?: boolean;
 	headingTagName?: string;
+	viewDetails?: boolean;
 }
 
 const data = useData();
-const { headingTagName="p", series, open=false, viewMore=false } = defineProps<Props>();
+const { headingTagName="p", series, open=false, viewDetails=true } = defineProps<Props>();
 
 </script>
 
@@ -42,17 +42,17 @@ const { headingTagName="p", series, open=false, viewMore=false } = defineProps<P
 	@apply no-underline text-(--vp-custom-block-details-text)! transition-[color];
 	@apply hover:opacity-100 [&:hover,&.active]:text-(--vp-c-brand-1)!;
 
-	@apply before:block [&.view-more]:before:hidden;
+	@apply before:block [&.view-details]:before:hidden;
 	@apply before:content-[attr(data-order)"."];
 }
 </style>
 
 <template>
-	<section class="seriesbox" :aria-labelledby="`series-${series.name}`">
-		<component :is="headingTagName" :id="`series-${series.name}`" class="sr-only">Series: {{ series.name }}</component>
+	<section class="seriesbox" :aria-labelledby="`series-${series.slug}`">
+		<component :is="headingTagName" :id="`series-${series.slug}`" class="sr-only">Series: {{ series.label }}</component>
 		<details class="details custom-block" :open="open || undefined" aria-live="polite">
 			<summary class="details-summary">
-				{{ series.name }}
+				{{ series.label }}
 				<span class="summary-info" aria-hidden="true">{{ series.total }} post{{ series.total === 1 ? "" : "s" }}</span>
 				<span class="sr-only">contains {{ series.total }}</span>
 			</summary>
@@ -67,9 +67,9 @@ const { headingTagName="p", series, open=false, viewMore=false } = defineProps<P
 						:data-order="item.order"
 					>{{ item.post.title }}</a>
 				</li>
-				<li v-if="viewMore">
-					<a class="postbox view-more" :href="`${BASE}/series/${toPathname(series.name)}/`">
-						<span class="title">View more</span>
+				<li v-if="viewDetails">
+					<a class="postbox view-details" :href="`${BASE}/series/${series.slug}/`">
+						<span class="title">View Details</span>
 					</a>
 				</li>
 			</ul>

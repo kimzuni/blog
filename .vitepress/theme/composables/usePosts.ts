@@ -8,7 +8,7 @@ import { toPathname } from "../../utils/toPathname";
 
 export interface UsePostsProps {
 	posts?: Post[];
-	seriesName?: ComputedRef<string | undefined>;
+	seriesSlug?: ComputedRef<string | undefined>;
 	tagName?: ComputedRef<string>;
 	pinned?: ComputedRef<boolean>;
 	currPage: ComputedRef<number>;
@@ -17,14 +17,14 @@ export interface UsePostsProps {
 
 export const usePosts = ({
 	posts=data,
-	seriesName,
+	seriesSlug,
 	tagName,
 	pinned,
 	perPage=0,
 	currPage,
 }: UsePostsProps) => {
 	const filtered = computed(() => posts.filter(post => (
-		(!seriesName || checkSeries(seriesName.value, post.series?.name))
+		(!seriesSlug || checkSeries(seriesSlug.value, post.series?.slug))
 		&&
 		(!tagName || post.tags?.map(toPathname).includes(toPathname(tagName.value)))
 		&&

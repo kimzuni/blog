@@ -6,12 +6,12 @@ import { series } from "../../../.vitepress/data/series";
 
 
 
-const paths = () => series.map(name => {
-	const count = posts.filter(x => checkSeries(name, x.series.name)).length;
+const paths = () => series.map(slug => {
+	const count = posts.filter(x => checkSeries(slug, x.series.slug)).length;
 	return Array.from({ length: Math.ceil(count/PAGINATION.SERIES_POST) }).map((_, i) => ({
 		params: {
 			page: i + 1,
-			series: name,
+			series: slug,
 		},
 	}))
 }).flat().filter(x => x.params.page !== 0);

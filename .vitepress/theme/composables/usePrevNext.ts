@@ -34,7 +34,7 @@ export const usePrevNext = () => {
 	const post = useCurrentPost();
 	const series = useSeries({
 		currPage: computed(() => 1),
-		seriesName: computed(() => post.value.series.name),
+		seriesSlug: computed(() => post.value.series.slug),
 	});
 
 	const items = computed(() => series.paginated.value[0]?.items ?? []);

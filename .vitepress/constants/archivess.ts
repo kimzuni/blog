@@ -1,4 +1,4 @@
-import type { AddItem } from "./utils/getArchiveTree";
+import type { AddItem } from "../utils/getArchiveTree";
 
 
 

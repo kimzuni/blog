@@ -3,8 +3,8 @@ import { toPathname } from "../utils/toPathname";
 
 
 
-export const checkSeries = (series: string = UNSERIES.LABEL, postSeries: string = UNSERIES.LABEL, recursive: boolean = false) => {
-	series = toPathname(series);
-	postSeries = toPathname(postSeries);
-	return series === postSeries || (recursive && postSeries.startsWith(`${series}/`) ? true : false);
+export const checkSeries = (slug: string = UNSERIES.SLUG, postSeriesSlug: string = UNSERIES.SLUG, recursive: boolean = false) => {
+	slug = toPathname(slug);
+	postSeriesSlug = toPathname(postSeriesSlug);
+	return slug === postSeriesSlug || (recursive && postSeriesSlug.startsWith(`${slug}/`) ? true : false);
 };

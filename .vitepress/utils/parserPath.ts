@@ -5,20 +5,20 @@ import type { Frontmatter } from "./parserFrontmatter";
 
 
 export interface Series {
-	name: string;
+	slug: string;
 	order?: number;
 }
 
-export const splitSeriesNum = (name: string) => {
+export const splitSeriesNum = (filename: string) => {
 	const data: {
 		num?: number;
-		name: string;
-	} = { name };
+		slug: string;
+	} = { slug: filename };
 
-	const split = name.split(SERIES.NUM_DELIMITER);
+	const split = filename.split(SERIES.NUM_DELIMITER);
 	if (1 < split.length && /^\d+$/.test(split[0]!)) {
 		data.num = Number(split[0]) || undefined;
-		data.name = split.slice(1).join(SERIES.NUM_DELIMITER)!;
+		data.slug = split.slice(1).join(SERIES.NUM_DELIMITER)!;
 	}
 
 	return data;
@@ -32,31 +32,31 @@ export const parserSeries =  (path: string, frontmatter?: Frontmatter): Series |
 	const series: Partial<Series> = {};
 	if (frontmatter?.series !== undefined) {
 		if (typeof frontmatter.series === "boolean") {
-			series.name = UNSERIES.LABEL;
+			series.slug = UNSERIES.LABEL;
 		} else if (typeof frontmatter.series === "string") {
-			series.name = frontmatter.series;
+			series.slug = frontmatter.series;
 		} else if (typeof frontmatter.series === "number") {
 			series.order = frontmatter.series;
 		} else {
-			series.name = frontmatter.series.include === false ? UNSERIES.LABEL : frontmatter.series.name ? String(frontmatter.series.name) : undefined;
+			series.slug = frontmatter.series.include === false ? UNSERIES.LABEL : frontmatter.series.slug ? String(frontmatter.series.slug) : undefined;
 			series.order = Number(frontmatter.series.order) || undefined;
 		}
 	}
 
 	const paths = path.split("/");
 	const filename = paths.pop();
-	if (!series.name) {
+	if (!series.slug) {
 		const idx = paths.findIndex(value => value.startsWith("_"));
-		series.name = paths.slice(0, idx !== -1 ? idx : Infinity).map(x => splitSeriesNum(x).name).join("/");
+		series.slug = paths.slice(0, idx !== -1 ? idx : Infinity).map(x => splitSeriesNum(x).slug).join("/");
 	}
 
-	if (series.name && series.order === undefined) {
+	if (series.slug && series.order === undefined) {
 		const { num } = splitSeriesNum(filename!);
 		series.order = Number(num) || undefined;
 	}
 
 	return {
-		name: (series.name || UNSERIES.LABEL).replace(/_/g, " "),
+		slug: (series.slug || UNSERIES.LABEL).replace(/_/g, " "),
 		order: series.order,
 	};
 };

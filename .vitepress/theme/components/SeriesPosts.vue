@@ -11,14 +11,16 @@ import { SERIES, PAGINATION } from "../../constants";
 
 const { params } = useData();
 
-const seriesName = computed(() => params.value?.series as string);
+const seriesSlug = computed(() => params.value?.series as string);
 const currPage = computed(() => Number(params.value?.page) || 1);
 
 const { filtered, paginated, hasPrevious, hasNext } = useSeries({
 	currPage: currPage,
-	seriesName: seriesName,
+	seriesSlug: seriesSlug,
 	perPage: PAGINATION.SERIES_POST,
 });
+
+const data = computed(() => paginated.value.find(x => x.slug === seriesSlug.value));
 
 </script>
 
@@ -44,11 +46,11 @@ const { filtered, paginated, hasPrevious, hasNext } = useSeries({
 </style>
 
 <template>
-	<Page :badge="seriesName">
+	<Page :badge="data.label">
 		<Pagination
 			page="Posts"
-			:description="SERIES.DESCRIPTION[seriesName.toLowerCase()]"
-			:pathname="`series/${seriesName.toLowerCase()}`"
+			:description="SERIES.META[data.slug]?.DESCRIPTION"
+			:pathname="`series/${seriesSlug}`"
 			:total="filtered.length"
 			:perPage="PAGINATION.SERIES_POST"
 			:currPage="currPage"
@@ -56,7 +58,7 @@ const { filtered, paginated, hasPrevious, hasNext } = useSeries({
 			:hasPrevious="hasPrevious"
 		>
 			<Postboxes
-				:posts="paginated.find(x => x.name === seriesName)?.items.map(x => x.post)"
+				:posts="paginated.find(x => x.slug === seriesSlug)?.items.map(x => x.post)"
 				:grid="true"
 			/>
 		</Pagination>

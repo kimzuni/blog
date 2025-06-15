@@ -5,11 +5,11 @@ import type { GetPostsReturnType } from "./getPosts";
 
 
 export const getSeries = (posts: GetPostsReturnType) => {
-	const seriesList = new Set<string>(UNSERIES.INCLUDE ? [] : [UNSERIES.LABEL]);
+	const seriesList = new Set<string>(UNSERIES.INCLUDE ? [] : [UNSERIES.SLUG]);
 	return posts.toSorted(postsToSort).filter(post => {
-		const name = post.series.name;
-		if (seriesList.has(name)) return false;
-		seriesList.add(name);
+		const { slug } = post.series;
+		if (seriesList.has(slug)) return false;
+		seriesList.add(slug);
 		return true;
-	}).map(x => x.series.name.trim());
+	}).map(x => x.series.slug);
 };

@@ -1,6 +1,6 @@
 import { type ComputedRef, computed } from "vue";
 
-import { UNSERIES } from "../../constants";
+import { SERIES, UNSERIES } from "../../constants";
 import { data, type Post } from "../../data/posts.data";
 import { checkSeries } from "../../utils/series";
 
@@ -12,14 +12,15 @@ export interface UseSeriesFilteredItem {
 }
 
 export interface UseSeriesFiltered {
-	name: string;
+	slug: string;
+	label: string;
 	total: number;
 	items: UseSeriesFilteredItem[];
 }
 
 export interface UseSeriesProps {
 	posts?: Post[];
-	seriesName?: ComputedRef<string>;
+	seriesSlug?: ComputedRef<string>;
 	perSeries?: number;
 	perPage?: number;
 	currPage: ComputedRef<number>;
@@ -28,16 +29,16 @@ export interface UseSeriesProps {
 
 export const useSeries = ({
 	posts=data,
-	seriesName,
+	seriesSlug,
 	perSeries=0,
 	perPage=0,
 	currPage,
 	sort="newest",
 }: UseSeriesProps) => {
 	const filtered = computed<UseSeriesFiltered[]>(() => {
-		const names = [...new Set(posts.map(post => post.series.name).filter(name => !seriesName || checkSeries(seriesName.value, name)))].filter(x => UNSERIES.INCLUDE || x !== UNSERIES.LABEL);
-		return names.map(name => {
-			const items = posts.filter(post => checkSeries(name, post.series.name));
+		const slugs = [...new Set(posts.map(post => post.series.slug).filter(slug => !seriesSlug || checkSeries(seriesSlug.value, slug)))].filter(x => UNSERIES.INCLUDE || x !== UNSERIES.LABEL);
+		return slugs.map(slug => {
+			const items = posts.filter(post => checkSeries(slug, post.series.slug));
 			const total = items.length;
 			const sorted = items.sort((a, b) => {
 				const ao = a.series?.order ?? 0;
@@ -46,7 +47,8 @@ export const useSeries = ({
 			});
 			if (sort === "oldest") sorted.reverse();
 			return {
-				name,
+				slug,
+				label: SERIES.META[slug]?.LABEL ?? slug,
 				total,
 				items: sorted.map((post, idx) => ({
 					order: sort === "oldest" ? idx+1 : items.length - idx,

@@ -23,7 +23,7 @@ const { frontmatter } = useData();
 	@apply mx-auto max-w-[1152px];
 } .page-title {
 	@apply my-12 leading-10;
-	@apply flex flex-wrap justify-center-safe items-center-safe gap-3;
+	@apply flex flex-col flex-wrap justify-center-safe items-center-safe gap-y-3;
 	@apply text-[28px] md:text-[32px];
 	@apply text-center font-semibold;
 }

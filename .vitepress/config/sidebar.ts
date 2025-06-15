@@ -1,9 +1,8 @@
 import type { DefaultTheme } from "vitepress";
 
-import { LIMIT } from "../constants";
-import { toPathname } from "../utils/toPathname";
+import { LIMIT, SERIES } from "../constants";
 import { posts } from "../data/posts";
-import { series as seriesNames } from "../data/series";
+import { series as seriesSlugs } from "../data/series";
 
 
 
@@ -22,9 +21,9 @@ const recent = posts.filter(x => x.createdAt || x.updatedAt).map(post => ({
 	link: `/posts/${post.slug}/`,
 })).slice(0, LIMIT.SIDEBAR_LATEST);
 
-const series = seriesNames.map(name => ({
-	text: name,
-	link: `/series/${toPathname(name)}/`,
+const series = seriesSlugs.map(slug => ({
+	text: SERIES.META[slug]?.LABEL ?? slug,
+	link: `/series/${slug}/`,
 })).slice(0, LIMIT.SIDEBAR_SERIES);
 
 

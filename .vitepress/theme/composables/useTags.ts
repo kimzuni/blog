@@ -11,7 +11,7 @@ export interface UseTagsFiltered {
 	posts: Post[];
 }
 
-export interface UseSeriesProps {
+export interface UseTagsProps {
 	posts?: Post[];
 	tagNames?: ComputedRef<string[]>;
 	perTag?: number;
@@ -25,7 +25,7 @@ export const useTags = ({
 	perTag=0,
 	perPage=0,
 	currPage,
-}: UseSeriesProps) => {
+}: UseTagsProps) => {
 	const filtered = computed<UseTagsFiltered[]>(() => {
 		const names = 
 			posts.map(post => post.tags).flat()

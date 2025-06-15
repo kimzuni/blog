@@ -8,10 +8,10 @@ import { useSeries } from "../composables/useSeries";
 import Seriesbox from "../components/Seriesbox.vue";
 
 const post = useCurrentPost();
-const seriesName = computed(() => post.value.series.name);
+const seriesSlug = computed(() => post.value.series.slug);
 
 const { paginated } = useSeries({
-	seriesName: seriesName,
+	seriesSlug: seriesSlug,
 	currPage: computed(() => 1),
 	sort: "oldest",
 });
@@ -56,10 +56,10 @@ const { paginated } = useSeries({
 			</template>
 		</dl>
 	</div>
-	<div v-if="seriesName !== UNSERIES.LABEL" class="seriesbox-container">
+	<div v-if="seriesSlug !== UNSERIES.SLUG" class="seriesbox-container">
 		<Seriesbox
 			v-for="series in paginated"
-			:key="series.name"
+			:key="series.slug"
 			:series="series"
 		/>
 	</div>
