@@ -25,6 +25,8 @@ a {
 	}
 } .footnote-item p {
 	@apply m-0;
+} svg {
+	@apply size-[1em];
 }
 
 

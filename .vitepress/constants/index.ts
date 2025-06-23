@@ -7,6 +7,8 @@ export { default as archives } from "./archivess";
 
 export const TIME_ZONE = "Asia/Seoul";
 
+export const GITHUB_REPO = "kimzuni/blog";
+
 export const URL = "https://blog.kimzuni.com";
 
 export const BASE: string = "";

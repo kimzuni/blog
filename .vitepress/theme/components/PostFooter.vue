@@ -1,7 +1,9 @@
 <script setup lang="ts">
 
-import PrevNextLinks from "./PrevNextLinks.vue";
+import { GITHUB_REPO } from "../../constants";
 import { useCurrentPost } from "../composables/useCurrentPost";
+
+import IconHistory from "./IconHistory.vue";
 
 const post = useCurrentPost();
 
@@ -13,25 +15,37 @@ const post = useCurrentPost();
 
 @reference "../styles/index.css";
 
-.VPDocFooter {
-	@apply mt-16;
-} .tags-container {
+.post-footer {
 	@apply my-4;
-	@apply flex gap-2;
-	@apply text-subtle;
+	@apply flex gap-2 flex-wrap;
+	@apply text-subtle text-nowrap;
+} .tags-container {
+	@apply flex gap-2 flex-wrap;
 	@apply [&>a]:hover:text-(--vp-c-brand-1);
+} .post-history {
+	@apply flex-1 text-right underline;
+
+	a {
+		@apply [&>.icon]:mr-0.5;
+		@apply hover:text-(--vp-c-text-1);
+	}
 }
 
 </style>
 
 <template>
-	<footer class="VPDocFooter">
+	<div class="post-footer">
 		<div class="tags-container">
 			<a
 				v-for="tag in post.tags"
 				:href="`/tags/${tag}`"
 			>#{{ tag }}</a>
 		</div>
-		<PrevNextLinks/>
-	</footer>
+		<div v-if="post.createdAt" class="post-history">
+			<a :href="`https://github.com/${GITHUB_REPO}/commits/main/${post.filepath}`" target="_blank" rel="noopener noreferrer">
+				<span class="icon"><IconHistory/></span>
+				<span class="text">View edit history on GitHub</span>
+			</a>
+		</div>
+	</div>
 </template>

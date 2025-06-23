@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import PostFooter from "./PostFooter.vue";
+import DocFooter from "./DocFooter.vue";
 import Giscus from "./Giscus.vue";
 
 </script>
@@ -8,6 +8,6 @@ import Giscus from "./Giscus.vue";
 
 
 <template>
-	<PostFooter/>
+	<DocFooter/>
 	<Giscus/>
 </template>
