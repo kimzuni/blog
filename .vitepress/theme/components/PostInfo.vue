@@ -16,6 +16,9 @@ const { paginated } = useSeries({
 	sort: "oldest",
 });
 
+const tsToString = (timestamp?: number) => new Date(timestamp || 0).toISOString();
+const dsToOnAt = (datestring?: string) => !datestring ? "Not yet published" : `on ${datestring.split(", ").join(" at ")}`;
+
 </script>
 
 
@@ -24,14 +27,19 @@ const { paginated } = useSeries({
 
 @reference "../styles/index.css";
 
-.post-title {
+.post-title, .post-date {
 	@apply mb-8;
+} .post-title {
 	@apply text-center font-semibold;
 	@apply leading-10 -tracking-[0.02em];
 	@apply text-[28px] md:text-[32px];
 } .post-date {
-	@apply grid grid-cols-[1fr_auto] gap-x-1;
-	@apply mb-8 text-right text-subtle;
+	@apply text-subtle text-right;
+	
+	p {
+		@apply flex justify-end-safe gap-1;
+		@apply [&>span]:flex-1;
+	}
 }
 
 </style>
@@ -39,22 +47,20 @@ const { paginated } = useSeries({
 <template>
 	<div class="post-info">
 		<h1 class="post-title">{{ post.title }}</h1>
-		<dl class="post-date">
-			<dt :class="post.updatedAt ? '' : 'sr-only'">Posted on</dt>
-			<dd>
-				<time :datetime="new Date(post.createdAt?.timestamp || 0).toISOString()">
-					{{ post.createdAt?.string ?? "Not yet published" }}
+		<div class="post-date">
+			<p>
+				<span v-if="post.createdAt">Posted</span>
+				<time :datetime="tsToString(post.createdAt?.timestamp)">
+					{{ dsToOnAt(post.createdAt?.string) }}
 				</time>
-			</dd>
-			<template v-if="post.updatedAt">
-				<dt>Last updated on</dt>
-				<dd>
-					<time :datetime="new Date(post.updatedAt.timestamp || 0).toISOString()">
-						{{ post.updatedAt.string }}
-					</time>
-				</dd>
-			</template>
-		</dl>
+			</p>
+			<p v-if="post.updatedAt">
+				<span>Last updated</span>
+				<time :datetime="tsToString(post.updatedAt.timestamp)">
+					{{ dsToOnAt(post.updatedAt.string) }}
+				</time>
+			</p>
+		</div>
 	</div>
 	<div v-if="seriesSlug !== UNSERIES.SLUG" class="seriesbox-container">
 		<Seriesbox

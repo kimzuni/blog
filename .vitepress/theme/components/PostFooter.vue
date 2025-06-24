@@ -2,6 +2,7 @@
 
 import { GITHUB_REPO } from "../../constants";
 import { useCurrentPost } from "../composables/useCurrentPost";
+import { toPathname } from "../../utils/toPathname";
 
 import IconHistory from "./IconHistory.vue";
 
@@ -38,7 +39,7 @@ const post = useCurrentPost();
 		<div class="tags-container">
 			<a
 				v-for="tag in post.tags"
-				:href="`/tags/${tag}`"
+				:href="`/tags/${toPathname(tag)}`"
 			>#{{ tag }}</a>
 		</div>
 		<div v-if="post.createdAt" class="post-history">
