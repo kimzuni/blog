@@ -20,7 +20,7 @@ const { filtered, paginated, hasPrevious, hasNext } = useSeries({
 	perPage: PAGINATION.SERIES_POST,
 });
 
-const data = computed(() => paginated.value.find(x => x.slug === seriesSlug.value));
+const data = computed(() => paginated.value.find(x => x.slug === seriesSlug.value)!);
 
 </script>
 
@@ -51,14 +51,14 @@ const data = computed(() => paginated.value.find(x => x.slug === seriesSlug.valu
 			page="Posts"
 			:description="SERIES.META[data.slug]?.DESCRIPTION"
 			:pathname="`series/${seriesSlug}`"
-			:total="filtered.length"
+			:total="filtered[0]!.items.length"
 			:perPage="PAGINATION.SERIES_POST"
 			:currPage="currPage"
 			:hasNext="hasNext"
 			:hasPrevious="hasPrevious"
 		>
 			<Postboxes
-				:posts="paginated.find(x => x.slug === seriesSlug)?.items.map(x => x.post)"
+				:posts="paginated[0]!.items.map(x => x.post)"
 				:grid="true"
 			/>
 		</Pagination>
