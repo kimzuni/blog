@@ -11,6 +11,8 @@ export type Props = {
 	title?: string;
 	direction?: "row" | "col" | "auto";
 	headingTagName?: string;
+	search?: string;
+	hash?: string;
 };
 
 const props = withDefaults(defineProps<Props>(), {
@@ -18,6 +20,8 @@ const props = withDefaults(defineProps<Props>(), {
 });
 const direction = computed(() => props.direction ?? "row");
 
+const hash = !props.hash ? "" : props.hash.startsWith("?") ? props.hash : `#${props.hash}`;
+const search = !props.search ? "" : props.search.startsWith("?") ? props.search : `?${props.search}`;
 const post = props.post !== undefined ? props.post : props.title === undefined ? undefined : posts.find(x => [x.title, x.slug, x.url.slice(BASE.length, -1), `${x.url.slice(BASE.length)}`].includes(props.title!));
 const postDate = computed(() => post?.updatedAt ?? post?.createdAt);
 
@@ -79,7 +83,7 @@ const postDate = computed(() => post?.updatedAt ?? post?.createdAt);
 
 <template>
 	<article :class="`postbox-wrapper group ${direction}`">
-		<a v-if="post" :href="post.url" class="postbox" :aria-labelledby="`postbox-title-${post.slug}`">
+		<a v-if="post" :href="`${post.url}${search}${hash}`" class="postbox" :aria-labelledby="`postbox-title-${post.slug}`">
 			<div class="postbox-thumbnail">
 				<Pen v-if="!post.createdAt" class="postbox-icon unpublished"/>
 				<Pin v-if="post.pin" class="postbox-icon pin"/>
